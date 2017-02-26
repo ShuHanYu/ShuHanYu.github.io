@@ -247,12 +247,134 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/26/buildPrivatePodsInCocoaPods/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shu-Han, Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SHY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/26/buildPrivatePodsInCocoaPods/" itemprop="url">
+                  以 CocoaPods 建立 Private Pods
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-02-26T15:52:14+08:00">
+                2017-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Create-Private-Pods-with-CocoaPods"><a href="#Create-Private-Pods-with-CocoaPods" class="headerlink" title="Create Private Pods with CocoaPods"></a>Create Private Pods with CocoaPods</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/26/buildPrivatePodsInCocoaPods/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/25/build_framework_in_Xcode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shu-Han, Yu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -323,31 +445,14 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。  </p>
-<h2 id="準備原始碼，決定公開和私有的檔案"><a href="#準備原始碼，決定公開和私有的檔案" class="headerlink" title="準備原始碼，決定公開和私有的檔案"></a>準備原始碼，決定公開和私有的檔案</h2><h2 id="在-Xcode-環境下建立-framework-project"><a href="#在-Xcode-環境下建立-framework-project" class="headerlink" title="在 Xcode 環境下建立 framework project"></a>在 Xcode 環境下建立 framework project</h2><p>Menu bar: file/ New/ Project<br><img src="/2017/02/25/build_framework_in_Xcode/addNewXcodeProject.png" alt="Menu bar: file/ New/ Project"></p>
-<p>選擇 Cocoa Touch Framework 建立一個框架專案檔<br><img src="/2017/02/25/build_framework_in_Xcode/startWithFrameworkProject.png" alt="選擇 Cocoa Touch Framework 建立一個框架專案檔"></p>
-<h2 id="加入原始碼，設定環境"><a href="#加入原始碼，設定環境" class="headerlink" title="加入原始碼，設定環境"></a>加入原始碼，設定環境</h2><ul>
-<li><p>把 framework 所有原始碼加入 Xcode<br><img src="/2017/02/25/build_framework_in_Xcode/addSourceFile.png" alt="加入 framework 所需的原始碼檔案"></p>
-</li>
-<li><p>決定欲公開的檔案</p>
-<ul>
-<li><p>將欲公開的檔案加入 frameworkName.h<br><img src="/2017/02/25/build_framework_in_Xcode/importPublicHeaderFiles.png" alt="在 frameworkName.h 檔案中加入欲公開的 header 檔"></p>
-</li>
-<li><p>在 framework TARGET 下的 Build Phase 標籤頁中添加欲公開的 header 檔<br>將 Headers 欄中 Project 項目下欲公開的 header 檔拖曳至上方的 Public 項目下。此步驟的「欲公開的 header 檔」與前一步的 <code>#import</code> 項目相同。<br><img src="/2017/02/25/build_framework_in_Xcode/addPublicFileInBuildPhase.png" alt=""></p>
-</li>
-<li><p>(Optional)合併實機和模擬器的 framework<br><img src="/2017/02/25/build_framework_in_Xcode/addRunScript.png" alt=""><br>點選 Build Phase 左上方的加號，加入 run script 讓實機與模擬器的 framework 合併。</p>
-<p>複製以下的程式碼加入 Run Script 欄的灰色框內。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">if [ &quot;$&#123;ACTION&#125;&quot; = &quot;build&quot; ]</div><div class="line">then</div><div class="line">INSTALL_DIR=$&#123;SRCROOT&#125;/Products/$&#123;PROJECT_NAME&#125;.framework</div><div class="line"></div><div class="line">DEVICE_DIR=$&#123;BUILD_ROOT&#125;/$&#123;CONFIGURATION&#125;-iphoneos/$&#123;PROJECT_NAME&#125;.framework</div><div class="line"></div><div class="line">SIMULATOR_DIR=$&#123;BUILD_ROOT&#125;/$&#123;CONFIGURATION&#125;-iphonesimulator/$&#123;PROJECT_NAME&#125;.framework</div><div class="line"></div><div class="line">if [ -d &quot;$&#123;INSTALL_DIR&#125;&quot; ]</div><div class="line">then</div><div class="line">rm -rf &quot;$&#123;INSTALL_DIR&#125;&quot;</div><div class="line">fi</div><div class="line"></div><div class="line">mkdir -p &quot;$&#123;INSTALL_DIR&#125;&quot;</div><div class="line"></div><div class="line">cp -R &quot;$&#123;DEVICE_DIR&#125;/&quot; &quot;$&#123;INSTALL_DIR&#125;/&quot;</div><div class="line"></div><div class="line">lipo -create &quot;$&#123;DEVICE_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot; &quot;$&#123;SIMULATOR_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot; -output &quot;$&#123;INSTALL_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot;</div><div class="line"></div><div class="line">open &quot;$&#123;SRCROOT&#125;/Products&quot;</div><div class="line">fi</div></pre></td></tr></table></figure>
-<p>加完後如下圖所示：<br><img src="/2017/02/25/build_framework_in_Xcode/addRunScriptCode.png" alt=""></p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="建立-framework-檔"><a href="#建立-framework-檔" class="headerlink" title="建立 framework 檔"></a>建立 framework 檔</h2><p>首先，在 framework project 的模擬器建立 framework 檔(cmd + B)<br><img src="/2017/02/25/build_framework_in_Xcode/buildFrameworkInSimulator.png" alt=""><br>在建立模擬器的 framework 時會出現 build failed 的警告，請不要驚慌，這是因為此時實機的 framework 尚未建立，執行這段 script 時無法將實機和模擬器的 framework 合併。</p>
-<p>接著選擇 Generic iOS Device 再 build 一次。<br><img src="/2017/02/25/build_framework_in_Xcode/buildFrameworkInDevice.png" alt=""><br>最後我們可以在自動開啟的 Products 資料夾下看見建立好的 framework 檔。<br><img src="/2017/02/25/build_framework_in_Xcode/showFrameworkDirectory.png" alt=""></p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。  </p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/25/build_framework_in_Xcode/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -391,7 +496,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shu-Han, Yu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -533,7 +638,7 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/smallSHY.jpg"
                alt="Shu-Han, Yu" />
           <p class="site-author-name" itemprop="name">Shu-Han, Yu</p>
            
@@ -545,7 +650,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -556,7 +661,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

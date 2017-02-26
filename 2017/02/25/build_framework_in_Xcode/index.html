@@ -87,16 +87,12 @@
 
 
 
-<meta name="description" content="前言有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。  
-準備原始碼，決定公開和私有的檔案在 Xcode 環境下建立 framework projectMenu bar: file/ New/ Project
-選擇 Coco">
+<meta name="description" content="前言有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Build iOS framework with Xcode">
 <meta property="og:url" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="前言有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。  
-準備原始碼，決定公開和私有的檔案在 Xcode 環境下建立 framework projectMenu bar: file/ New/ Project
-選擇 Coco">
+<meta property="og:description" content="前言有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。">
 <meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addNewXcodeProject.png">
 <meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/startWithFrameworkProject.png">
 <meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addSourceFile.png">
@@ -107,12 +103,10 @@
 <meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/buildFrameworkInSimulator.png">
 <meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/buildFrameworkInDevice.png">
 <meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/showFrameworkDirectory.png">
-<meta property="og:updated_time" content="2017-02-26T07:47:42.000Z">
+<meta property="og:updated_time" content="2017-02-26T08:06:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Build iOS framework with Xcode">
-<meta name="twitter:description" content="前言有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。  
-準備原始碼，決定公開和私有的檔案在 Xcode 環境下建立 framework projectMenu bar: file/ New/ Project
-選擇 Coco">
+<meta name="twitter:description" content="前言有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。">
 <meta name="twitter:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addNewXcodeProject.png">
 
 
@@ -271,7 +265,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shu-Han, Yu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -339,6 +333,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。  </p>
+<a id="more"></a>
 <h2 id="準備原始碼，決定公開和私有的檔案"><a href="#準備原始碼，決定公開和私有的檔案" class="headerlink" title="準備原始碼，決定公開和私有的檔案"></a>準備原始碼，決定公開和私有的檔案</h2><h2 id="在-Xcode-環境下建立-framework-project"><a href="#在-Xcode-環境下建立-framework-project" class="headerlink" title="在 Xcode 環境下建立 framework project"></a>在 Xcode 環境下建立 framework project</h2><p>Menu bar: file/ New/ Project<br><img src="/2017/02/25/build_framework_in_Xcode/addNewXcodeProject.png" alt="Menu bar: file/ New/ Project"></p>
 <p>選擇 Cocoa Touch Framework 建立一個框架專案檔<br><img src="/2017/02/25/build_framework_in_Xcode/startWithFrameworkProject.png" alt="選擇 Cocoa Touch Framework 建立一個框架專案檔"></p>
 <h2 id="加入原始碼，設定環境"><a href="#加入原始碼，設定環境" class="headerlink" title="加入原始碼，設定環境"></a>加入原始碼，設定環境</h2><ul>
@@ -410,6 +405,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/02/26/buildPrivatePodsInCocoaPods/" rel="prev" title="以 CocoaPods 建立 Private Pods">
+                以 CocoaPods 建立 Private Pods <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -468,7 +467,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/smallSHY.jpg"
                alt="Shu-Han, Yu" />
           <p class="site-author-name" itemprop="name">Shu-Han, Yu</p>
            
@@ -480,7 +479,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -491,7 +490,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

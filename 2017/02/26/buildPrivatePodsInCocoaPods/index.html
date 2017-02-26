@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="References,MarkDown,Hexo," />
+  <meta name="keywords" content="iOS framework,CocoaPods,private pods,podspec," />
 
 
 
@@ -87,25 +87,16 @@
 
 
 
-<meta name="description" content="MarkDown syntax of GitBook
-Hexo Writing documentation
-使用Hexo和GitHub Pages搭建免费独立博客
-hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）">
+<meta name="description" content="Create Private Pods with CocoaPods">
 <meta property="og:type" content="article">
-<meta property="og:title" content="References">
-<meta property="og:url" content="http://yoursite.com/2017/02/24/References/index.html">
+<meta property="og:title" content="以 CocoaPods 建立 Private Pods">
+<meta property="og:url" content="http://yoursite.com/2017/02/26/buildPrivatePodsInCocoaPods/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="MarkDown syntax of GitBook
-Hexo Writing documentation
-使用Hexo和GitHub Pages搭建免费独立博客
-hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）">
-<meta property="og:updated_time" content="2017-02-26T05:58:32.000Z">
+<meta property="og:description" content="Create Private Pods with CocoaPods">
+<meta property="og:updated_time" content="2017-02-26T10:08:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="References">
-<meta name="twitter:description" content="MarkDown syntax of GitBook
-Hexo Writing documentation
-使用Hexo和GitHub Pages搭建免费独立博客
-hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）">
+<meta name="twitter:title" content="以 CocoaPods 建立 Private Pods">
+<meta name="twitter:description" content="Create Private Pods with CocoaPods">
 
 
 
@@ -133,13 +124,13 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/24/References/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/26/buildPrivatePodsInCocoaPods/"/>
 
 
 
 
 
-  <title> References | SHY </title>
+  <title> 以 CocoaPods 建立 Private Pods | SHY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -258,7 +249,7 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/24/References/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/26/buildPrivatePodsInCocoaPods/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shu-Han, Yu">
@@ -279,7 +270,7 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
             
             
               
-                References
+                以 CocoaPods 建立 Private Pods
               
             
           </h1>
@@ -294,8 +285,8 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-02-24T23:22:46+08:00">
-                2017-02-24
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-02-26T15:52:14+08:00">
+                2017-02-26
               </time>
             
 
@@ -330,11 +321,53 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
       
 
       
-        <ul>
-<li><a href="https://wastemobile.gitbooks.io/gitbook-chinese/content/format/markdown.html" target="_blank" rel="external">MarkDown syntax of GitBook</a></li>
-<li><a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Hexo Writing documentation</a></li>
-<li><a href="https://sylujia.github.io/2016/09/11/使用Hexo和GitHub-Pages搭建免费独立博客/#more" target="_blank" rel="external">使用Hexo和GitHub Pages搭建免费独立博客</a></li>
-<li><a href="http://www.jianshu.com/p/a52b68794a6b" target="_blank" rel="external">hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）</a></li>
+        <h1 id="Create-Private-Pods-with-CocoaPods"><a href="#Create-Private-Pods-with-CocoaPods" class="headerlink" title="Create Private Pods with CocoaPods"></a>Create Private Pods with CocoaPods</h1><a id="more"></a>
+<ul>
+<li><p>Create a repository to save our podspec file<br>建立一個遠端儲藏庫。可以是<a href="https://github.com" target="_blank" rel="external">GitHub</a>、<a href="https://bitbucket.org/product" target="_blank" rel="external">bitbucket</a>或你自己的 git server。</p>
+</li>
+<li><p>Install CocoaPods<br>如果你還沒有安裝 CocoaPods 工具，打開終端機（terminal）輸入以下指令安裝之。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install cocoapods</div></pre></td></tr></table></figure>
+</li>
+<li><p>Create a private pod repository with CocoaPods</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod repo add REPO_NAME SOURCE_URL</div></pre></td></tr></table></figure>
+<p>  這個步驟是指定 framework 檔的私人上傳位址。當然，如果你想把 framework 公開，就把它上傳至官方的 <code>Spec Repo</code>。</p>
+</li>
+<li><p>Check your private repository</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod repo list</div></pre></td></tr></table></figure>
+<p>  用以上指令確認自己的 private pods repository 是否存在。</p>
+</li>
+</ul>
+<h1 id="Create-a-podspec-file"><a href="#Create-a-podspec-file" class="headerlink" title="Create a podspec file"></a>Create a podspec file</h1><ul>
+<li><p>Init a podspec file in terminal<br>建立一個 podspec 檔。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod spec create NAME</div></pre></td></tr></table></figure>
+</li>
+<li><p>Edit podspec file<br>參考<a href="https://guides.cocoapods.org/making/private-cocoapods.html" target="_blank" rel="external">官網</a>編輯 podspec，記得要修改 summary，description 要比 summary 長。<br>另外，如果你的 framework 裡面需要使用其他的第三方套件，記得增加 dependency 項目。</p>
+</li>
+<li><p>Verify podspec file</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod lib lint</div></pre></td></tr></table></figure>
+<p>  以上述指令確認 podspec 檔是否合乎規定。如果合乎規定， terminal 會出現以下訊息：<code>validation passed</code></p>
+</li>
+<li><p>Push the podspec file to Cocoapods private repository<br>確認 podspec 合乎規定後，就可以上傳啦。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod repo push [REPO_NAME] [NAME.podspec]</div></pre></td></tr></table></figure>
+<p>  其中 <code>REPO_NAME</code> 是你的私人儲藏褲名稱。如果你要公開 framework 的話，就是用下面的指令：（需先<a href="https://guides.cocoapods.org/making/getting-setup-with-trunk" target="_blank" rel="external">註冊</a>）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod trunk push [NAME.podspec]</div></pre></td></tr></table></figure>
+<p>  不過公開的部分不在這次討論範圍，所以不多說 <del>顯示為不負責任 XD</del></p>
+</li>
+</ul>
+<h1 id="Test-your-framework"><a href="#Test-your-framework" class="headerlink" title="Test your framework"></a>Test your framework</h1><ul>
+<li><p>Create a single view application Xcode project</p>
+</li>
+<li><p>Init a Podfile<br>在上一步的 project 路徑下，輸入以下指令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod init</div></pre></td></tr></table></figure>
+</li>
+<li><p>Modify Podfile<br>編輯 Podfile，在 <code>target ‘projectName’ do</code> 下方加入以下指令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod ‘frameworkName’</div></pre></td></tr></table></figure>
+</li>
+<li><p>Install Podfile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install</div></pre></td></tr></table></figure>
+</li>
+<li><p>Verify framework by Writing test code in the test project<br>最後就是自己寫一些測試程式碼，試試看自己的 framework 功能囉。</p>
+</li>
 </ul>
 
       
@@ -359,11 +392,13 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
       
         <div class="post-tags">
           
-            <a href="/tags/References/" rel="tag"># References</a>
+            <a href="/tags/iOS-framework/" rel="tag"># iOS framework</a>
           
-            <a href="/tags/MarkDown/" rel="tag"># MarkDown</a>
+            <a href="/tags/CocoaPods/" rel="tag"># CocoaPods</a>
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/private-pods/" rel="tag"># private pods</a>
+          
+            <a href="/tags/podspec/" rel="tag"># podspec</a>
           
         </div>
       
@@ -376,15 +411,15 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/02/25/build_framework_in_Xcode/" rel="next" title="Build iOS framework with Xcode">
+                <i class="fa fa-chevron-left"></i> Build iOS framework with Xcode
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/25/build_framework_in_Xcode/" rel="prev" title="Build iOS framework with Xcode">
-                Build iOS framework with Xcode <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -431,8 +466,17 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/smallSHY.jpg"
@@ -483,6 +527,22 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-Private-Pods-with-CocoaPods"><span class="nav-number">1.</span> <span class="nav-text">Create Private Pods with CocoaPods</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-a-podspec-file"><span class="nav-number">2.</span> <span class="nav-text">Create a podspec file</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Test-your-framework"><span class="nav-number">3.</span> <span class="nav-text">Test your framework</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

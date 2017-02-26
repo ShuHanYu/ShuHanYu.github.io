@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS framework,CocoaPods,Xcode," />
 
 
 
@@ -87,12 +87,33 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="SHY">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="前言有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。  
+準備原始碼，決定公開和私有的檔案在 Xcode 環境下建立 framework projectMenu bar: file/ New/ Project
+選擇 Coco">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Build iOS framework with Xcode">
+<meta property="og:url" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/index.html">
 <meta property="og:site_name" content="SHY">
+<meta property="og:description" content="前言有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。  
+準備原始碼，決定公開和私有的檔案在 Xcode 環境下建立 framework projectMenu bar: file/ New/ Project
+選擇 Coco">
+<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addNewXcodeProject.png">
+<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/startWithFrameworkProject.png">
+<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addSourceFile.png">
+<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/importPublicHeaderFiles.png">
+<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addPublicFileInBuildPhase.png">
+<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addRunScript.png">
+<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addRunScriptCode.png">
+<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/buildFrameworkInSimulator.png">
+<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/buildFrameworkInDevice.png">
+<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/showFrameworkDirectory.png">
+<meta property="og:updated_time" content="2017-02-26T07:47:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SHY">
+<meta name="twitter:title" content="Build iOS framework with Xcode">
+<meta name="twitter:description" content="前言有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。  
+準備原始碼，決定公開和私有的檔案在 Xcode 環境下建立 framework projectMenu bar: file/ New/ Project
+選擇 Coco">
+<meta name="twitter:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addNewXcodeProject.png">
 
 
 
@@ -120,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/25/build_framework_in_Xcode/"/>
 
 
 
 
 
-  <title> SHY </title>
+  <title> Build iOS framework with Xcode | SHY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -151,9 +172,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -236,9 +255,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -268,10 +287,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/02/25/build_framework_in_Xcode/" itemprop="url">
-                  Build iOS framework with Xcode
-                </a>
+                Build iOS framework with Xcode
               
             
           </h1>
@@ -322,9 +338,7 @@
       
 
       
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。  </p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。  </p>
 <h2 id="準備原始碼，決定公開和私有的檔案"><a href="#準備原始碼，決定公開和私有的檔案" class="headerlink" title="準備原始碼，決定公開和私有的檔案"></a>準備原始碼，決定公開和私有的檔案</h2><h2 id="在-Xcode-環境下建立-framework-project"><a href="#在-Xcode-環境下建立-framework-project" class="headerlink" title="在 Xcode 環境下建立 framework project"></a>在 Xcode 環境下建立 framework project</h2><p>Menu bar: file/ New/ Project<br><img src="/2017/02/25/build_framework_in_Xcode/addNewXcodeProject.png" alt="Menu bar: file/ New/ Project"></p>
 <p>選擇 Cocoa Touch Framework 建立一個框架專案檔<br><img src="/2017/02/25/build_framework_in_Xcode/startWithFrameworkProject.png" alt="選擇 Cocoa Touch Framework 建立一個框架專案檔"></p>
 <h2 id="加入原始碼，設定環境"><a href="#加入原始碼，設定環境" class="headerlink" title="加入原始碼，設定環境"></a>加入原始碼，設定環境</h2><ul>
@@ -347,162 +361,70 @@
 <h2 id="建立-framework-檔"><a href="#建立-framework-檔" class="headerlink" title="建立 framework 檔"></a>建立 framework 檔</h2><p>首先，在 framework project 的模擬器建立 framework 檔(cmd + B)<br><img src="/2017/02/25/build_framework_in_Xcode/buildFrameworkInSimulator.png" alt=""><br>在建立模擬器的 framework 時會出現 build failed 的警告，請不要驚慌，這是因為此時實機的 framework 尚未建立，執行這段 script 時無法將實機和模擬器的 framework 合併。</p>
 <p>接著選擇 Generic iOS Device 再 build 一次。<br><img src="/2017/02/25/build_framework_in_Xcode/buildFrameworkInDevice.png" alt=""><br>最後我們可以在自動開啟的 Products 資料夾下看見建立好的 framework 檔。<br><img src="/2017/02/25/build_framework_in_Xcode/showFrameworkDirectory.png" alt=""></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/24/References/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shu-Han, Yu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SHY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/02/24/References/" itemprop="url">
-                  References
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-02-24T23:22:46+08:00">
-                2017-02-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/iOS-framework/" rel="tag"># iOS framework</a>
           
-            
+            <a href="/tags/CocoaPods/" rel="tag"># CocoaPods</a>
           
-
+            <a href="/tags/Xcode/" rel="tag"># Xcode</a>
           
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
         
-          
-            <ul>
-<li><a href="https://wastemobile.gitbooks.io/gitbook-chinese/content/format/markdown.html" target="_blank" rel="external">MarkDown syntax of GitBook</a></li>
-<li><a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Hexo Writing documentation</a></li>
-<li><a href="https://sylujia.github.io/2016/09/11/使用Hexo和GitHub-Pages搭建免费独立博客/#more" target="_blank" rel="external">使用Hexo和GitHub Pages搭建免费独立博客</a></li>
-<li><a href="http://www.jianshu.com/p/a52b68794a6b" target="_blank" rel="external">hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/24/References/" rel="next" title="References">
+                <i class="fa fa-chevron-left"></i> References
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -510,6 +432,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -529,8 +455,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -581,6 +516,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#準備原始碼，決定公開和私有的檔案"><span class="nav-number">2.</span> <span class="nav-text">準備原始碼，決定公開和私有的檔案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Xcode-環境下建立-framework-project"><span class="nav-number">3.</span> <span class="nav-text">在 Xcode 環境下建立 framework project</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加入原始碼，設定環境"><span class="nav-number">4.</span> <span class="nav-text">加入原始碼，設定環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立-framework-檔"><span class="nav-number">5.</span> <span class="nav-text">建立 framework 檔</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -686,6 +637,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 

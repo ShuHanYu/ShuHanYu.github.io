@@ -1,0 +1,723 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="PHP," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="PHP 基礎觀念和語法Intro &amp;amp; Syntax
+PHP 是一種樣板語言，可以混合 HTML 直接輸出成網頁。
+為純文字檔案是以 .php 結尾。
+撰寫 PHP 語法時，必須將語法包裹在  &amp;lt;?php ?&amp;gt;  裡面去寫。
+每一段程式碼需要以 ; 結尾。1234&amp;lt;?php    $var = &apos;A string&apos;;    echo $var;?&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP 基礎觀念和語法">
+<meta property="og:url" content="http://yoursite.com/2017/06/29/php-basic/index.html">
+<meta property="og:site_name" content="SHY">
+<meta property="og:description" content="PHP 基礎觀念和語法Intro &amp;amp; Syntax
+PHP 是一種樣板語言，可以混合 HTML 直接輸出成網頁。
+為純文字檔案是以 .php 結尾。
+撰寫 PHP 語法時，必須將語法包裹在  &amp;lt;?php ?&amp;gt;  裡面去寫。
+每一段程式碼需要以 ; 結尾。1234&amp;lt;?php    $var = &apos;A string&apos;;    echo $var;?&amp;gt;">
+<meta property="og:updated_time" content="2017-07-01T09:16:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP 基礎觀念和語法">
+<meta name="twitter:description" content="PHP 基礎觀念和語法Intro &amp;amp; Syntax
+PHP 是一種樣板語言，可以混合 HTML 直接輸出成網頁。
+為純文字檔案是以 .php 結尾。
+撰寫 PHP 語法時，必須將語法包裹在  &amp;lt;?php ?&amp;gt;  裡面去寫。
+每一段程式碼需要以 ; 結尾。1234&amp;lt;?php    $var = &apos;A string&apos;;    echo $var;?&amp;gt;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/29/php-basic/"/>
+
+
+
+
+
+  <title> PHP 基礎觀念和語法 | SHY </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SHY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">marathon, food, iOS programming</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/php-basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shu-Han, Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SHY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PHP 基礎觀念和語法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-06-29T09:52:39-07:00">
+                2017-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="PHP-基礎觀念和語法"><a href="#PHP-基礎觀念和語法" class="headerlink" title="PHP 基礎觀念和語法"></a>PHP 基礎觀念和語法</h1><h2 id="Intro-amp-Syntax"><a href="#Intro-amp-Syntax" class="headerlink" title="Intro &amp; Syntax"></a>Intro &amp; Syntax</h2><ul>
+<li>PHP 是一種樣板語言，可以混合 HTML 直接輸出成網頁。</li>
+<li>為純文字檔案是以 <span style="color:red">.php</span> 結尾。</li>
+<li>撰寫 PHP 語法時，必須將語法包裹在 <span style="color:red"> &lt;?php ?&gt; </span> 裡面去寫。</li>
+<li>每一段程式碼需要以 <span style="color:red">;</span> 結尾。<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    $var = <span class="string">'A string'</span>;</div><div class="line">    <span class="keyword">echo</span> $var;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>PHP 的變數使用上都是 <span style="color:red">case-sensitive</span>，除了內建的keyword以外(e.g. if, else, while, echo, etc.)。ㄒ</li>
+<li>PHP 的 Comment 使用上有三種<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">// This is a single-line comment.</span></div><div class="line"><span class="comment"># This is a single-line comment.</span></div><div class="line"><span class="comment">/*</span></div><div class="line">This is a multiple-line comment block</div><div class="line">*/</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="Output-輸出訊息"><a href="#Output-輸出訊息" class="headerlink" title="Output 輸出訊息"></a>Output 輸出訊息</h2><p>PHP 可以使用 echo 和 print 這兩個statement來做資料輸出至畫面上，兩者在使用上基本沒有什麼差異性。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    $x = <span class="number">10</span>;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"&lt;h2&gt;Hello PHP&lt;/h2&gt;"</span>;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"This a variable $x"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">print</span> <span class="string">"&lt;p&gt;Today is a good day&lt;/p&gt;"</span>;</div><div class="line">    <span class="keyword">print</span> <span class="string">"Show result: $x"</span>;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="Declare-Variable-宣告變數"><a href="#Declare-Variable-宣告變數" class="headerlink" title="Declare Variable 宣告變數"></a>Declare Variable 宣告變數</h2><ul>
+<li>PHP 宣告 Variable 皆以<span style="color:red"> $ </span>為開頭宣告。</li>
+<li>Variable 只能以 <span style="color:red">_</span> 和 <span style="color:red">a-z,A-Z</span>作為開頭，不可以用數字作為開頭。</li>
+<li>PHP 是 <span style="color:red">弱型別</span> 的語言，所以在賦值的時並不需要指定型別。</li>
+<li>Variable names 使用上都是 <span style="color:red">case-sensitive</span>，$name 和 $NAME 是不同的variable。<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment"># legal variable</span></div><div class="line">$myVar = <span class="number">100</span>;</div><div class="line">$MyVar = <span class="string">"100"</span>;</div><div class="line">$_name = <span class="string">"Derrick"</span>;</div><div class="line"></div><div class="line"><span class="comment"># illegal variable</span></div><div class="line">$<span class="number">5</span><span class="keyword">Var</span> = <span class="number">500</span>;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="Variable-Scope-變數可視範圍"><a href="#Variable-Scope-變數可視範圍" class="headerlink" title="Variable Scope 變數可視範圍"></a>Variable Scope 變數可視範圍</h2><p>PHP 的Variable scope 劃分為三種：</p>
+<ul>
+<li>local</li>
+<li>global</li>
+<li>static</li>
+</ul>
+<h3 id="Global-Scope"><a href="#Global-Scope" class="headerlink" title="Global Scope"></a>Global Scope</h3><p>宣告在 function 之外的 variable 為Global scope，只能在 <strong>function</strong> 之外被存取使用。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$x = <span class="number">5</span>; <span class="comment">// Global scope</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myTest</span> <span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// 這行會產生 error 的訊息</span></div><div class="line">    <span class="keyword">echo</span> <span class="string">"Variable x inside function is : $x"</span>; </div><div class="line">&#125;</div><div class="line"></div><div class="line">myTest();</div><div class="line"></div><div class="line"><span class="keyword">echo</span> <span class="string">"Variable x outside function is : $x"</span>;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="Local-scope"><a href="#Local-scope" class="headerlink" title="Local scope"></a>Local scope</h3><p>宣告在 function 之中的 variable 是屬於 Local scope，只能在 <strong>function</strong> 之內被存取使用。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mytest</span><span class="params">()</span> </span>&#123;</div><div class="line">    $x = <span class="number">5</span>; <span class="comment">// Local scope</span></div><div class="line">    <span class="keyword">echo</span> <span class="string">"Variable x inside function is : $x"</span>;</div><div class="line">&#125;</div><div class="line">myTest();</div><div class="line"></div><div class="line"><span class="comment">// 這行會產生 error 的訊息</span></div><div class="line"><span class="keyword">echo</span> <span class="string">"Variable x outside function is : $x"</span>;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<p><code>同樣的local variable name 可以存在在不同的 function 之中，因為 function 不會知道其他 function 裡面宣告了什麼 variable。</code></p>
+<hr>
+<h3 id="global-keyword-amp-GLOBALS-index"><a href="#global-keyword-amp-GLOBALS-index" class="headerlink" title="global keyword &amp; $GLOBALS[index]"></a>global keyword &amp; $GLOBALS[index]</h3><p>使用這個 <strong>global keyword</strong>，可以讓 global variable 在 function內被存取使用。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$x = <span class="number">5</span>;</div><div class="line">$y = <span class="number">10</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">global</span> $x , $y;</div><div class="line">    $y = $x + $y; </div><div class="line">&#125;</div><div class="line"></div><div class="line">sum();</div><div class="line"><span class="keyword">echo</span> $y; <span class="comment">// 這行 $y 會輸出 15。</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<p>所有的 Global variable 會存放在 GLOBALS[index] 這個陣列之中，而 index 代表的是每一個 variable 的 name，也可以透過這個陣列在 function 中使用 Global variable。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$x = <span class="number">5</span>;</div><div class="line">$y = <span class="number">10</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">()</span> </span>&#123;</div><div class="line">    GLOBALS[<span class="string">'y'</span>] = GLOBALS[<span class="string">'x'</span>] + GLOBALS[<span class="string">'y'</span>];</div><div class="line">&#125;</div><div class="line">sum();</div><div class="line"><span class="keyword">echo</span> $y; <span class="comment">// 這行 $y 會輸出 15。</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="static-keyword-靜態變數"><a href="#static-keyword-靜態變數" class="headerlink" title="static keyword 靜態變數"></a>static keyword 靜態變數</h3><p>當 function 執行完畢後，所有的 Local variable 被會被清除掉，如果想要保留住某些 local variable 不被清除，此時就要用到 static 這個keyword。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myTest</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> $x = <span class="number">0</span>;</div><div class="line">    <span class="keyword">echo</span> $x;</div><div class="line">    $x++;</div><div class="line">&#125;</div><div class="line"></div><div class="line">myTest();</div><div class="line">myTest();</div><div class="line">myTest();</div><div class="line"><span class="comment">/*</span></div><div class="line"> 執行完後的結果會如下：</div><div class="line"> 0</div><div class="line"> 1</div><div class="line"> 2</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="Constant-常數"><a href="#Constant-常數" class="headerlink" title="Constant 常數"></a>Constant 常數</h2><ul>
+<li><strong>常數</strong>是定義了以後就不能再改變其值。</li>
+<li>常數的name須以<span style="color:red"> _ </span>或是 <span style="color:red">a-zA-Z </span>為開頭。</li>
+<li>常數是屬於<strong>全域</strong>的變數且包含 function 裡也可以使用。</li>
+</ul>
+<p><strong>Syntax</strong></p>
+<ul>
+<li>name: 常數的名稱</li>
+<li>value: 常數的值</li>
+<li>case-insensitive: 是否忽略字母大小寫, 預設是 false。<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">define(name, value, <span class="keyword">case</span>-insensitive)</div><div class="line"></div><div class="line"><span class="comment">// Example - 1</span></div><div class="line"><span class="meta">&lt;?php</span></div><div class="line">define(<span class="string">"GREETING"</span>, <span class="string">"Welcome to W3Schools.com!"</span>);</div><div class="line"><span class="keyword">echo</span> GREETING;</div><div class="line"><span class="comment">// 輸出結果：Welcome to W3Schools.com!</span></div><div class="line"></div><div class="line"><span class="comment">// Example - 2</span></div><div class="line"><span class="meta">&lt;?php</span></div><div class="line">define(<span class="string">"GREETING"</span>, <span class="string">"Welcome to W3Schools.com!"</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myTest</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">echo</span> GREETING;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">myTest(); <span class="comment">// 輸出結果：Welcome to W3Schools.com!</span></div><div class="line"><span class="meta">?&gt;</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/23/sqlNotes/" rel="next" title="SQL Notes">
+                <i class="fa fa-chevron-left"></i> SQL Notes
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/29/php-dataType/" rel="prev" title="PHP Data Type">
+                PHP Data Type <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/smallSHY.jpg"
+               alt="Shu-Han, Yu" />
+          <p class="site-author-name" itemprop="name">Shu-Han, Yu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP-基礎觀念和語法"><span class="nav-number">1.</span> <span class="nav-text">PHP 基礎觀念和語法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Intro-amp-Syntax"><span class="nav-number">1.1.</span> <span class="nav-text">Intro & Syntax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output-輸出訊息"><span class="nav-number">1.2.</span> <span class="nav-text">Output 輸出訊息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Declare-Variable-宣告變數"><span class="nav-number">1.3.</span> <span class="nav-text">Declare Variable 宣告變數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variable-Scope-變數可視範圍"><span class="nav-number">1.4.</span> <span class="nav-text">Variable Scope 變數可視範圍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Global-Scope"><span class="nav-number">1.4.1.</span> <span class="nav-text">Global Scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Local-scope"><span class="nav-number">1.4.2.</span> <span class="nav-text">Local scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#global-keyword-amp-GLOBALS-index"><span class="nav-number">1.4.3.</span> <span class="nav-text">global keyword & $GLOBALS[index]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static-keyword-靜態變數"><span class="nav-number">1.4.4.</span> <span class="nav-text">static keyword 靜態變數</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Constant-常數"><span class="nav-number">1.5.</span> <span class="nav-text">Constant 常數</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shu-Han, Yu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

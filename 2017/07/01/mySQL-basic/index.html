@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="CocoaPods,iOS framework,Xcode," />
+  <meta name="keywords" content="MySQL," />
 
 
 
@@ -87,27 +87,31 @@
 
 
 
-<meta name="description" content="前言有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。">
+<meta name="description" content="MySQL 基礎SQL 語言是用來查詢和管理資料庫，全名為 Structure Query Language。
+Comment 符號MySQL 有三種註解用法：
+
+＃： 單行註解
+-- : 單行註解 ，第二個dash後須加一個空白，再接文字。
+/*…*/ :多行註解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Build iOS framework with Xcode">
-<meta property="og:url" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/index.html">
+<meta property="og:title" content="MySQL 基礎">
+<meta property="og:url" content="http://yoursite.com/2017/07/01/mySQL-basic/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="前言有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。">
-<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addNewXcodeProject.png">
-<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/startWithFrameworkProject.png">
-<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addSourceFile.png">
-<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/importPublicHeaderFiles.png">
-<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addPublicFileInBuildPhase.png">
-<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addRunScript.png">
-<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addRunScriptCode.png">
-<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/buildFrameworkInSimulator.png">
-<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/buildFrameworkInDevice.png">
-<meta property="og:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/showFrameworkDirectory.png">
-<meta property="og:updated_time" content="2017-02-26T08:06:31.000Z">
+<meta property="og:description" content="MySQL 基礎SQL 語言是用來查詢和管理資料庫，全名為 Structure Query Language。
+Comment 符號MySQL 有三種註解用法：
+
+＃： 單行註解
+-- : 單行註解 ，第二個dash後須加一個空白，再接文字。
+/*…*/ :多行註解">
+<meta property="og:updated_time" content="2017-07-01T10:07:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Build iOS framework with Xcode">
-<meta name="twitter:description" content="前言有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。">
-<meta name="twitter:image" content="http://yoursite.com/2017/02/25/build_framework_in_Xcode/addNewXcodeProject.png">
+<meta name="twitter:title" content="MySQL 基礎">
+<meta name="twitter:description" content="MySQL 基礎SQL 語言是用來查詢和管理資料庫，全名為 Structure Query Language。
+Comment 符號MySQL 有三種註解用法：
+
+＃： 單行註解
+-- : 單行註解 ，第二個dash後須加一個空白，再接文字。
+/*…*/ :多行註解">
 
 
 
@@ -135,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/25/build_framework_in_Xcode/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/01/mySQL-basic/"/>
 
 
 
 
 
-  <title> Build iOS framework with Xcode | SHY </title>
+  <title> MySQL 基礎 | SHY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -260,7 +264,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/25/build_framework_in_Xcode/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/01/mySQL-basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shu-Han, Yu">
@@ -281,7 +285,7 @@
             
             
               
-                Build iOS framework with Xcode
+                MySQL 基礎
               
             
           </h1>
@@ -296,8 +300,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-02-25T20:57:46-08:00">
-                2017-02-25
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-07-01T15:47:56-07:00">
+                2017-07-01
               </time>
             
 
@@ -332,29 +336,24 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有時候我們會想把專案裡的某些小功能打包起來，如此一來可以方便自己和其他開發者使用。針對 framework 檔，開發者不需要知道檔案裡面的實作細節，只要正確使用其中的方法和屬性，framework 就能幫開發者達成某些功能。  </p>
-<a id="more"></a>
-<h2 id="準備原始碼，決定公開和私有的檔案"><a href="#準備原始碼，決定公開和私有的檔案" class="headerlink" title="準備原始碼，決定公開和私有的檔案"></a>準備原始碼，決定公開和私有的檔案</h2><h2 id="在-Xcode-環境下建立-framework-project"><a href="#在-Xcode-環境下建立-framework-project" class="headerlink" title="在 Xcode 環境下建立 framework project"></a>在 Xcode 環境下建立 framework project</h2><p>Menu bar: file/ New/ Project<br><img src="/2017/02/25/build_framework_in_Xcode/addNewXcodeProject.png" alt="Menu bar: file/ New/ Project"></p>
-<p>選擇 Cocoa Touch Framework 建立一個框架專案檔<br><img src="/2017/02/25/build_framework_in_Xcode/startWithFrameworkProject.png" alt="選擇 Cocoa Touch Framework 建立一個框架專案檔"></p>
-<h2 id="加入原始碼，設定環境"><a href="#加入原始碼，設定環境" class="headerlink" title="加入原始碼，設定環境"></a>加入原始碼，設定環境</h2><ul>
-<li><p>把 framework 所有原始碼加入 Xcode<br><img src="/2017/02/25/build_framework_in_Xcode/addSourceFile.png" alt="加入 framework 所需的原始碼檔案"></p>
-</li>
-<li><p>決定欲公開的檔案</p>
+        <h1 id="MySQL-基礎"><a href="#MySQL-基礎" class="headerlink" title="MySQL 基礎"></a>MySQL 基礎</h1><p>SQL 語言是用來查詢和管理資料庫，全名為 <strong>Structure Query Language</strong>。<br></p>
+<h2 id="Comment-符號"><a href="#Comment-符號" class="headerlink" title="Comment 符號"></a>Comment 符號</h2><p>MySQL 有三種註解用法：</p>
 <ul>
-<li><p>將欲公開的檔案加入 frameworkName.h<br><img src="/2017/02/25/build_framework_in_Xcode/importPublicHeaderFiles.png" alt="在 frameworkName.h 檔案中加入欲公開的 header 檔"></p>
-</li>
-<li><p>在 framework TARGET 下的 Build Phase 標籤頁中添加欲公開的 header 檔<br>將 Headers 欄中 Project 項目下欲公開的 header 檔拖曳至上方的 Public 項目下。此步驟的「欲公開的 header 檔」與前一步的 <code>#import</code> 項目相同。<br><img src="/2017/02/25/build_framework_in_Xcode/addPublicFileInBuildPhase.png" alt=""></p>
-</li>
-<li><p>(Optional)合併實機和模擬器的 framework<br><img src="/2017/02/25/build_framework_in_Xcode/addRunScript.png" alt=""><br>點選 Build Phase 左上方的加號，加入 run script 讓實機與模擬器的 framework 合併。</p>
-<p>複製以下的程式碼加入 Run Script 欄的灰色框內。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">if [ &quot;$&#123;ACTION&#125;&quot; = &quot;build&quot; ]</div><div class="line">then</div><div class="line">INSTALL_DIR=$&#123;SRCROOT&#125;/Products/$&#123;PROJECT_NAME&#125;.framework</div><div class="line"></div><div class="line">DEVICE_DIR=$&#123;BUILD_ROOT&#125;/$&#123;CONFIGURATION&#125;-iphoneos/$&#123;PROJECT_NAME&#125;.framework</div><div class="line"></div><div class="line">SIMULATOR_DIR=$&#123;BUILD_ROOT&#125;/$&#123;CONFIGURATION&#125;-iphonesimulator/$&#123;PROJECT_NAME&#125;.framework</div><div class="line"></div><div class="line">if [ -d &quot;$&#123;INSTALL_DIR&#125;&quot; ]</div><div class="line">then</div><div class="line">rm -rf &quot;$&#123;INSTALL_DIR&#125;&quot;</div><div class="line">fi</div><div class="line"></div><div class="line">mkdir -p &quot;$&#123;INSTALL_DIR&#125;&quot;</div><div class="line"></div><div class="line">cp -R &quot;$&#123;DEVICE_DIR&#125;/&quot; &quot;$&#123;INSTALL_DIR&#125;/&quot;</div><div class="line"></div><div class="line">lipo -create &quot;$&#123;DEVICE_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot; &quot;$&#123;SIMULATOR_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot; -output &quot;$&#123;INSTALL_DIR&#125;/$&#123;PROJECT_NAME&#125;&quot;</div><div class="line"></div><div class="line">open &quot;$&#123;SRCROOT&#125;/Products&quot;</div><div class="line">fi</div></pre></td></tr></table></figure>
-<p>加完後如下圖所示：<br><img src="/2017/02/25/build_framework_in_Xcode/addRunScriptCode.png" alt=""></p>
-</li>
+<li>＃： 單行註解</li>
+<li>-- : 單行註解 ，第二個dash後須加一個空白，再接文字。</li>
+<li>/*…*/ :多行註解</li>
 </ul>
-</li>
-</ul>
-<h2 id="建立-framework-檔"><a href="#建立-framework-檔" class="headerlink" title="建立 framework 檔"></a>建立 framework 檔</h2><p>首先，在 framework project 的模擬器建立 framework 檔(cmd + B)<br><img src="/2017/02/25/build_framework_in_Xcode/buildFrameworkInSimulator.png" alt=""><br>在建立模擬器的 framework 時會出現 build failed 的警告，請不要驚慌，這是因為此時實機的 framework 尚未建立，執行這段 script 時無法將實機和模擬器的 framework 合併。</p>
-<p>接著選擇 Generic iOS Device 再 build 一次。<br><img src="/2017/02/25/build_framework_in_Xcode/buildFrameworkInDevice.png" alt=""><br>最後我們可以在自動開啟的 Products 資料夾下看見建立好的 framework 檔。<br><img src="/2017/02/25/build_framework_in_Xcode/showFrameworkDirectory.png" alt=""></p>
+<a id="more"></a>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># This comment continues to the end of line</div><div class="line">-- This comment continues to the end of line</div><div class="line">/* this is an in-line comment */</div><div class="line">/*</div><div class="line">this is a</div><div class="line">multiple-line comment</div><div class="line">*/</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="建立資料庫"><a href="#建立資料庫" class="headerlink" title="建立資料庫"></a>建立資料庫</h2><p><strong>Syntax</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> [<span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] databaseName</div><div class="line">[<span class="built_in">CHARACTER</span> <span class="keyword">SET</span> charset_name]</div><div class="line">[<span class="keyword">COLLATE</span> collation_name]</div><div class="line"></div><div class="line"># Example</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> myDB # 沒有指定 字元集和<span class="keyword">collation</span></div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> myDB <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8 <span class="keyword">COLLATE</span> utf8_unicode_ci</div></pre></td></tr></table></figure></p>
+<p><strong>IF NOT EXISTS</strong> 用來判斷要創建的資料庫是否已經存在，如果不存在則創建，反之不創建且有警告訊息。<br>如果沒有指定 charactre set 和 Collation的話，系統會自動使用預設值。</p>
+<h2 id="修改資料庫"><a href="#修改資料庫" class="headerlink" title="修改資料庫"></a>修改資料庫</h2><p><strong>Syntax</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> databaseName</div><div class="line">[<span class="built_in">CHARACTER</span> <span class="keyword">SET</span> charset_name]</div><div class="line">[<span class="keyword">COLLATE</span> collation_name]</div><div class="line"></div><div class="line"># Example</div><div class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> myDB <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8 <span class="keyword">COLLATE</span> utf8_unicode_ci</div><div class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> myDB <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8</div><div class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> myDB <span class="keyword">COLLATE</span> utf8_unicode_ci</div></pre></td></tr></table></figure></p>
+<p>建立資料庫以後，能夠修改的只有 <strong>Character set</strong> 和 <strong>Collation</strong></p>
+<h2 id="刪除資料庫"><a href="#刪除資料庫" class="headerlink" title="刪除資料庫"></a>刪除資料庫</h2><p><strong>Syntax</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> [<span class="keyword">IF</span> <span class="keyword">EXISTS</span>] databaseName</div><div class="line"></div><div class="line"># Example</div><div class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> myDB</div></pre></td></tr></table></figure></p>
+<p><strong>IF EXISTS</strong>用來判斷指定的資料庫是否存在，存在則刪除，反之則指產生警告訊息。</p>
+<h2 id="取得資料庫資訊"><a href="#取得資料庫資訊" class="headerlink" title="取得資料庫資訊"></a>取得資料庫資訊</h2><p>使用 SHOW 可以取得Server中的資料庫訊息。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASES</span></div><div class="line"><span class="keyword">or</span></div><div class="line"><span class="keyword">SHOW</span> SCHEMAS</div></pre></td></tr></table></figure></p>
+<p>MySQL中還有重要的資料庫為 <strong>information_schemas</strong>，稱作系統資料庫，儲存著伺服器中的重要資訊跟資料庫的相關資訊在[SCHEMATA]，可用下列的查詢敘述查看資訊。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> information_schemas.SCHEMATA</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -378,11 +377,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CocoaPods/" rel="tag"># CocoaPods</a>
-          
-            <a href="/tags/iOS-framework/" rel="tag"># iOS framework</a>
-          
-            <a href="/tags/Xcode/" rel="tag"># Xcode</a>
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
         </div>
       
@@ -395,8 +390,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/24/References/" rel="next" title="References">
-                <i class="fa fa-chevron-left"></i> References
+              <a href="/2017/07/01/php-include/" rel="next" title="PHP include and require">
+                <i class="fa fa-chevron-left"></i> PHP include and require
               </a>
             
           </div>
@@ -405,8 +400,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/02/26/buildPrivatePodsInCocoaPods/" rel="prev" title="以 CocoaPods 建立 Private Pods">
-                以 CocoaPods 建立 Private Pods <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/30/HansonsMarathonMethod/" rel="prev" title="Hansons Marathon Method 2<sup>nd</sup> Edition Notes">
+                Hansons Marathon Method 2<sup>nd</sup> Edition Notes <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -525,7 +520,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#準備原始碼，決定公開和私有的檔案"><span class="nav-number">2.</span> <span class="nav-text">準備原始碼，決定公開和私有的檔案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-Xcode-環境下建立-framework-project"><span class="nav-number">3.</span> <span class="nav-text">在 Xcode 環境下建立 framework project</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加入原始碼，設定環境"><span class="nav-number">4.</span> <span class="nav-text">加入原始碼，設定環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立-framework-檔"><span class="nav-number">5.</span> <span class="nav-text">建立 framework 檔</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-基礎"><span class="nav-number">1.</span> <span class="nav-text">MySQL 基礎</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Comment-符號"><span class="nav-number">1.1.</span> <span class="nav-text">Comment 符號</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立資料庫"><span class="nav-number">1.2.</span> <span class="nav-text">建立資料庫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改資料庫"><span class="nav-number">1.3.</span> <span class="nav-text">修改資料庫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#刪除資料庫"><span class="nav-number">1.4.</span> <span class="nav-text">刪除資料庫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取得資料庫資訊"><span class="nav-number">1.5.</span> <span class="nav-text">取得資料庫資訊</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -1,0 +1,726 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="PHP," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="PHP Data TypePHP 的資料型別有以下這幾種：
+
+String
+Integer
+Float
+Boolean
+Array
+Object
+NULL
+Resource">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP Data Type">
+<meta property="og:url" content="http://yoursite.com/2017/06/29/php-dataType/index.html">
+<meta property="og:site_name" content="SHY">
+<meta property="og:description" content="PHP Data TypePHP 的資料型別有以下這幾種：
+
+String
+Integer
+Float
+Boolean
+Array
+Object
+NULL
+Resource">
+<meta property="og:updated_time" content="2017-06-29T08:27:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP Data Type">
+<meta name="twitter:description" content="PHP Data TypePHP 的資料型別有以下這幾種：
+
+String
+Integer
+Float
+Boolean
+Array
+Object
+NULL
+Resource">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/29/php-dataType/"/>
+
+
+
+
+
+  <title> PHP Data Type | SHY </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SHY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">marathon, food, iOS programming</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/php-dataType/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shu-Han, Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SHY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PHP Data Type
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-06-29T12:25:51-07:00">
+                2017-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="PHP-Data-Type"><a href="#PHP-Data-Type" class="headerlink" title="PHP Data Type"></a>PHP Data Type</h1><p>PHP 的資料型別有以下這幾種：</p>
+<ul>
+<li>String</li>
+<li>Integer</li>
+<li>Float</li>
+<li>Boolean</li>
+<li>Array</li>
+<li>Object</li>
+<li>NULL</li>
+<li>Resource</li>
+</ul>
+<a id="more"></a>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>宣告 String 需要再 <strong>“”</strong> 或是 <strong>‘’</strong> 之中，兩者皆可以使用。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> </div><div class="line">$x = <span class="string">"Hello world"</span>;</div><div class="line">$y = <span class="string">'Hello world'</span>;</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $x;</div><div class="line"><span class="keyword">echo</span> <span class="string">"&lt;br&gt;"</span>;</div><div class="line"><span class="keyword">echo</span> $y;</div><div class="line"></div><div class="line"><span class="comment">// 以上兩個輸出都是 Hello world。</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="Integer"><a href="#Integer" class="headerlink" title="Integer"></a>Integer</h2><p>Integer 為無小數點的整數，介於 <strong>-2,147,483,648</strong> 和 <strong>2,147,483,647</strong> 之間，有以下這些規則:</p>
+<ul>
+<li>至少有一位數字</li>
+<li>不能有小數點</li>
+<li>可以為 正或是負</li>
+<li>可定義為三種格式 : 10進制, 16進制, 8進制<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"> $x = <span class="number">2048</span>;</div><div class="line"> var_dump($x);</div><div class="line"></div><div class="line"> <span class="comment">// 輸出 int(2048)</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><code>var_dump() 可顯示傳入的變數的data type 和 value</code></p>
+<h2 id="Float"><a href="#Float" class="headerlink" title="Float"></a>Float</h2><p>浮點數可用來 表示包含小數點的數字 和 指數。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$x = <span class="number">26.975</span>;</div><div class="line">var_dump($x);</div><div class="line"></div><div class="line"><span class="comment">// 輸出為 float(26.975)</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h2><p>布林 只代表兩種狀態: TRUE or FALSE。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$x = <span class="keyword">true</span>;</div><div class="line">$y = <span class="keyword">false</span>;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><p>陣列的功能是 可以儲存多個variable 在它之中。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">// PHP 5.3以前的寫法</span></div><div class="line">$cars = <span class="keyword">array</span>(<span class="string">"Volvo"</span>,<span class="string">"Audi"</span>,<span class="string">"Tesla"</span>); </div><div class="line"></div><div class="line"><span class="comment">// PHP 5.4以後的寫法</span></div><div class="line">$cars2 = <span class="keyword">array</span> [</div><div class="line">    <span class="number">0</span> =&gt; <span class="string">"Volvo"</span>,</div><div class="line">    <span class="number">1</span> =&gt; <span class="string">"Audi"</span>,</div><div class="line">    <span class="number">2</span> =&gt; <span class="string">"Tesla"</span></div><div class="line">]</div><div class="line">var_dump($cars);</div><div class="line"></div><div class="line"><span class="comment">// 輸出為 array(3) &#123;[0]=&gt; string(5)"Volvo" [1]=&gt; string(4)"Audi" [2]=&gt; string(5)"Tesla"&#125;</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>Object身上可包含許多data type，而 Object 是由 class 產生出來的實體(instance)，class 中定義了 properties 和 methods。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cars</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;model = <span class="string">"VW"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">// Create an object</span></div><div class="line">$myCar = <span class="keyword">new</span> Car();</div><div class="line"></div><div class="line"><span class="comment">// Show object properties</span></div><div class="line"><span class="keyword">echo</span> $myCar-&gt;model;</div><div class="line"><span class="comment">// 輸出結果 VW </span></div><div class="line">&#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h2><p>NULL 是特殊的data type，它只有一種值那就是：NULL。</p>
+<p>如果 variable 宣告時，沒有賦值系統會自動設定 NULL 給此 variable。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$x = <span class="string">"Hello world"</span>;</div><div class="line">$x = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">echo</span> var_dump($x);</div><div class="line"><span class="comment">// 輸出結果：NULL</span></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><p>暫時不理解這個type…放上官方英文解說。</p>
+<p>A resource is a special variable, holding a reference to an external resource. Resources are created and used by special functions.</p>
+<h1 id="Casting"><a href="#Casting" class="headerlink" title="Casting"></a>Casting</h1><p>各data type轉型的用法如下：</p>
+<ul>
+<li>(int),(integer) - cast to <strong>integer</strong></li>
+<li>(bool),(booleab) - cast to <strong>boolean</strong></li>
+<li>(float),(double),(real) - cast to <strong>float</strong></li>
+<li>(string) - cast to <strong>string</strong></li>
+<li>(array) - cast to <strong>array</strong></li>
+<li>(object) - cast to <strong>object</strong></li>
+<li>(unset) - cast to <strong>NULL</strong><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$var = <span class="string">"100"</span>;</div><div class="line">$cast = (int)$var;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/29/php-basic/" rel="next" title="PHP 基礎觀念和語法">
+                <i class="fa fa-chevron-left"></i> PHP 基礎觀念和語法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/29/php-operators/" rel="prev" title="PHP 運算子">
+                PHP 運算子 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/smallSHY.jpg"
+               alt="Shu-Han, Yu" />
+          <p class="site-author-name" itemprop="name">Shu-Han, Yu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP-Data-Type"><span class="nav-number">1.</span> <span class="nav-text">PHP Data Type</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integer"><span class="nav-number">1.2.</span> <span class="nav-text">Integer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Float"><span class="nav-number">1.3.</span> <span class="nav-text">Float</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boolean"><span class="nav-number">1.4.</span> <span class="nav-text">Boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-number">1.5.</span> <span class="nav-text">Array</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">1.6.</span> <span class="nav-text">Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NULL"><span class="nav-number">1.7.</span> <span class="nav-text">NULL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resources"><span class="nav-number">1.8.</span> <span class="nav-text">Resources</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Casting"><span class="nav-number">2.</span> <span class="nav-text">Casting</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shu-Han, Yu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,751 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Swift,iOS,Stanford CS193P,MVC,Initializer,static,struct,observer," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="MVC
+Model
+Never communicate with View.
+Send message to controller by notification center or KVO.
+
+
+
+
+View
+Never communicate with Model.
+Send message to controller by user action(ie IBAction), delegate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Developing iOS 11 Apps with Swift (class notes)">
+<meta property="og:url" content="http://yoursite.com/2018/05/25/DevelopingiOS11WithSwiftOfStanfordCourse/index.html">
+<meta property="og:site_name" content="SHY">
+<meta property="og:description" content="MVC
+Model
+Never communicate with View.
+Send message to controller by notification center or KVO.
+
+
+
+
+View
+Never communicate with Model.
+Send message to controller by user action(ie IBAction), delegate">
+<meta property="og:updated_time" content="2018-05-26T08:18:28.894Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Developing iOS 11 Apps with Swift (class notes)">
+<meta name="twitter:description" content="MVC
+Model
+Never communicate with View.
+Send message to controller by notification center or KVO.
+
+
+
+
+View
+Never communicate with Model.
+Send message to controller by user action(ie IBAction), delegate">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/25/DevelopingiOS11WithSwiftOfStanfordCourse/"/>
+
+
+
+
+
+  <title> Developing iOS 11 Apps with Swift (class notes) | SHY </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SHY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">marathon, food, iOS programming</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/DevelopingiOS11WithSwiftOfStanfordCourse/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shu-Han, Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SHY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Developing iOS 11 Apps with Swift (class notes)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-05-25T13:28:55-07:00">
+                2018-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h1><ul>
+<li>Model<ul>
+<li>Never communicate with View.</li>
+<li>Send message to controller by notification center or KVO.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>View<ul>
+<li>Never communicate with Model.</li>
+<li>Send message to controller by user action(ie IBAction), delegate or data source methods(ie asking for new data when tableview scrolling).</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Controller</p>
+<ul>
+<li>Can access model directly to get data, and control view to update in specfic way directly, too.</li>
+<li>Model / view use indirect ways to send messages to controller as previous mentioned.</li>
+</ul>
+<a id="more"></a>
+</li>
+</ul>
+<h1 id="The-differences-between-struct-and-class"><a href="#The-differences-between-struct-and-class" class="headerlink" title="The differences between struct and class"></a>The differences between struct and class</h1><h2 id="Major"><a href="#Major" class="headerlink" title="Major"></a>Major</h2><ul>
+<li>struct has NO inheritance.</li>
+<li>When we assigned a struct to another variable, it copies it. Putting them in an array or taking them out also coppies. Namely, struct pass argument by sending a copy of value. If the value of new var is modified, the origin var will remain the same value.</li>
+<li>Class pass arguments by reference.</li>
+</ul>
+<h2 id="Minor"><a href="#Minor" class="headerlink" title="Minor"></a>Minor</h2><ul>
+<li>Init: Struc and class both gets free initializers but<ul>
+<li>struc: intializes ALL of their vars in default. We have to rewrite the init method to avoid giving all parameters everytime while init an object og struct. </li>
+<li>class</li>
+</ul>
+</li>
+</ul>
+<h1 id="Static-function"><a href="#Static-function" class="headerlink" title="Static function"></a>Static function</h1><p>Static function means we send messages to the “Type name” but NOT the “Object name”, so use type name to call static function, NOT to use object to call static function.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Card</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> identifier: <span class="type">Int</span></div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> identifierFactory = <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">getUniqueIdentifier</span><span class="params">()</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">            identifierFactory += <span class="number">1</span></div><div class="line">            <span class="keyword">return</span> identifierFactory</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">init</span>() &#123;</div><div class="line">        <span class="keyword">self</span>.identifier = <span class="type">Card</span>.getUniqueIdentifier()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>While using static var in the static method, we no need to add the type name as preffix.</p>
+<h1 id="Under-bar"><a href="#Under-bar" class="headerlink" title="_ (Under bar)"></a><code>_</code> (Under bar)</h1><p>The under bar <code>_</code> in Swift means not important thing, we don’t care about what is it.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span> ..&lt; <span class="number">5</span></div></pre></td></tr></table></figure>
+<p>The <code>_</code> in the above statement means we do not need the counter, but just need to do something repeated.</p>
+<h1 id="Property-observer"><a href="#Property-observer" class="headerlink" title="Property observer"></a>Property observer</h1><p>Use <code>didSet</code> function in property definition to observe the value change, this func calls everytime when the variable changed.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> touchCount = <span class="number">0</span> &#123;</div><div class="line">  <span class="keyword">didSet</span> &#123;</div><div class="line">    <span class="built_in">print</span>(touchCount)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>I’ll print out variable <code>touchCount</code>‘s value everytime when <code>touchCount</code> is changed.</p>
+<h1 id="Question-mark"><a href="#Question-mark" class="headerlink" title="? (Question mark)"></a><code>?</code> (Question mark)</h1><p>Question mark indicates “optional”, it means var either contains a value or just be <code>nil</code>, often use together with <code>if</code> and <code>let</code> statement. For example:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myName: <span class="type">String</span>? = <span class="string">"SHY"</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> name = myName &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Hello, <span class="subst">\(name)</span>"</span>)</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"myName is nil."</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>If we execute the code above, it’ll print “Hello, SHY” because <code>myName</code> has a value.</p>
+<h1 id="Initial"><a href="#Initial" class="headerlink" title="Initial"></a>Initial</h1><p>All property initializers run BEFORE class’ <code>self</code> is available, so we can’t use instance member within property intialize.</p>
+<p>One cool way to solve this problem is use <code>lazy var</code> instead of <code>var</code> to declare variable which we attend to init. If we make a var <code>lazy</code>, that means it do not intialize until someone grab it. But remember, <code>lazy var</code> cat not use property observer such as <code>didSet</code> method in the init function.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li>visit iTunes U app in App store and search for the class name – Developing iOS 11 Apps with Swift (Stanford)</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Stanford-CS193P/" rel="tag"># Stanford CS193P</a>
+          
+            <a href="/tags/MVC/" rel="tag"># MVC</a>
+          
+            <a href="/tags/Initializer/" rel="tag"># Initializer</a>
+          
+            <a href="/tags/static/" rel="tag"># static</a>
+          
+            <a href="/tags/struct/" rel="tag"># struct</a>
+          
+            <a href="/tags/observer/" rel="tag"># observer</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/01/ChocolateBrownieRecipe/" rel="next" title="Chocolate Brownie Recipe">
+                <i class="fa fa-chevron-left"></i> Chocolate Brownie Recipe
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/smallSHY.jpg"
+               alt="Shu-Han, Yu" />
+          <p class="site-author-name" itemprop="name">Shu-Han, Yu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MVC"><span class="nav-number">1.</span> <span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-differences-between-struct-and-class"><span class="nav-number">2.</span> <span class="nav-text">The differences between struct and class</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Major"><span class="nav-number">2.1.</span> <span class="nav-text">Major</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Minor"><span class="nav-number">2.2.</span> <span class="nav-text">Minor</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Static-function"><span class="nav-number">3.</span> <span class="nav-text">Static function</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Under-bar"><span class="nav-number">4.</span> <span class="nav-text">_ (Under bar)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Property-observer"><span class="nav-number">5.</span> <span class="nav-text">Property observer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Question-mark"><span class="nav-number">6.</span> <span class="nav-text">? (Question mark)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Initial"><span class="nav-number">7.</span> <span class="nav-text">Initial</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">8.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shu-Han, Yu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

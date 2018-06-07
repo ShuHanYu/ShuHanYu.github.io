@@ -443,7 +443,40 @@
 
       
         
-          <h1 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h1><p>Dozens of “Right answers” are given to predict the output. We have to “tell” the computer what’s “the right answer” and let it figure out by itself.</p>
+          <h1 id="Regression-problem-vs-Classification-problem"><a href="#Regression-problem-vs-Classification-problem" class="headerlink" title="Regression problem vs Classification problem"></a>Regression problem vs Classification problem</h1><h2 id="Regression-problem-–-Predict-real-valued-output"><a href="#Regression-problem-–-Predict-real-valued-output" class="headerlink" title="Regression problem – Predict real-valued output"></a>Regression problem – Predict real-valued output</h2><ul>
+<li>We can treat the data as a set of row value.</li>
+<li>For example, we have a large inventory of identical items and we want to predict how many of these items will sell over the next 3 months.</li>
+</ul>
+<h3 id="Linear-regression-problem"><a href="#Linear-regression-problem" class="headerlink" title="Linear regression problem"></a>Linear regression problem</h3><ul>
+<li><p>One variable: Cost function</p>
+<ul>
+<li><p>Expression:</p>
+<ul>
+<li><code>m</code> = number of training examples</li>
+<li><code>x</code> = <code>input</code> variable/features</li>
+<li><code>y</code> = <code>output</code> variable/features</li>
+<li><code>(x, y)</code> = one training example</li>
+<li><code>(x</code><sup><code>(i)</code></sup><code>, y</code><sup><code>(i)</code></sup><code>)</code> = i<sup>th</sup> training example</li>
+</ul>
+</li>
+<li><p>Training flow: Training set -&gt; Learning Algorithm -&gt; <code>h</code>(hypothesis)</p>
+</li>
+<li>Predicting flow: <code>x</code> (input) -&gt; <code>h</code> -&gt; <code>y</code> (output)</li>
+<li>h<sub>&theta;</sub>(x) = &theta;<sub>0</sub> + &theta;<sub>1</sub>x, write in short hand: h(x) = &theta;<sub>0</sub> + &theta;<sub>1</sub>x</li>
+<li>h(x) maps from <code>x</code>‘s to <code>y</code>‘s</li>
+<li>we consider h(x) as a linear function, i.e. h(x) is a linear regression with one variable.</li>
+<li>Choosing parameters (&theta;<sub>0</sub> and &theta;<sub>1</sub>): let h<sub>&theta;</sub>(x) is close to y for our training examples (x, y).</li>
+</ul>
+</li>
+</ul>
+<p>$$\sum<em>{i=1}^m (h</em>{\theta}(x^{(i)}) - y^{(i)})^2$$</p>
+<h2 id="Classification-problem-–-Discrete-valued-output"><a href="#Classification-problem-–-Discrete-valued-output" class="headerlink" title="Classification problem – Discrete-valued output"></a>Classification problem – Discrete-valued output</h2><ul>
+<li>We can map the situation to some value</li>
+<li>For example, we would like software to examine individual customer accounts, and for each account decide if it has been haked/compromised.<ul>
+<li>In the previous example, we can set <code>0</code> to <code>not hacked</code> and <code>1</code> to <code>hacked</code>.</li>
+</ul>
+</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/06/06/MachineLearningByAndrewNg/#more" rel="contents">
@@ -1628,7 +1661,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -1801,6 +1834,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

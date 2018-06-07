@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ML,maching learning,Stanford," />
+  <meta name="keywords" content="ML,maching learning,Stanford,regression problem,classification problem,label," />
 
 
 
@@ -87,16 +87,22 @@
 
 
 
-<meta name="description" content="Supervised LearningDozens of “Right answers” are given to predict the output. We have to “tell” the computer what’s “the right answer” and let it figure out by itself.">
+<meta name="description" content="Regression problem vs Classification problemRegression problem – Predict real-valued output
+We can treat the data as a set of row value.
+For example, we have a large inventory of identical items and w">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Machine Learning course notes">
 <meta property="og:url" content="http://yoursite.com/2018/06/06/MachineLearningByAndrewNg/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="Supervised LearningDozens of “Right answers” are given to predict the output. We have to “tell” the computer what’s “the right answer” and let it figure out by itself.">
-<meta property="og:updated_time" content="2018-06-07T00:25:35.256Z">
+<meta property="og:description" content="Regression problem vs Classification problemRegression problem – Predict real-valued output
+We can treat the data as a set of row value.
+For example, we have a large inventory of identical items and w">
+<meta property="og:updated_time" content="2018-06-07T21:17:21.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning course notes">
-<meta name="twitter:description" content="Supervised LearningDozens of “Right answers” are given to predict the output. We have to “tell” the computer what’s “the right answer” and let it figure out by itself.">
+<meta name="twitter:description" content="Regression problem vs Classification problemRegression problem – Predict real-valued output
+We can treat the data as a set of row value.
+For example, we have a large inventory of identical items and w">
 
 
 
@@ -321,8 +327,50 @@
       
 
       
-        <h1 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h1><p>Dozens of “Right answers” are given to predict the output. We have to “tell” the computer what’s “the right answer” and let it figure out by itself.</p>
+        <h1 id="Regression-problem-vs-Classification-problem"><a href="#Regression-problem-vs-Classification-problem" class="headerlink" title="Regression problem vs Classification problem"></a>Regression problem vs Classification problem</h1><h2 id="Regression-problem-–-Predict-real-valued-output"><a href="#Regression-problem-–-Predict-real-valued-output" class="headerlink" title="Regression problem – Predict real-valued output"></a>Regression problem – Predict real-valued output</h2><ul>
+<li>We can treat the data as a set of row value.</li>
+<li>For example, we have a large inventory of identical items and we want to predict how many of these items will sell over the next 3 months.</li>
+</ul>
+<h3 id="Linear-regression-problem"><a href="#Linear-regression-problem" class="headerlink" title="Linear regression problem"></a>Linear regression problem</h3><ul>
+<li><p>One variable: Cost function</p>
+<ul>
+<li><p>Expression:</p>
+<ul>
+<li><code>m</code> = number of training examples</li>
+<li><code>x</code> = <code>input</code> variable/features</li>
+<li><code>y</code> = <code>output</code> variable/features</li>
+<li><code>(x, y)</code> = one training example</li>
+<li><code>(x</code><sup><code>(i)</code></sup><code>, y</code><sup><code>(i)</code></sup><code>)</code> = i<sup>th</sup> training example</li>
+</ul>
+</li>
+<li><p>Training flow: Training set -&gt; Learning Algorithm -&gt; <code>h</code>(hypothesis)</p>
+</li>
+<li>Predicting flow: <code>x</code> (input) -&gt; <code>h</code> -&gt; <code>y</code> (output)</li>
+<li>h<sub>&theta;</sub>(x) = &theta;<sub>0</sub> + &theta;<sub>1</sub>x, write in short hand: h(x) = &theta;<sub>0</sub> + &theta;<sub>1</sub>x</li>
+<li>h(x) maps from <code>x</code>‘s to <code>y</code>‘s</li>
+<li>we consider h(x) as a linear function, i.e. h(x) is a linear regression with one variable.</li>
+<li>Choosing parameters (&theta;<sub>0</sub> and &theta;<sub>1</sub>): let h<sub>&theta;</sub>(x) is close to y for our training examples (x, y).</li>
+</ul>
+</li>
+</ul>
+<p>$$\sum<em>{i=1}^m (h</em>{\theta}(x^{(i)}) - y^{(i)})^2$$</p>
+<h2 id="Classification-problem-–-Discrete-valued-output"><a href="#Classification-problem-–-Discrete-valued-output" class="headerlink" title="Classification problem – Discrete-valued output"></a>Classification problem – Discrete-valued output</h2><ul>
+<li>We can map the situation to some value</li>
+<li>For example, we would like software to examine individual customer accounts, and for each account decide if it has been haked/compromised.<ul>
+<li>In the previous example, we can set <code>0</code> to <code>not hacked</code> and <code>1</code> to <code>hacked</code>.</li>
+</ul>
+</li>
+</ul>
 <a id="more"></a>
+<h1 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h1><ul>
+<li>Dozens of “right answers” are given to predict the output. We have to “tell” the computer what’s “the right answer” and let it figure out by itself.<br>Eg. classfication problem (mapping)</li>
+<li>We put <code>labels</code> upon the data to recognize them</li>
+</ul>
+<h1 id="Unsupervised-learning"><a href="#Unsupervised-learning" class="headerlink" title="Unsupervised learning"></a>Unsupervised learning</h1><ul>
+<li>We give data WITHOUT labels.</li>
+<li>We do not say what’s the right thing and what’s wrong, just ONLY provide the data and ask the computer to find some structure.</li>
+<li>For example, given a set of news articles found on the web, group them onto set of articles about the same story. </li>
+</ul>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><a href="https://www.coursera.org/learn/machine-learning/home/welcome" target="_blank" rel="external">coursera course by Andrew Ng</a></li>
 </ul>
@@ -354,6 +402,12 @@
             <a href="/tags/maching-learning/" rel="tag"># maching learning</a>
           
             <a href="/tags/Stanford/" rel="tag"># Stanford</a>
+          
+            <a href="/tags/regression-problem/" rel="tag"># regression problem</a>
+          
+            <a href="/tags/classification-problem/" rel="tag"># classification problem</a>
+          
+            <a href="/tags/label/" rel="tag"># label</a>
           
         </div>
       
@@ -461,7 +515,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -496,7 +550,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Supervised-Learning"><span class="nav-number">1.</span> <span class="nav-text">Supervised Learning</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Regression-problem-vs-Classification-problem"><span class="nav-number">1.</span> <span class="nav-text">Regression problem vs Classification problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Regression-problem-–-Predict-real-valued-output"><span class="nav-number">1.1.</span> <span class="nav-text">Regression problem – Predict real-valued output</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-regression-problem"><span class="nav-number">1.1.1.</span> <span class="nav-text">Linear regression problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Classification-problem-–-Discrete-valued-output"><span class="nav-number">1.2.</span> <span class="nav-text">Classification problem – Discrete-valued output</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Supervised-Learning"><span class="nav-number">2.</span> <span class="nav-text">Supervised Learning</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unsupervised-learning"><span class="nav-number">3.</span> <span class="nav-text">Unsupervised learning</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>
@@ -654,6 +708,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 

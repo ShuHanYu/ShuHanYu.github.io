@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ML,regression problem,squared error function,cost function,maching learning,Stanford,classification problem,learning rate," />
+  <meta name="keywords" content="Stanford,ML,CS229,regression problem,squared error function,cost function,classification problem,learning rate," />
 
 
 
@@ -91,15 +91,15 @@
 We can treat the data as a set of row value.
 For example, we have a large inventory of identical items and w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Machine Learning course notes">
+<meta property="og:title" content="Machine Learning (Stanford CS229)">
 <meta property="og:url" content="http://yoursite.com/2018/06/06/MachineLearningByAndrewNg/index.html">
 <meta property="og:site_name" content="SHY">
 <meta property="og:description" content="Regression problem vs Classification problemRegression problem – Predict real-valued output
 We can treat the data as a set of row value.
 For example, we have a large inventory of identical items and w">
-<meta property="og:updated_time" content="2018-06-08T07:21:35.727Z">
+<meta property="og:updated_time" content="2018-06-08T07:59:25.897Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Machine Learning course notes">
+<meta name="twitter:title" content="Machine Learning (Stanford CS229)">
 <meta name="twitter:description" content="Regression problem vs Classification problemRegression problem – Predict real-valued output
 We can treat the data as a set of row value.
 For example, we have a large inventory of identical items and w">
@@ -136,7 +136,7 @@ For example, we have a large inventory of identical items and w">
 
 
 
-  <title> Machine Learning course notes | SHY </title>
+  <title> Machine Learning (Stanford CS229) | SHY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -276,7 +276,7 @@ For example, we have a large inventory of identical items and w">
             
             
               
-                Machine Learning course notes
+                Machine Learning (Stanford CS229)
               
             
           </h1>
@@ -354,7 +354,7 @@ For example, we have a large inventory of identical items and w">
 <p>squared function is the most common in regression problem.</p>
 <h4 id="One-variable-–-Gradient-descent"><a href="#One-variable-–-Gradient-descent" class="headerlink" title="One variable – Gradient descent"></a>One variable – Gradient descent</h4><ul>
 <li>General case<ul>
-<li>$\theta \in \Re$</li>
+<li>$\theta \in \Re, \alpha &gt; 0$</li>
 <li>Function $J(\theta_0,\theta_1,…,\theta_n)$</li>
 <li>Goal $\min_{\theta_0,\theta_1,…,\theta_n}J(\theta_0,\theta_1,…,\theta_n)$</li>
 </ul>
@@ -364,10 +364,12 @@ For example, we have a large inventory of identical items and w">
 <li>Keep changing $\theta_0, \theta_1$ to reduce $J(\theta_0,\theta_1)$ until we hopefully end up at a $\min_{\theta_0,\theta_1}$.</li>
 <li>Draw an $J(\theta_i)$ image, we discover that this is a 3-D surface with 3 axises: $\theta_0$, $\theta_1$ and $J(\theta_0,\theta_1)$. Choose a point on the surface and look around, move forward by choosing the most gradient descent point, i.e. $J(\theta_0,\theta_1)$ will converge the most of this path. Follow this rule again and again until we get the $\min$ of $J(\theta_0,\theta_1)$.</li>
 <li>Repeat until convergence, for $j=0,1$<br>$${\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)}$$<ul>
-<li>$\alpha$ is the learning rate, it represents how aggressive we step down stairs to the next point.(slope)</li>
+<li>$\alpha$ is the learning rate, it represents how aggressive we step down stairs to the next point.</li>
+<li>$\frac{\partial}{\partial\theta_i}J(\theta_i)$ is the tangent value (slope) of $J(\theta_1)$ curve. As the slope be positive, new $\theta_i$ decreased.</li>
 <li>$:=$ stands for assignment, for example, $a:=b$ is set value b to value a.</li>
 <li>$=$ stands for truth asserts, $a=b$ will produce a result of a boolean.</li>
 <li>update $\theta_0$ and $\theta_1$ simutaneously, i.e.<br>$$temp0:=\theta_0-\alpha\frac{\partial}{\partial\theta_0}J(\theta_0,\theta_1) \tag{1}$$<br>$$temp1:=\theta_1-\alpha\frac{\partial}{\partial\theta_1}J(\theta_0,\theta_1) \tag{2}$$<br>$$\theta_0:=temp0 \tag{3}$$<br>$$\theta_1:=temp1 \tag{4}$$</li>
+<li>If $\alpha$ is too small, we’ll take a small step to the next point, and the gradient descent can be slow. On the other hand, if $\alpha$ is too large, we’ll take a big step to the next point of finding the minimum of $J(\theta_i)$, this can cause overshoot the minimum, and may fail to converge or even diverge.</li>
 <li>Notice that the value updating equations $(3)$ and $(4)$ must be placed behind all of the calculate results. Because if we switch $(2)$ and $(3)$ equations, we’ll use the new $\theta_0$ to calculate $temp1$, but the right way is use the original $\theta_0$ to calculate it.</li>
 </ul>
 </li>
@@ -417,17 +419,17 @@ For example, we have a large inventory of identical items and w">
       
         <div class="post-tags">
           
+            <a href="/tags/Stanford/" rel="tag"># Stanford</a>
+          
             <a href="/tags/ML/" rel="tag"># ML</a>
+          
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
           
             <a href="/tags/regression-problem/" rel="tag"># regression problem</a>
           
             <a href="/tags/squared-error-function/" rel="tag"># squared error function</a>
           
             <a href="/tags/cost-function/" rel="tag"># cost function</a>
-          
-            <a href="/tags/maching-learning/" rel="tag"># maching learning</a>
-          
-            <a href="/tags/Stanford/" rel="tag"># Stanford</a>
           
             <a href="/tags/classification-problem/" rel="tag"># classification problem</a>
           
@@ -444,8 +446,8 @@ For example, we have a large inventory of identical items and w">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/25/DevelopingiOS11WithSwiftOfStanfordCourse/" rel="next" title="Developing iOS 11 Apps with Swift (L1, L2)">
-                <i class="fa fa-chevron-left"></i> Developing iOS 11 Apps with Swift (L1, L2)
+              <a href="/2018/05/25/DevelopingiOS11WithSwiftOfStanfordCourse/" rel="next" title="Developing iOS 11 Apps with Swift (Stanford CS193P)">
+                <i class="fa fa-chevron-left"></i> Developing iOS 11 Apps with Swift (Stanford CS193P)
               </a>
             
           </div>
@@ -539,7 +541,7 @@ For example, we have a large inventory of identical items and w">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

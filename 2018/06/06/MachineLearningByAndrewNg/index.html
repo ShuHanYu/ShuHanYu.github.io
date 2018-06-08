@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="regression problem,squared error function,cost function,ML,maching learning,Stanford,classification problem," />
+  <meta name="keywords" content="ML,regression problem,squared error function,cost function,maching learning,Stanford,classification problem,learning rate," />
 
 
 
@@ -97,7 +97,7 @@ For example, we have a large inventory of identical items and w">
 <meta property="og:description" content="Regression problem vs Classification problemRegression problem – Predict real-valued output
 We can treat the data as a set of row value.
 For example, we have a large inventory of identical items and w">
-<meta property="og:updated_time" content="2018-06-07T23:28:34.253Z">
+<meta property="og:updated_time" content="2018-06-08T07:21:35.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine Learning course notes">
 <meta name="twitter:description" content="Regression problem vs Classification problemRegression problem – Predict real-valued output
@@ -332,11 +332,8 @@ For example, we have a large inventory of identical items and w">
 <li>For example, we have a large inventory of identical items and we want to predict how many of these items will sell over the next 3 months.<a id="more"></a>
 </li>
 </ul>
-<h3 id="Linear-regression-problem"><a href="#Linear-regression-problem" class="headerlink" title="Linear regression problem"></a>Linear regression problem</h3><ul>
-<li><p>One variable: Cost function</p>
-<ul>
-<li><p>Expression:</p>
-<ul>
+<h3 id="Linear-regression-problem"><a href="#Linear-regression-problem" class="headerlink" title="Linear regression problem"></a>Linear regression problem</h3><h4 id="One-variable-–-Squared-error-function"><a href="#One-variable-–-Squared-error-function" class="headerlink" title="One variable – Squared error function"></a>One variable – Squared error function</h4><ul>
+<li>Expression:<ul>
 <li>$m$ = number(size) of training examples</li>
 <li>$x$ = <code>input</code> variable/features</li>
 <li>$y$ = <code>output</code> variable/features</li>
@@ -344,20 +341,40 @@ For example, we have a large inventory of identical items and w">
 <li>$(x^{(i)}, y^{(i)})$ = $i^{th}$ training example</li>
 </ul>
 </li>
-<li><p>Training flow: Training set -&gt; Learning Algorithm -&gt; $h$(hypothesis)</p>
-</li>
+<li>Training flow: Training set -&gt; Learning Algorithm -&gt; $h$(hypothesis)</li>
 <li>Predicting flow: $x$ (input) -&gt; $h$ -&gt; $y$ (output)</li>
 <li>$h_{\theta}(x)$ = $\theta_0$ + $\theta_1x$, write in short hand: $h(x)$ = $\theta_0+\theta_1x$</li>
 <li>$h(x)$ maps from $x$’s to $y$’s</li>
 <li>we consider $h(x)$ as a linear function, i.e. $h(x)$ is a linear regression with one variable.</li>
 <li>Choosing parameters $(\theta_0$ and $\theta_1)$: let $h_{\theta}(x)$ is close to y for our training examples $(x, y)$.</li>
 </ul>
-</li>
-</ul>
 <p>$$ J(\theta_0,\theta_1)=\frac{1}{2m}\sum_{i=1}^m [h_{\theta}(x^{(i)}) - y^{(i)}]^2$$ </p>
 <p>$\min_{(\theta_0,\theta_1)}J(\theta_0,\theta_1)$ says that we’ll find $(\theta_1,\theta_2)$ values that causes the above expression be minimize.</p>
-<p>We call $J(\theta_0,\theta_1)$ as cost function in the example, also as <code>Squared error function</code> in general. We’ll talk about this funtion more deeper in the other paragraph.</p>
+<p>We call $J(\theta_0,\theta_1)$ as cost function in the example, also as <code>Squared error function</code> in general. We’ll talk about this funtion more deeper in <a href="https://www.shuhanyu.com/2018/06/07/MLOfCostFunction/#more" target="_blank" rel="external">another paragraph</a>.</p>
 <p>squared function is the most common in regression problem.</p>
+<h4 id="One-variable-–-Gradient-descent"><a href="#One-variable-–-Gradient-descent" class="headerlink" title="One variable – Gradient descent"></a>One variable – Gradient descent</h4><ul>
+<li>General case<ul>
+<li>$\theta \in \Re$</li>
+<li>Function $J(\theta_0,\theta_1,…,\theta_n)$</li>
+<li>Goal $\min_{\theta_0,\theta_1,…,\theta_n}J(\theta_0,\theta_1,…,\theta_n)$</li>
+</ul>
+</li>
+<li>Choose $n=2$<ul>
+<li>Start with some $\theta_0,\theta_1$</li>
+<li>Keep changing $\theta_0, \theta_1$ to reduce $J(\theta_0,\theta_1)$ until we hopefully end up at a $\min_{\theta_0,\theta_1}$.</li>
+<li>Draw an $J(\theta_i)$ image, we discover that this is a 3-D surface with 3 axises: $\theta_0$, $\theta_1$ and $J(\theta_0,\theta_1)$. Choose a point on the surface and look around, move forward by choosing the most gradient descent point, i.e. $J(\theta_0,\theta_1)$ will converge the most of this path. Follow this rule again and again until we get the $\min$ of $J(\theta_0,\theta_1)$.</li>
+<li>Repeat until convergence, for $j=0,1$<br>$${\theta_j:=\theta_j-\alpha\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1)}$$<ul>
+<li>$\alpha$ is the learning rate, it represents how aggressive we step down stairs to the next point.(slope)</li>
+<li>$:=$ stands for assignment, for example, $a:=b$ is set value b to value a.</li>
+<li>$=$ stands for truth asserts, $a=b$ will produce a result of a boolean.</li>
+<li>update $\theta_0$ and $\theta_1$ simutaneously, i.e.<br>$$temp0:=\theta_0-\alpha\frac{\partial}{\partial\theta_0}J(\theta_0,\theta_1) \tag{1}$$<br>$$temp1:=\theta_1-\alpha\frac{\partial}{\partial\theta_1}J(\theta_0,\theta_1) \tag{2}$$<br>$$\theta_0:=temp0 \tag{3}$$<br>$$\theta_1:=temp1 \tag{4}$$</li>
+<li>Notice that the value updating equations $(3)$ and $(4)$ must be placed behind all of the calculate results. Because if we switch $(2)$ and $(3)$ equations, we’ll use the new $\theta_0$ to calculate $temp1$, but the right way is use the original $\theta_0$ to calculate it.</li>
+</ul>
+</li>
+<li>It might be lead to different result of $J(\theta_0,\theta_1)$ when we get the $min$ by choosing different point as an initial point.</li>
+</ul>
+</li>
+</ul>
 <h2 id="Classification-problem-–-Discrete-valued-output"><a href="#Classification-problem-–-Discrete-valued-output" class="headerlink" title="Classification problem – Discrete-valued output"></a>Classification problem – Discrete-valued output</h2><ul>
 <li>We can map the situation to some value</li>
 <li>For example, we would like software to examine individual customer accounts, and for each account decide if it has been haked/compromised.<ul>
@@ -400,19 +417,21 @@ For example, we have a large inventory of identical items and w">
       
         <div class="post-tags">
           
+            <a href="/tags/ML/" rel="tag"># ML</a>
+          
             <a href="/tags/regression-problem/" rel="tag"># regression problem</a>
           
             <a href="/tags/squared-error-function/" rel="tag"># squared error function</a>
           
             <a href="/tags/cost-function/" rel="tag"># cost function</a>
           
-            <a href="/tags/ML/" rel="tag"># ML</a>
-          
             <a href="/tags/maching-learning/" rel="tag"># maching learning</a>
           
             <a href="/tags/Stanford/" rel="tag"># Stanford</a>
           
             <a href="/tags/classification-problem/" rel="tag"># classification problem</a>
+          
+            <a href="/tags/learning-rate/" rel="tag"># learning rate</a>
           
         </div>
       
@@ -520,7 +539,7 @@ For example, we have a large inventory of identical items and w">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -555,7 +574,7 @@ For example, we have a large inventory of identical items and w">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Regression-problem-vs-Classification-problem"><span class="nav-number">1.</span> <span class="nav-text">Regression problem vs Classification problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Regression-problem-–-Predict-real-valued-output"><span class="nav-number">1.1.</span> <span class="nav-text">Regression problem – Predict real-valued output</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-regression-problem"><span class="nav-number">1.1.1.</span> <span class="nav-text">Linear regression problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Classification-problem-–-Discrete-valued-output"><span class="nav-number">1.2.</span> <span class="nav-text">Classification problem – Discrete-valued output</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Supervised-Learning"><span class="nav-number">2.</span> <span class="nav-text">Supervised Learning</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unsupervised-learning"><span class="nav-number">3.</span> <span class="nav-text">Unsupervised learning</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Regression-problem-vs-Classification-problem"><span class="nav-number">1.</span> <span class="nav-text">Regression problem vs Classification problem</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Regression-problem-–-Predict-real-valued-output"><span class="nav-number">1.1.</span> <span class="nav-text">Regression problem – Predict real-valued output</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-regression-problem"><span class="nav-number">1.1.1.</span> <span class="nav-text">Linear regression problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#One-variable-–-Squared-error-function"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">One variable – Squared error function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#One-variable-–-Gradient-descent"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">One variable – Gradient descent</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Classification-problem-–-Discrete-valued-output"><span class="nav-number">1.2.</span> <span class="nav-text">Classification problem – Discrete-valued output</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Supervised-Learning"><span class="nav-number">2.</span> <span class="nav-text">Supervised Learning</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unsupervised-learning"><span class="nav-number">3.</span> <span class="nav-text">Unsupervised learning</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>

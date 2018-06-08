@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="PHP," />
+  <meta name="keywords" content="regression problem,squared error function,cost function,ML," />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="PHP include and require 使用include/require 是用來將其他 PHP file 引入其他的 PHP file中，假設你有一段相同的code要使用在許多 PHP file中，就會需要用到 include/require。">
+<meta name="description" content="Hypothesis$$h_{\theta}(x)=\theta_0+\theta_1x$$">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP include and require">
-<meta property="og:url" content="http://yoursite.com/2017/07/01/php-include/index.html">
+<meta property="og:title" content="Cost Function">
+<meta property="og:url" content="http://yoursite.com/2018/06/07/MLOfCostFunction/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="PHP include and require 使用include/require 是用來將其他 PHP file 引入其他的 PHP file中，假設你有一段相同的code要使用在許多 PHP file中，就會需要用到 include/require。">
-<meta property="og:updated_time" content="2017-07-01T06:27:37.000Z">
+<meta property="og:description" content="Hypothesis$$h_{\theta}(x)=\theta_0+\theta_1x$$">
+<meta property="og:updated_time" content="2018-06-08T05:09:58.103Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP include and require">
-<meta name="twitter:description" content="PHP include and require 使用include/require 是用來將其他 PHP file 引入其他的 PHP file中，假設你有一段相同的code要使用在許多 PHP file中，就會需要用到 include/require。">
+<meta name="twitter:title" content="Cost Function">
+<meta name="twitter:description" content="Hypothesis$$h_{\theta}(x)=\theta_0+\theta_1x$$">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/01/php-include/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/07/MLOfCostFunction/"/>
 
 
 
 
 
-  <title> PHP include and require | SHY </title>
+  <title> Cost Function | SHY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -249,7 +249,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/01/php-include/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/07/MLOfCostFunction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shu-Han, Yu">
@@ -270,7 +270,7 @@
             
             
               
-                PHP include and require
+                Cost Function
               
             
           </h1>
@@ -285,8 +285,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-07-01T13:38:14-07:00">
-                2017-07-01
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-06-07T16:24:05-07:00">
+                2018-06-07
               </time>
             
 
@@ -321,13 +321,40 @@
       
 
       
-        <h1 id="PHP-include-and-require-使用"><a href="#PHP-include-and-require-使用" class="headerlink" title="PHP include and require 使用"></a>PHP include and require 使用</h1><p>include/require 是用來將其他 PHP file 引入其他的 PHP file中，假設你有一段相同的code要使用在許多 PHP file中，就會需要用到 include/require。</p>
+        <h1 id="Hypothesis"><a href="#Hypothesis" class="headerlink" title="Hypothesis"></a>Hypothesis</h1><p>$$h_{\theta}(x)=\theta_0+\theta_1x$$</p>
 <a id="more"></a>
-<h2 id="include-require"><a href="#include-require" class="headerlink" title="include / require"></a>include / require</h2><p>include 和 require 使用上的差異：<br>include: 檔案不存在時只會警告，繼續往下執行程式，常用於流程控制中。<br>require: 檔案不存在時會產生錯誤，程式會停止執行，常放於常放於文件的開頭，引入一些必要的靜態檔案。</p>
-<p><strong><font size="4">Syntax</font></strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">include</span> <span class="string">'filename'</span>;</div><div class="line"><span class="keyword">or</span></div><div class="line"><span class="keyword">require</span> <span class="string">'filename'</span>;</div><div class="line"></div><div class="line"><span class="comment">//假設我們有一個 footer.php，內容如下：</span></div><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">echo</span> <span class="string">"&lt;p&gt;Copyright &amp;copy; 1999-"</span> . date(<span class="string">"Y"</span>) . <span class="string">" W3Schools.com&lt;/p&gt;"</span>;</div><div class="line"><span class="meta">?&gt;</span></div><div class="line"></div><div class="line"><span class="comment">// 將 footer.php放入其他 php 檔案。</span></div><div class="line">&lt;html&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</div><div class="line">&lt;p&gt;Some text.&lt;/p&gt;</div><div class="line">&lt;p&gt;Some more text.&lt;/p&gt;</div><div class="line"><span class="meta">&lt;?php</span> <span class="keyword">include</span> <span class="string">'footer.php'</span>;<span class="meta">?&gt;</span></div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line">輸出結果：</div><div class="line">Welcome to my home page!</div><div class="line"></div><div class="line">Some text.</div><div class="line"></div><div class="line">Some more text.</div><div class="line"></div><div class="line">Copyright © 1999-2017 W3Schools.com</div><div class="line">*/</div></pre></td></tr></table></figure></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">// Example 2</div><div class="line">// 假設我們有一個 menu.php如下：</div><div class="line">&lt;?php</div><div class="line">echo '&lt;a href="/default.asp"&gt;Home&lt;/a&gt; -</div><div class="line">&lt;a href="/html/default.asp"&gt;HTML Tutorial&lt;/a&gt; -</div><div class="line">&lt;a href="/css/default.asp"&gt;CSS Tutorial&lt;/a&gt; -</div><div class="line">&lt;a href="/js/default.asp"&gt;JavaScript Tutorial&lt;/a&gt; -</div><div class="line">&lt;a href="default.asp"&gt;PHP Tutorial&lt;/a&gt;';</div><div class="line">?&gt;</div><div class="line"></div><div class="line">// 放入下方的php檔案中的 div tag 中</div><div class="line">&lt;html&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;div class="menu"&gt;</div><div class="line">&lt;?php include 'menu.php';?&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;h1&gt;Welcome to my home page!&lt;/h1&gt;</div><div class="line">&lt;p&gt;Some text.&lt;/p&gt;</div><div class="line">&lt;p&gt;Some more text.&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line">/* 輸出結果：</div><div class="line">Home - HTML Tutorial - CSS Tutorial - JavaScript Tutorial - PHP Tutorial</div><div class="line">Welcome to my home page!</div><div class="line"></div><div class="line">Some text.</div><div class="line"></div><div class="line">Some more text.</div><div class="line"></div><div class="line">*/</div></pre></td></tr></table></figure>
-<h2 id="include-once-require-once"><a href="#include-once-require-once" class="headerlink" title="include_once / require_once"></a>include_once / require_once</h2><p>跟 include / require 的差異在於，會判斷檔案是否被載入過，如果尚未被載入才會載入此檔案。</p>
-<p><strong><font size="4">Syntax</font></strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">include_once</span> <span class="string">'filename'</span>;</div><div class="line"><span class="keyword">or</span></div><div class="line"><span class="keyword">require_once</span> <span class="string">'filename'</span>;</div></pre></td></tr></table></figure></p>
+<h1 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h1><p>$$\theta_0,\theta_1$$</p>
+<h1 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h1><p>$$J(\theta_0,\theta_1)=\frac{1}{2m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})^2$$</p>
+<h1 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h1><p>$$\min_{\theta_0,\theta_1}J(\theta_0,\theta_1)$$</p>
+<h2 id="Simplification-let-theta-0-0"><a href="#Simplification-let-theta-0-0" class="headerlink" title="Simplification, let $\theta_0=0$"></a>Simplification, let $\theta_0=0$</h2><p>$$h_{\theta}(x)=\theta_1x$$<br>$$J(\theta_1)=\frac{1}{2m}\sum_{i=1}^m(\theta_1x^{(i)}-y^{(i)})^2$$</p>
+<p>then goal will become</p>
+<p>$$\min_{\theta_1}J(\theta_1)$$</p>
+<ul>
+<li>Given data<br>$(x^{(1)},y^{(1)})=(1,1)$<br>$(x^{(2)},y^{(2)})=(2,2)$<br>$(x^{(3)},y^{(3)})=(3,3)$</li>
+</ul>
+<p>that is, $m=3$</p>
+<ul>
+<li><p>evaluate $J(1)$</p>
+<ul>
+<li>$\theta_1=1, h_{\theta}(x) = 1*x=x$</li>
+<li>$J(1)=\frac{1}{2*3}\sum_{i=1}^3(1*x^{(i)}-y^{(i)})^2$<br>$=\frac{1}{6}[(1-1)^2+(2-2)^2+(3-3)^2]$<br>$=0$</li>
+</ul>
+</li>
+<li><p>evaluate $J(0.5)$</p>
+<ul>
+<li>$\theta_1=0.5, h_{\theta}(x) = 0.5*x=0.5x$</li>
+<li>$J(0.5)=\frac{1}{2*3}\sum_{i=1}^3(0.5*x^{(i)}-y^{(i)})^2$<br>$=\frac{1}{6}[(0.5*1-1)^2+(0.5*2-2)^2+(0.5*3-3)^2]$<br>$=\frac{7}{12}$</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>evaluate $J(-0.5)$<ul>
+<li>$\theta_1=-0.5, h_{\theta}(x) = -0.5*x=-0.5x$</li>
+<li>$J(-0.5)=\frac{1}{2*3}\sum_{i=1}^3(-0.5*x^{(i)}-y^{(i)})^2$<br>$=\frac{1}{6}[(-0.5*1-1)^2+(-0.5*2-2)^2+(-0.5*3-3)^2]$<br>$=\frac{21}{4}$</li>
+</ul>
+</li>
+</ul>
+<p>then we can plot $J(\theta_1)$ out, by observing the figure, we get $\min_{\theta_1}J(\theta_1) = J(\theta_1=1)=0$, which means that when $\theta_1=1$, the squared error is equal to zero, i.e. $J(1)=0$, is perfectly fit to the data source given.</p>
 
       
     </div>
@@ -351,7 +378,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/PHP/" rel="tag"># PHP</a>
+            <a href="/tags/regression-problem/" rel="tag"># regression problem</a>
+          
+            <a href="/tags/squared-error-function/" rel="tag"># squared error function</a>
+          
+            <a href="/tags/cost-function/" rel="tag"># cost function</a>
+          
+            <a href="/tags/ML/" rel="tag"># ML</a>
           
         </div>
       
@@ -364,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/29/php-controlFlow/" rel="next" title="PHP Control Flow Statement">
-                <i class="fa fa-chevron-left"></i> PHP Control Flow Statement
+              <a href="/2018/06/06/Paella/" rel="next" title="Paella">
+                <i class="fa fa-chevron-left"></i> Paella
               </a>
             
           </div>
@@ -373,10 +406,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/01/mySQL-basic/" rel="prev" title="MySQL 基礎">
-                MySQL 基礎 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -494,7 +523,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP-include-and-require-使用"><span class="nav-number">1.</span> <span class="nav-text">PHP include and require 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#include-require"><span class="nav-number">1.1.</span> <span class="nav-text">include / require</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#include-once-require-once"><span class="nav-number">1.2.</span> <span class="nav-text">include_once / require_once</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hypothesis"><span class="nav-number">1.</span> <span class="nav-text">Hypothesis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Parameters"><span class="nav-number">2.</span> <span class="nav-text">Parameters</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cost-Function"><span class="nav-number">3.</span> <span class="nav-text">Cost Function</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Goal"><span class="nav-number">4.</span> <span class="nav-text">Goal</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Simplification-let-theta-0-0"><span class="nav-number">4.1.</span> <span class="nav-text">Simplification, let $\theta_0=0$</span></a></li></ol></li></ol></div>
             
 
           </div>

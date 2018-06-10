@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="References,MarkDown,Hexo," />
+  <meta name="keywords" content="ML,CS229,matrix,hypothesis equation," />
 
 
 
@@ -87,25 +87,16 @@
 
 
 
-<meta name="description" content="MarkDown syntax of GitBook
-Hexo Writing documentation
-使用Hexo和GitHub Pages搭建免费独立博客
-hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）">
+<meta name="description" content="Cost Prediction (Hypothesis result)= Data Matrix * Parameters">
 <meta property="og:type" content="article">
-<meta property="og:title" content="References">
-<meta property="og:url" content="http://yoursite.com/2017/02/24/References/index.html">
+<meta property="og:title" content="Matrix Review (Stanford CS229)">
+<meta property="og:url" content="http://yoursite.com/2018/06/09/MLofMatrixReview/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="MarkDown syntax of GitBook
-Hexo Writing documentation
-使用Hexo和GitHub Pages搭建免费独立博客
-hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）">
-<meta property="og:updated_time" content="2017-02-26T05:58:32.000Z">
+<meta property="og:description" content="Cost Prediction (Hypothesis result)= Data Matrix * Parameters">
+<meta property="og:updated_time" content="2018-06-10T05:44:25.735Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="References">
-<meta name="twitter:description" content="MarkDown syntax of GitBook
-Hexo Writing documentation
-使用Hexo和GitHub Pages搭建免费独立博客
-hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）">
+<meta name="twitter:title" content="Matrix Review (Stanford CS229)">
+<meta name="twitter:description" content="Cost Prediction (Hypothesis result)= Data Matrix * Parameters">
 
 
 
@@ -133,13 +124,13 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/24/References/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/09/MLofMatrixReview/"/>
 
 
 
 
 
-  <title> References | SHY </title>
+  <title> Matrix Review (Stanford CS229) | SHY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -258,7 +249,7 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/24/References/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/09/MLofMatrixReview/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shu-Han, Yu">
@@ -279,7 +270,7 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
             
             
               
-                References
+                Matrix Review (Stanford CS229)
               
             
           </h1>
@@ -294,8 +285,8 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-02-24T23:22:46-08:00">
-                2017-02-24
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-06-09T21:06:40-07:00">
+                2018-06-09
               </time>
             
 
@@ -330,12 +321,20 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
       
 
       
-        <ul>
-<li><a href="https://wastemobile.gitbooks.io/gitbook-chinese/content/format/markdown.html" target="_blank" rel="external">MarkDown syntax of GitBook</a></li>
-<li><a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Hexo Writing documentation</a></li>
-<li><a href="https://sylujia.github.io/2016/09/11/使用Hexo和GitHub-Pages搭建免费独立博客/#more" target="_blank" rel="external">使用Hexo和GitHub Pages搭建免费独立博客</a></li>
-<li><a href="http://www.jianshu.com/p/a52b68794a6b" target="_blank" rel="external">hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）</a></li>
+        <h1 id="Cost-Prediction-Hypothesis-result-Data-Matrix-Parameters"><a href="#Cost-Prediction-Hypothesis-result-Data-Matrix-Parameters" class="headerlink" title="Cost Prediction (Hypothesis result)= Data Matrix * Parameters"></a>Cost Prediction (Hypothesis result)= Data Matrix * Parameters</h1><a id="more"></a>
+<ul>
+<li><p>House sizes:<br>$$<br>\begin{Bmatrix}<br>2104 \\<br>1416 \\<br>1534 \\<br>852<br>\end{Bmatrix}_{4\times1}<br>$$</p>
+</li>
+<li><p>Hypothesis equation:<br>$$h_{\theta}(x)=-40+0.25x$$</p>
+</li>
+<li><p>Data Matrix:<br>$$<br>\begin{bmatrix}<br>1 &amp; 2104 \\<br>1 &amp; 1416 \\<br>1 &amp; 1534 \\<br>1 &amp; 852<br>\end{bmatrix}_{4\times2}<br>$$</p>
+</li>
+<li><p>Parameters vector:<br>$$<br>\begin{Bmatrix}<br>-40 \\<br>0.25<br>\end{Bmatrix}_{2\times1}<br>$$</p>
+</li>
+<li><p>Hypothesis equation in matrix form:<br>$$<br>\begin{Bmatrix}<br>h_{\theta}(2104) \\<br>h_{\theta}(1416) \\<br>h_{\theta}(1534) \\<br>h_{\theta}(852) \\<br>\end{Bmatrix}_{4\times1}=<br>\begin{bmatrix}<br>1 &amp; 2104 \\<br>1 &amp; 1416 \\<br>1 &amp; 1534 \\<br>1 &amp; 852<br>\end{bmatrix}_{4\times2}<br>\begin{Bmatrix}<br>-40 \\<br>0.25<br>\end{Bmatrix}_{2\times1}<br>$$</p>
+</li>
 </ul>
+<h1 id="In-programming"><a href="#In-programming" class="headerlink" title="In programming"></a>In programming</h1><p>$\mathbf{H}_{4\times1}=\mathbf{D}_{4\times2}\mathbf{P}_{2\times1}$<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for (i = 0, i &lt; 4, i++) &#123;</div><div class="line">    for (j = 0, j &lt; 2, j++) &#123;</div><div class="line">        H(i) += D(i,j)P(j,1);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -359,11 +358,13 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
       
         <div class="post-tags">
           
-            <a href="/tags/References/" rel="tag"># References</a>
+            <a href="/tags/ML/" rel="tag"># ML</a>
           
-            <a href="/tags/MarkDown/" rel="tag"># MarkDown</a>
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/matrix/" rel="tag"># matrix</a>
+          
+            <a href="/tags/hypothesis-equation/" rel="tag"># hypothesis equation</a>
           
         </div>
       
@@ -376,15 +377,15 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/06/08/GradientDescent4LinearRegression/" rel="next" title="Gradient Descent for Linear Regression (Stanford CS229)">
+                <i class="fa fa-chevron-left"></i> Gradient Descent for Linear Regression (Stanford CS229)
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/25/build_framework_in_Xcode/" rel="prev" title="Build iOS framework with Xcode">
-                Build iOS framework with Xcode <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -431,8 +432,17 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/smallSHY.jpg"
@@ -483,6 +493,22 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cost-Prediction-Hypothesis-result-Data-Matrix-Parameters"><span class="nav-number">1.</span> <span class="nav-text">Cost Prediction (Hypothesis result)= Data Matrix * Parameters</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#In-programming"><span class="nav-number">2.</span> <span class="nav-text">In programming</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -87,12 +87,15 @@
 
 
 
+<meta name="description" content="https://github.com/ShuHanYu">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SHY">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="SHY">
+<meta property="og:description" content="https://github.com/ShuHanYu">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SHY">
+<meta name="twitter:description" content="https://github.com/ShuHanYu">
 
 
 
@@ -237,6 +240,132 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/24/MLofLinearRegressionWithMultiVarsInFeatureScaling/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shuhan Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SHY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/24/MLofLinearRegressionWithMultiVarsInFeatureScaling/" itemprop="url">
+                  Linear Regression with multiple variables -- Gradient descent(CS229)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-06-24T22:42:56-07:00">
+                2018-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h1><p>Get every feature into approximately $-1\le x_i \le1$</p>
+<p>$$x_i=\frac{x^{(i)}-\mu^{(i)}}{s^{(i)}}$$</p>
+<p>where  $x_i$ is the scaled value of data set $x^{(i)}$, $\mu^{(i)}$ is the average value of $x^{(i)}$ training set, and $s^{(i)}$ is the range/ standard(i.e. $\max-\min$) of $x^{(i)}$ training set.</p>
+<h1 id="Choose-appropriate-alpha-learning-rate"><a href="#Choose-appropriate-alpha-learning-rate" class="headerlink" title="Choose appropriate $\alpha$ (learning rate)"></a>Choose appropriate $\alpha$ (learning rate)</h1><ul>
+<li>$J(\theta)$ should decrease after every iteration.</li>
+<li>We declare convergence if $J(\theta)$ decreases by less than $10^{-3}$ in one iteration, which means we say that convergence is defined as $\epsilon\lt10^{-3}$.</li>
+<li>Draw a diagram of numbers of iterations as x-axis and $J(\theta)$ as y-axis to observe $\alpha$.</li>
+<li>Try $\alpha = 10^n, n\in \mathbb{Z}$</li>
+</ul>
+<h1 id="Polynomial-Regression"><a href="#Polynomial-Regression" class="headerlink" title="Polynomial Regression"></a>Polynomial Regression</h1>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -1381,134 +1510,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/01/mySQL-basic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shuhan Yu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/smallSHY.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SHY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/01/mySQL-basic/" itemprop="url">
-                  MySQL 基礎
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-07-01T15:47:56-07:00">
-                2017-07-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="MySQL-基礎"><a href="#MySQL-基礎" class="headerlink" title="MySQL 基礎"></a>MySQL 基礎</h1><p>SQL 語言是用來查詢和管理資料庫，全名為 <strong>Structure Query Language</strong>。<br></p>
-<h2 id="Comment-符號"><a href="#Comment-符號" class="headerlink" title="Comment 符號"></a>Comment 符號</h2><p>MySQL 有三種註解用法：</p>
-<ul>
-<li>＃： 單行註解</li>
-<li>-- : 單行註解 ，第二個dash後須加一個空白，再接文字。</li>
-<li>/*…*/ :多行註解</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/01/mySQL-basic/#more" rel="contents">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1550,7 +1551,7 @@
                alt="Shuhan Yu" />
           <p class="site-author-name" itemprop="name">Shuhan Yu</p>
            
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">https://github.com/ShuHanYu</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -1558,7 +1559,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -1569,7 +1570,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">56</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

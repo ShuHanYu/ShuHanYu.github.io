@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ML,CS229,gradient descent,linear regression,learning rate,feature scaling,polynomial regression," />
 
 
 
@@ -87,15 +87,22 @@
 
 
 
-<meta name="description" content="https://github.com/ShuHanYu">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SHY">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+<meta name="description" content="Feature ScalingGet every feature into approximately $-1\le x_i \le1$
+$$x_i=\frac{x^{(i)}-\mu^{(i)}}{s^{(i)}}$$
+where  $x_i$ is the scaled value of data set $x^{(i)}$, $\mu^{(i)}$ is the average value">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linear Regression with multiple variables -- Gradient descent(CS229)">
+<meta property="og:url" content="http://yoursite.com/2018/06/24/MLofLinearRegressionWithMultiVarsInFeatureScaling/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="https://github.com/ShuHanYu">
+<meta property="og:description" content="Feature ScalingGet every feature into approximately $-1\le x_i \le1$
+$$x_i=\frac{x^{(i)}-\mu^{(i)}}{s^{(i)}}$$
+where  $x_i$ is the scaled value of data set $x^{(i)}$, $\mu^{(i)}$ is the average value">
+<meta property="og:updated_time" content="2018-06-25T07:41:36.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SHY">
-<meta name="twitter:description" content="https://github.com/ShuHanYu">
+<meta name="twitter:title" content="Linear Regression with multiple variables -- Gradient descent(CS229)">
+<meta name="twitter:description" content="Feature ScalingGet every feature into approximately $-1\le x_i \le1$
+$$x_i=\frac{x^{(i)}-\mu^{(i)}}{s^{(i)}}$$
+where  $x_i$ is the scaled value of data set $x^{(i)}$, $\mu^{(i)}$ is the average value">
 
 
 
@@ -123,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/page/2/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/24/MLofLinearRegressionWithMultiVarsInFeatureScaling/"/>
 
 
 
 
 
-  <title> 歸檔 | SHY </title>
+  <title> Linear Regression with multiple variables -- Gradient descent(CS229) | SHY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -154,7 +161,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,366 +245,170 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共計 19 篇文章。 繼續努力。
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/24/MLofLinearRegressionWithMultiVarsInFeatureScaling/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shuhan Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SHY">
     </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linear Regression with multiple variables -- Gradient descent(CS229)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-06-24T22:42:56-07:00">
+                2018-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
-      
 
+      
+        <h1 id="Feature-Scaling"><a href="#Feature-Scaling" class="headerlink" title="Feature Scaling"></a>Feature Scaling</h1><p>Get every feature into approximately $-1\le x_i \le1$</p>
+<p>$$x_i=\frac{x^{(i)}-\mu^{(i)}}{s^{(i)}}$$</p>
+<p>where  $x_i$ is the scaled value of data set $x^{(i)}$, $\mu^{(i)}$ is the average value of $x^{(i)}$ training set, and $s^{(i)}$ is the range/ standard(i.e. $\max-\min$) of $x^{(i)}$ training set.</p>
+<h1 id="Choose-appropriate-alpha-learning-rate"><a href="#Choose-appropriate-alpha-learning-rate" class="headerlink" title="Choose appropriate $\alpha$ (learning rate)"></a>Choose appropriate $\alpha$ (learning rate)</h1><ul>
+<li>$J(\theta)$ should decrease after every iteration.</li>
+<li>We declare convergence if $J(\theta)$ decreases by less than $10^{-3}$ in one iteration, which means we say that convergence is defined as $\epsilon\lt10^{-3}$.</li>
+<li>Draw a diagram of numbers of iterations as x-axis and $J(\theta)$ as y-axis to observe $\alpha$.</li>
+<li>Try $\alpha = 10^n, n\in \mathbb{Z}$</li>
+</ul>
+<h1 id="Polynomial-Regression"><a href="#Polynomial-Regression" class="headerlink" title="Polynomial Regression"></a>Polynomial Regression</h1>
+      
+    </div>
+
+    <div>
       
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ML/" rel="tag"># ML</a>
+          
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
+          
+            <a href="/tags/gradient-descent/" rel="tag"># gradient descent</a>
+          
+            <a href="/tags/linear-regression/" rel="tag"># linear regression</a>
+          
+            <a href="/tags/learning-rate/" rel="tag"># learning rate</a>
+          
+            <a href="/tags/feature-scaling/" rel="tag"># feature scaling</a>
+          
+            <a href="/tags/polynomial-regression/" rel="tag"># polynomial regression</a>
+          
         </div>
       
+
+      
+        
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/16/LiveInDesertForTwoNights/" rel="next" title="來去沙漠住兩晚">
+                <i class="fa fa-chevron-left"></i> 來去沙漠住兩晚
+              </a>
+            
+          </div>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          <span class="post-nav-divider"></span>
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/01/mySQL-basic/" itemprop="url">
-              
-                <span itemprop="name">MySQL 基礎</span>
-              
-            </a>
-        
-      </h1>
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-01T15:47:56-07:00"
-              content="2017-07-01" >
-          07-01
-        </time>
-      </div>
-
-    </header>
+      
+      
+    </footer>
   </article>
 
 
 
-    
-
+    <div class="post-spread">
       
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/01/php-include/" itemprop="url">
-              
-                <span itemprop="name">PHP include and require</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-01T13:38:14-07:00"
-              content="2017-07-01" >
-          07-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/29/php-controlFlow/" itemprop="url">
-              
-                <span itemprop="name">PHP Control Flow Statement</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-29T17:41:49-07:00"
-              content="2017-06-29" >
-          06-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/29/php-operators/" itemprop="url">
-              
-                <span itemprop="name">PHP 運算子</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-29T16:30:08-07:00"
-              content="2017-06-29" >
-          06-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/29/php-dataType/" itemprop="url">
-              
-                <span itemprop="name">PHP Data Type</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-29T12:25:51-07:00"
-              content="2017-06-29" >
-          06-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/29/php-basic/" itemprop="url">
-              
-                <span itemprop="name">PHP 基礎觀念和語法</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-29T09:52:39-07:00"
-              content="2017-06-29" >
-          06-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/02/26/buildPrivatePodsInCocoaPods/" itemprop="url">
-              
-                <span itemprop="name">以 CocoaPods 建立 Private Pods</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-26T15:52:14-08:00"
-              content="2017-02-26" >
-          02-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/02/25/build_framework_in_Xcode/" itemprop="url">
-              
-                <span itemprop="name">Build iOS framework with Xcode</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-25T20:57:46-08:00"
-              content="2017-02-25" >
-          02-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/02/24/References/" itemprop="url">
-              
-                <span itemprop="name">References</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-24T23:22:46-08:00"
-              content="2017-02-24" >
-          02-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-  </nav>
-
-
+    </div>
+  </div>
 
           
           </div>
@@ -605,6 +416,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -624,8 +439,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/smallSHY.jpg"
@@ -676,6 +500,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Feature-Scaling"><span class="nav-number">1.</span> <span class="nav-text">Feature Scaling</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Choose-appropriate-alpha-learning-rate"><span class="nav-number">2.</span> <span class="nav-text">Choose appropriate $\alpha$ (learning rate)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Polynomial-Regression"><span class="nav-number">3.</span> <span class="nav-text">Polynomial Regression</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -781,11 +621,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
 
 
   

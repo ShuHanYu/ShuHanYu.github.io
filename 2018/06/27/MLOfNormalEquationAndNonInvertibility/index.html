@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ML,CS229,normal equation,non-invertible,singular matrix,regularization," />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="https://github.com/ShuHanYu">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="Normal Equation: $\mathbf\Theta=(\mathbf{X^\top}\mathbf{X})^{-1}\mathbf{X^\top}\mathbf{y}$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Normal Equation and non-invertibility(CS229)">
+<meta property="og:url" content="http://yoursite.com/2018/06/27/MLOfNormalEquationAndNonInvertibility/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="https://github.com/ShuHanYu">
-<meta property="og:updated_time" content="2017-02-25T15:41:41.000Z">
+<meta property="og:description" content="Normal Equation: $\mathbf\Theta=(\mathbf{X^\top}\mathbf{X})^{-1}\mathbf{X^\top}\mathbf{y}$">
+<meta property="og:updated_time" content="2018-06-27T07:40:27.567Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="https://github.com/ShuHanYu">
+<meta name="twitter:title" content="Normal Equation and non-invertibility(CS229)">
+<meta name="twitter:description" content="Normal Equation: $\mathbf\Theta=(\mathbf{X^\top}\mathbf{X})^{-1}\mathbf{X^\top}\mathbf{y}$">
 
 
 
@@ -124,19 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/27/MLOfNormalEquationAndNonInvertibility/"/>
 
 
 
 
 
-  <title>
-  
-
-  
-    about | SHY
-  
-</title>
+  <title> Normal Equation and non-invertibility(CS229) | SHY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -161,7 +155,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -246,18 +240,171 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">about</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/27/MLOfNormalEquationAndNonInvertibility/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shuhan Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SHY">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Normal Equation and non-invertibility(CS229)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-06-27T00:07:31-07:00">
+                2018-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-    
+      
+
+      
+        <h1 id="Normal-Equation-mathbf-Theta-mathbf-X-top-mathbf-X-1-mathbf-X-top-mathbf-y"><a href="#Normal-Equation-mathbf-Theta-mathbf-X-top-mathbf-X-1-mathbf-X-top-mathbf-y" class="headerlink" title="Normal Equation: $\mathbf\Theta=(\mathbf{X^\top}\mathbf{X})^{-1}\mathbf{X^\top}\mathbf{y}$"></a>Normal Equation: $\mathbf\Theta=(\mathbf{X^\top}\mathbf{X})^{-1}\mathbf{X^\top}\mathbf{y}$</h1><a id="more"></a>
+<h2 id="If-mathbf-X-top-mathbf-X-1-is-non-invertible-singular"><a href="#If-mathbf-X-top-mathbf-X-1-is-non-invertible-singular" class="headerlink" title="If $(\mathbf{X^\top}\mathbf{X})^{-1}$ is non-invertible(singular)"></a>If $(\mathbf{X^\top}\mathbf{X})^{-1}$ is non-invertible(singular)</h2><h3 id="Reasons-of-singular-matrix"><a href="#Reasons-of-singular-matrix" class="headerlink" title="Reasons of singular matrix:"></a>Reasons of singular matrix:</h3><ul>
+<li><p>redundant features ($x^{(i)}$s are linearly dependent)</p>
+<ul>
+<li>for example, $x_1$ is size in feet square, meanwhile, $x_2$ is size in meter square. For all data, $x_1 = (3.28)^2x_2$ will lead to a non-invertible $(\mathbf{X^\top}\mathbf{X})^{-1}$ </li>
+</ul>
+</li>
+<li><p>Too many features, i.e. $m\lt n$</p>
+<ul>
+<li>We have $m$ conditions(data) but if there were $n$ unknowns and $n$ is greater than $m$, the solution can not be solve.</li>
+<li>To solve the problem, delete some features, or use regularization.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ML/" rel="tag"># ML</a>
+          
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
+          
+            <a href="/tags/normal-equation/" rel="tag"># normal equation</a>
+          
+            <a href="/tags/non-invertible/" rel="tag"># non-invertible</a>
+          
+            <a href="/tags/singular-matrix/" rel="tag"># singular matrix</a>
+          
+            <a href="/tags/regularization/" rel="tag"># regularization</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/26/ClassicFrenchCroissantRecipe/" rel="next" title="原味可頌食譜">
+                <i class="fa fa-chevron-left"></i> 原味可頌食譜
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
           
@@ -289,8 +436,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/smallSHY.jpg"
@@ -341,6 +497,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Normal-Equation-mathbf-Theta-mathbf-X-top-mathbf-X-1-mathbf-X-top-mathbf-y"><span class="nav-number">1.</span> <span class="nav-text">Normal Equation: $\mathbf\Theta=(\mathbf{X^\top}\mathbf{X})^{-1}\mathbf{X^\top}\mathbf{y}$</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#If-mathbf-X-top-mathbf-X-1-is-non-invertible-singular"><span class="nav-number">1.1.</span> <span class="nav-text">If $(\mathbf{X^\top}\mathbf{X})^{-1}$ is non-invertible(singular)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reasons-of-singular-matrix"><span class="nav-number">1.1.1.</span> <span class="nav-text">Reasons of singular matrix:</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -446,6 +618,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 

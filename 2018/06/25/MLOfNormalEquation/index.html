@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ML,CS229,normal equation," />
+  <meta name="keywords" content="ML,CS229,gradient descent,normal equation,feature scaling," />
 
 
 
@@ -88,21 +88,18 @@
 
 
 <meta name="description" content="Normal equationMethod to solve for $\theta$ analytically.
-1-D$\theta\in\mathbb{R},$$$J(\theta)=a\theta^2+b\theta+c$$Let$$\frac{d}{d\theta}J(\theta)=0$$Slove $\theta$.
-n-D$\theta\in\mathbb{R^{n+1}},$$$">
+1-D$\theta\in\mathbb{R},$$$J(\theta)=a\theta^2+b\theta+c$$Let$$\frac{d}{d\theta}J(\theta)=0$$Slove $\theta$.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Normal Equation(CS229)">
 <meta property="og:url" content="http://yoursite.com/2018/06/25/MLOfNormalEquation/index.html">
 <meta property="og:site_name" content="SHY">
 <meta property="og:description" content="Normal equationMethod to solve for $\theta$ analytically.
-1-D$\theta\in\mathbb{R},$$$J(\theta)=a\theta^2+b\theta+c$$Let$$\frac{d}{d\theta}J(\theta)=0$$Slove $\theta$.
-n-D$\theta\in\mathbb{R^{n+1}},$$$">
-<meta property="og:updated_time" content="2018-06-26T18:37:34.036Z">
+1-D$\theta\in\mathbb{R},$$$J(\theta)=a\theta^2+b\theta+c$$Let$$\frac{d}{d\theta}J(\theta)=0$$Slove $\theta$.">
+<meta property="og:updated_time" content="2018-06-27T07:12:24.216Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Normal Equation(CS229)">
 <meta name="twitter:description" content="Normal equationMethod to solve for $\theta$ analytically.
-1-D$\theta\in\mathbb{R},$$$J(\theta)=a\theta^2+b\theta+c$$Let$$\frac{d}{d\theta}J(\theta)=0$$Slove $\theta$.
-n-D$\theta\in\mathbb{R^{n+1}},$$$">
+1-D$\theta\in\mathbb{R},$$$J(\theta)=a\theta^2+b\theta+c$$Let$$\frac{d}{d\theta}J(\theta)=0$$Slove $\theta$.">
 
 
 
@@ -328,13 +325,21 @@ n-D$\theta\in\mathbb{R^{n+1}},$$$">
 
       
         <h1 id="Normal-equation"><a href="#Normal-equation" class="headerlink" title="Normal equation"></a>Normal equation</h1><p>Method to solve for $\theta$ analytically.</p>
-<h2 id="1-D"><a href="#1-D" class="headerlink" title="1-D"></a>1-D</h2><p>$\theta\in\mathbb{R},$<br>$$J(\theta)=a\theta^2+b\theta+c$$<br>Let<br>$$\frac{d}{d\theta}J(\theta)=0$$<br>Slove $\theta$.</p>
+<h2 id="1-D"><a href="#1-D" class="headerlink" title="1-D"></a>1-D</h2><p>$\theta\in\mathbb{R},$<br>$$J(\theta)=a\theta^2+b\theta+c$$<br>Let<br>$$\frac{d}{d\theta}J(\theta)=0$$<br>Slove $\theta$.<br><a id="more"></a></p>
 <h2 id="n-D"><a href="#n-D" class="headerlink" title="n-D"></a>n-D</h2><p>$\theta\in\mathbb{R^{n+1}},$<br>$$J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})^2$$<br>for every $j$, let<br>$$\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1,…,\theta_n)=…=0$$<br>Solve for $\theta_0,\theta_1,…,\theta_n$.</p>
 <p>$$\mathbf\Theta_{(n+1)\times1}=(\mathbf X_{(n+1)\times m}^\top\mathbf X_{m\times(n+1)})^{-1}\mathbf X_{(n+1)\times m}^\top\mathbf y_{m\times1}$$</p>
 <p>for $m$ set of data examples, say $(x^{(1)},y^{(1)}),…,(x^{(m)},y^{(m)})$ and $n$ features,</p>
 <p>$$\mathbf{x^{(i)}}=<br>\begin{Bmatrix}<br>x_0^{(i)}\\<br>x_1^{(i)}\\<br>x_2^{(i)}\\<br>\vdots \\<br>x_n^{(i)}\\<br>\end{Bmatrix}_{(n+1)\times1}<br>\in\mathbb{R^{n+1}}$$</p>
 <p>Design matrix $\mathbf{X}$:</p>
 <p>$$<br>\mathbf{X}=<br>\begin{bmatrix}<br>\mathbf{(x^{(1)})^\top} \\<br>\mathbf{(x^{(2)})^\top} \\<br>\mathbf{(x^{(3)})^\top} \\<br>\vdots \\<br>\mathbf{(x^{(m)})^\top} \\<br>\end{bmatrix}_{m\times(n+1)}<br>$$</p>
+<h1 id="Gradient-descent-vs-Normal-equation"><a href="#Gradient-descent-vs-Normal-equation" class="headerlink" title="Gradient descent vs Normal equation"></a>Gradient descent vs Normal equation</h1><ul>
+<li><p>Feature scaling is not so important in normal equation, but is important in gradient descent.</p>
+</li>
+<li><p>Gradient descent need to choose $\alpha$ and iterate many tiomes. Normal equation, by contrast, no need to choose $\alpha$ also no need to iterate.</p>
+</li>
+<li><p>For $m$ training examples and $n$ features, gradient descent works well even when $n$ is large. In contrast with normal equation, we nned to calculate $(\mathbf{X^\top}\mathbf{X})_{n\times n}^{-1}$, so we’ll get slow down if $n$ is large. It takes $O(n^3)$ time, if $n\ge 10^4$ we might choose gradient descent method.</p>
+</li>
+</ul>
 
       
     </div>
@@ -362,7 +367,11 @@ n-D$\theta\in\mathbb{R^{n+1}},$$$">
           
             <a href="/tags/CS229/" rel="tag"># CS229</a>
           
+            <a href="/tags/gradient-descent/" rel="tag"># gradient descent</a>
+          
             <a href="/tags/normal-equation/" rel="tag"># normal equation</a>
+          
+            <a href="/tags/feature-scaling/" rel="tag"># feature scaling</a>
           
         </div>
       
@@ -459,7 +468,7 @@ n-D$\theta\in\mathbb{R^{n+1}},$$$">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -470,7 +479,7 @@ n-D$\theta\in\mathbb{R^{n+1}},$$$">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">60</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -505,7 +514,7 @@ n-D$\theta\in\mathbb{R^{n+1}},$$$">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Normal-equation"><span class="nav-number">1.</span> <span class="nav-text">Normal equation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-D"><span class="nav-number">1.1.</span> <span class="nav-text">1-D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-D"><span class="nav-number">1.2.</span> <span class="nav-text">n-D</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Normal-equation"><span class="nav-number">1.</span> <span class="nav-text">Normal equation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-D"><span class="nav-number">1.1.</span> <span class="nav-text">1-D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-D"><span class="nav-number">1.2.</span> <span class="nav-text">n-D</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradient-descent-vs-Normal-equation"><span class="nav-number">2.</span> <span class="nav-text">Gradient descent vs Normal equation</span></a></li></ol></div>
             
 
           </div>

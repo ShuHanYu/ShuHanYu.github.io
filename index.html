@@ -250,6 +250,128 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/27/MLOfNormalEquationAndNonInvertibility/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shuhan Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SHY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/06/27/MLOfNormalEquationAndNonInvertibility/" itemprop="url">
+                  Normal Equation and non-invertibility(CS229)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-06-27T00:07:31-07:00">
+                2018-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Normal-Equation-mathbf-Theta-mathbf-X-top-mathbf-X-1-mathbf-X-top-mathbf-y"><a href="#Normal-Equation-mathbf-Theta-mathbf-X-top-mathbf-X-1-mathbf-X-top-mathbf-y" class="headerlink" title="Normal Equation: $\mathbf\Theta=(\mathbf{X^\top}\mathbf{X})^{-1}\mathbf{X^\top}\mathbf{y}$"></a>Normal Equation: $\mathbf\Theta=(\mathbf{X^\top}\mathbf{X})^{-1}\mathbf{X^\top}\mathbf{y}$</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/27/MLOfNormalEquationAndNonInvertibility/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/26/ClassicFrenchCroissantRecipe/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -448,17 +570,15 @@
 
       
         
-          
-            <h1 id="Normal-equation"><a href="#Normal-equation" class="headerlink" title="Normal equation"></a>Normal equation</h1><p>Method to solve for $\theta$ analytically.</p>
-<h2 id="1-D"><a href="#1-D" class="headerlink" title="1-D"></a>1-D</h2><p>$\theta\in\mathbb{R},$<br>$$J(\theta)=a\theta^2+b\theta+c$$<br>Let<br>$$\frac{d}{d\theta}J(\theta)=0$$<br>Slove $\theta$.</p>
-<h2 id="n-D"><a href="#n-D" class="headerlink" title="n-D"></a>n-D</h2><p>$\theta\in\mathbb{R^{n+1}},$<br>$$J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})^2$$<br>for every $j$, let<br>$$\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1,…,\theta_n)=…=0$$<br>Solve for $\theta_0,\theta_1,…,\theta_n$.</p>
-<p>$$\mathbf\Theta_{(n+1)\times1}=(\mathbf X_{(n+1)\times m}^\top\mathbf X_{m\times(n+1)})^{-1}\mathbf X_{(n+1)\times m}^\top\mathbf y_{m\times1}$$</p>
-<p>for $m$ set of data examples, say $(x^{(1)},y^{(1)}),…,(x^{(m)},y^{(m)})$ and $n$ features,</p>
-<p>$$\mathbf{x^{(i)}}=<br>\begin{Bmatrix}<br>x_0^{(i)}\\<br>x_1^{(i)}\\<br>x_2^{(i)}\\<br>\vdots \\<br>x_n^{(i)}\\<br>\end{Bmatrix}_{(n+1)\times1}<br>\in\mathbb{R^{n+1}}$$</p>
-<p>Design matrix $\mathbf{X}$:</p>
-<p>$$<br>\mathbf{X}=<br>\begin{bmatrix}<br>\mathbf{(x^{(1)})^\top} \\<br>\mathbf{(x^{(2)})^\top} \\<br>\mathbf{(x^{(3)})^\top} \\<br>\vdots \\<br>\mathbf{(x^{(m)})^\top} \\<br>\end{bmatrix}_{m\times(n+1)}<br>$$</p>
-
-          
+          <h1 id="Normal-equation"><a href="#Normal-equation" class="headerlink" title="Normal equation"></a>Normal equation</h1><p>Method to solve for $\theta$ analytically.</p>
+<h2 id="1-D"><a href="#1-D" class="headerlink" title="1-D"></a>1-D</h2><p>$\theta\in\mathbb{R},$<br>$$J(\theta)=a\theta^2+b\theta+c$$<br>Let<br>$$\frac{d}{d\theta}J(\theta)=0$$<br>Slove $\theta$.<br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/25/MLOfNormalEquation/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1349,147 +1469,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/DevelopingiOS11WithSwiftOfStanfordCourse/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Shuhan Yu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/smallSHY.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SHY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/25/DevelopingiOS11WithSwiftOfStanfordCourse/" itemprop="url">
-                  Developing iOS 11 Apps with Swift (Stanford CS193P)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-05-25T13:28:55-07:00">
-                2018-05-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h1><ul>
-<li>Model<ul>
-<li>Never communicate with View.</li>
-<li>Send message to controller by notification center or KVO.</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>View<ul>
-<li>Never communicate with Model.</li>
-<li>Send message to controller by user action(ie IBAction), delegate or data source methods(ie asking for new data when tableview scrolling).</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>Controller</p>
-<ul>
-<li>Can access model directly to get data, and control view to update in specfic way directly, too.</li>
-<li>Model / view use indirect ways to send messages to controller as previous mentioned.</li>
-</ul></li></ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/25/DevelopingiOS11WithSwiftOfStanfordCourse/#more" rel="contents">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1539,7 +1518,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -1550,7 +1529,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-count">60</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

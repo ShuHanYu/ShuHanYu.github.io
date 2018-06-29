@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ML,CS229,gradient descent,normal equation,feature scaling," />
+  <meta name="keywords" content="ML,CS229,gradient descent,feature scaling,normal equation,design matrix," />
 
 
 
@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="SHY">
 <meta property="og:description" content="Normal equationMethod to solve for $\theta$ analytically.
 1-D$\theta\in\mathbb{R},$$$J(\theta)=a\theta^2+b\theta+c$$Let$$\frac{d}{d\theta}J(\theta)=0$$Slove $\theta$.">
-<meta property="og:updated_time" content="2018-06-27T07:12:24.216Z">
+<meta property="og:updated_time" content="2018-06-29T22:51:19.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Normal Equation(CS229)">
 <meta name="twitter:description" content="Normal equationMethod to solve for $\theta$ analytically.
@@ -328,8 +328,7 @@
 <h2 id="1-D"><a href="#1-D" class="headerlink" title="1-D"></a>1-D</h2><p>$\theta\in\mathbb{R},$<br>$$J(\theta)=a\theta^2+b\theta+c$$<br>Let<br>$$\frac{d}{d\theta}J(\theta)=0$$<br>Slove $\theta$.<br><a id="more"></a></p>
 <h2 id="n-D"><a href="#n-D" class="headerlink" title="n-D"></a>n-D</h2><p>$\theta\in\mathbb{R^{n+1}},$<br>$$J(\theta_0,\theta_1,…,\theta_n)=\frac{1}{2m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})^2$$<br>for every $j$, let<br>$$\frac{\partial}{\partial\theta_j}J(\theta_0,\theta_1,…,\theta_n)=…=0$$<br>Solve for $\theta_0,\theta_1,…,\theta_n$.</p>
 <p>$$\mathbf\Theta_{(n+1)\times1}=(\mathbf X_{(n+1)\times m}^\top\mathbf X_{m\times(n+1)})^{-1}\mathbf X_{(n+1)\times m}^\top\mathbf y_{m\times1}$$</p>
-<p>for $m$ set of data examples, say $(x^{(1)},y^{(1)}),…,(x^{(m)},y^{(m)})$ and $n$ features,</p>
-<p>$$\mathbf{x^{(i)}}=<br>\begin{Bmatrix}<br>x_0^{(i)}\\<br>x_1^{(i)}\\<br>x_2^{(i)}\\<br>\vdots \\<br>x_n^{(i)}\\<br>\end{Bmatrix}_{(n+1)\times1}<br>\in\mathbb{R^{n+1}}$$</p>
+<h3 id="for-m-set-of-data-examples-say-x-1-y-1-…-x-m-y-m-and-n-features"><a href="#for-m-set-of-data-examples-say-x-1-y-1-…-x-m-y-m-and-n-features" class="headerlink" title="for $m$ set of data examples, say $(x^{(1)},y^{(1)}),…,(x^{(m)},y^{(m)})$ and $n$ features,"></a>for $m$ set of data examples, say $(x^{(1)},y^{(1)}),…,(x^{(m)},y^{(m)})$ and $n$ features,</h3><p>$$\mathbf{x^{(i)}}=<br>\begin{Bmatrix}<br>x_0^{(i)}\\<br>x_1^{(i)}\\<br>x_2^{(i)}\\<br>\vdots \\<br>x_n^{(i)}\\<br>\end{Bmatrix}_{(n+1)\times1}<br>\in\mathbb{R^{n+1}}$$</p>
 <p>Design matrix $\mathbf{X}$:</p>
 <p>$$<br>\mathbf{X}=<br>\begin{bmatrix}<br>\mathbf{(x^{(1)})^\top} \\<br>\mathbf{(x^{(2)})^\top} \\<br>\mathbf{(x^{(3)})^\top} \\<br>\vdots \\<br>\mathbf{(x^{(m)})^\top} \\<br>\end{bmatrix}_{m\times(n+1)}<br>$$</p>
 <h1 id="Gradient-descent-vs-Normal-equation"><a href="#Gradient-descent-vs-Normal-equation" class="headerlink" title="Gradient descent vs Normal equation"></a>Gradient descent vs Normal equation</h1><ul>
@@ -369,9 +368,11 @@
           
             <a href="/tags/gradient-descent/" rel="tag"># gradient descent</a>
           
+            <a href="/tags/feature-scaling/" rel="tag"># feature scaling</a>
+          
             <a href="/tags/normal-equation/" rel="tag"># normal equation</a>
           
-            <a href="/tags/feature-scaling/" rel="tag"># feature scaling</a>
+            <a href="/tags/design-matrix/" rel="tag"># design matrix</a>
           
         </div>
       
@@ -479,7 +480,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">60</span>
+                <span class="site-state-item-count">66</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -514,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Normal-equation"><span class="nav-number">1.</span> <span class="nav-text">Normal equation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-D"><span class="nav-number">1.1.</span> <span class="nav-text">1-D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-D"><span class="nav-number">1.2.</span> <span class="nav-text">n-D</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradient-descent-vs-Normal-equation"><span class="nav-number">2.</span> <span class="nav-text">Gradient descent vs Normal equation</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Normal-equation"><span class="nav-number">1.</span> <span class="nav-text">Normal equation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-D"><span class="nav-number">1.1.</span> <span class="nav-text">1-D</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-D"><span class="nav-number">1.2.</span> <span class="nav-text">n-D</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for-m-set-of-data-examples-say-x-1-y-1-…-x-m-y-m-and-n-features"><span class="nav-number">1.2.1.</span> <span class="nav-text">for $m$ set of data examples, say $(x^{(1)},y^{(1)}),…,(x^{(m)},y^{(m)})$ and $n$ features,</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradient-descent-vs-Normal-equation"><span class="nav-number">2.</span> <span class="nav-text">Gradient descent vs Normal equation</span></a></li></ol></div>
             
 
           </div>

@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="References,MarkDown,Hexo," />
+  <meta name="keywords" content="ML,CS229,gradient descent,normal equation,vectorization," />
 
 
 
@@ -87,25 +87,16 @@
 
 
 
-<meta name="description" content="MarkDown syntax of GitBook
-Hexo Writing documentation
-使用Hexo和GitHub Pages搭建免费独立博客
-hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）">
+<meta name="description" content="VectorizatonNormal equation$$h_\theta(x)=\sum_{j=0}^n\theta_jx_j\tag{1}$$$$=\mathbf{\theta^\top x}\tag{2}$$">
 <meta property="og:type" content="article">
-<meta property="og:title" content="References">
-<meta property="og:url" content="http://yoursite.com/2017/02/24/References/index.html">
+<meta property="og:title" content="Tips in programming (CS229)">
+<meta property="og:url" content="http://yoursite.com/2018/06/29/MLofTipsInProgramming/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="MarkDown syntax of GitBook
-Hexo Writing documentation
-使用Hexo和GitHub Pages搭建免费独立博客
-hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）">
-<meta property="og:updated_time" content="2017-02-26T05:58:32.000Z">
+<meta property="og:description" content="VectorizatonNormal equation$$h_\theta(x)=\sum_{j=0}^n\theta_jx_j\tag{1}$$$$=\mathbf{\theta^\top x}\tag{2}$$">
+<meta property="og:updated_time" content="2018-06-30T00:09:10.082Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="References">
-<meta name="twitter:description" content="MarkDown syntax of GitBook
-Hexo Writing documentation
-使用Hexo和GitHub Pages搭建免费独立博客
-hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）">
+<meta name="twitter:title" content="Tips in programming (CS229)">
+<meta name="twitter:description" content="VectorizatonNormal equation$$h_\theta(x)=\sum_{j=0}^n\theta_jx_j\tag{1}$$$$=\mathbf{\theta^\top x}\tag{2}$$">
 
 
 
@@ -133,13 +124,13 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/24/References/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/29/MLofTipsInProgramming/"/>
 
 
 
 
 
-  <title> References | SHY </title>
+  <title> Tips in programming (CS229) | SHY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -258,7 +249,7 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/24/References/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/29/MLofTipsInProgramming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shuhan Yu">
@@ -279,7 +270,7 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
             
             
               
-                References
+                Tips in programming (CS229)
               
             
           </h1>
@@ -294,8 +285,8 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-02-24T23:22:46-08:00">
-                2017-02-24
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-06-29T15:57:46-07:00">
+                2018-06-29
               </time>
             
 
@@ -330,12 +321,29 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
       
 
       
-        <ul>
-<li><a href="https://wastemobile.gitbooks.io/gitbook-chinese/content/format/markdown.html" target="_blank" rel="external">MarkDown syntax of GitBook</a></li>
-<li><a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Hexo Writing documentation</a></li>
-<li><a href="https://sylujia.github.io/2016/09/11/使用Hexo和GitHub-Pages搭建免费独立博客/#more" target="_blank" rel="external">使用Hexo和GitHub Pages搭建免费独立博客</a></li>
-<li><a href="http://www.jianshu.com/p/a52b68794a6b" target="_blank" rel="external">hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜索）</a></li>
-</ul>
+        <h1 id="Vectorizaton"><a href="#Vectorizaton" class="headerlink" title="Vectorizaton"></a>Vectorizaton</h1><h2 id="Normal-equation"><a href="#Normal-equation" class="headerlink" title="Normal equation"></a>Normal equation</h2><p>$$h_\theta(x)=\sum_{j=0}^n\theta_jx_j\tag{1}$$<br>$$=\mathbf{\theta^\top x}\tag{2}$$</p>
+<a id="more"></a>
+<p>where</p>
+<p>$$\mathbf{\theta}=<br>\begin{Bmatrix}<br>\theta_0\\<br>\theta_1\\<br>\theta_2<br>\end{Bmatrix}<br>$$</p>
+<p>$$\mathbf{x}=<br>\begin{Bmatrix}<br>x_0\\<br>x_1\\<br>x_2<br>\end{Bmatrix}<br>$$</p>
+<p>With unvectorized eqution $(1)$, we implement $h_\theta(x)$ as:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">prediction = 0.0;</div><div class="line">for j = 1: (n+1)</div><div class="line">    prediction = prediction + theta(j) * x(j)</div><div class="line">end;</div></pre></td></tr></table></figure>
+<p>To simply our implementation and without using for loop, the vectorized equation $(2)$ can be rewrite to:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prediction = theta&apos; * x;</div></pre></td></tr></table></figure>
+<p>theta’ stands for the transpose matrix of theta matrix.</p>
+<h3 id="C-example"><a href="#C-example" class="headerlink" title="C++ example"></a>C++ example</h3><h4 id="Unvectorized-implementation"><a href="#Unvectorized-implementation" class="headerlink" title="Unvectorized implementation"></a>Unvectorized implementation</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">double</span> prediction = <span class="number">0.0</span>;</div><div class="line"><span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; n; j++)</div><div class="line">  prediction += theta[j] * x[j];</div></pre></td></tr></table></figure>
+<h4 id="Vectorized-implementation"><a href="#Vectorized-implementation" class="headerlink" title="Vectorized implementation"></a>Vectorized implementation</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">double</span> prediction = theta.transpose() * x;</div></pre></td></tr></table></figure>
+<h2 id="Gradient-descendent"><a href="#Gradient-descendent" class="headerlink" title="Gradient descendent"></a>Gradient descendent</h2><p><a href="https://www.shuhanyu.com/2018/06/08/GradientDescent4LinearRegression/" target="_blank" rel="external">Gradient descent</a> equations for $n=2$:</p>
+<p>$$\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})*x_0^{(i)}$$<br>$$\theta_1:=\theta_1-\alpha\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})*x_1^{(i)}$$<br>$$\theta_2:=\theta_2-\alpha\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})*x_2^{(i)}$$</p>
+<h3 id="Vectorized-implementation-1"><a href="#Vectorized-implementation-1" class="headerlink" title="Vectorized implementation"></a>Vectorized implementation</h3><p>We can simplify the equations above to:</p>
+<p>$$\theta:=\theta-\alpha\delta$$</p>
+<p>Where</p>
+<p>$$\delta_j=\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)})-y^{(i)})*x_j^{(i)}$$</p>
+<p>$$\mathbf{\delta}=<br>\begin{Bmatrix}<br>\delta_0\\<br>\delta_1\\<br>\delta_2<br>\end{Bmatrix}$$</p>
+<p>$$\mathbf{x^{(i)}}=<br>\begin{Bmatrix}<br>x_0^{(i)}\\<br>x_1^{(i)}\\<br>x_2^{(i)}<br>\end{Bmatrix}$$</p>
+<p>$h_\theta$ and $x^{(i)}$ are vectors, $h_\theta*x^{(i)}$ turns out to be a scalar.</p>
+<p>$(h_\theta x^{(i)}-y^{(i)})*x_j^{(i)}$ is a vector.</p>
+<p>Using vectorization skill is much more efficient than for loop while there are many features for us to consider.</p>
 
       
     </div>
@@ -359,11 +367,15 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
       
         <div class="post-tags">
           
-            <a href="/tags/References/" rel="tag"># References</a>
+            <a href="/tags/ML/" rel="tag"># ML</a>
           
-            <a href="/tags/MarkDown/" rel="tag"># MarkDown</a>
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
           
-            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+            <a href="/tags/gradient-descent/" rel="tag"># gradient descent</a>
+          
+            <a href="/tags/normal-equation/" rel="tag"># normal equation</a>
+          
+            <a href="/tags/vectorization/" rel="tag"># vectorization</a>
           
         </div>
       
@@ -376,15 +388,15 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/06/27/MLOfNormalEquationAndNonInvertibility/" rel="next" title="Normal Equation and non-invertibility(CS229)">
+                <i class="fa fa-chevron-left"></i> Normal Equation and non-invertibility(CS229)
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/25/build_framework_in_Xcode/" rel="prev" title="Build iOS framework with Xcode">
-                Build iOS framework with Xcode <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -431,8 +443,17 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/smallSHY.jpg"
@@ -483,6 +504,22 @@ hexo创建个人博客（附加插入音乐、分享、评论、标签页、搜�
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vectorizaton"><span class="nav-number">1.</span> <span class="nav-text">Vectorizaton</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Normal-equation"><span class="nav-number">1.1.</span> <span class="nav-text">Normal equation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-example"><span class="nav-number">1.1.1.</span> <span class="nav-text">C++ example</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Unvectorized-implementation"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Unvectorized implementation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vectorized-implementation"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Vectorized implementation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient-descendent"><span class="nav-number">1.2.</span> <span class="nav-text">Gradient descendent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vectorized-implementation-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Vectorized implementation</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

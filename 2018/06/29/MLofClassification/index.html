@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ML,CS229,classification," />
+  <meta name="keywords" content="ML,CS229,linear regression,classification,logistic regression," />
 
 
 
@@ -87,16 +87,25 @@
 
 
 
-<meta name="description" content="https://github.com/ShuHanYu">
+<meta name="description" content="Classification examples
+Email: spam (Y/N)?
+Online Transcations: fraudulant (Y/N)?
+Tumor: in pathology, is it malignant or benign?">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Classification (CS229)">
 <meta property="og:url" content="http://yoursite.com/2018/06/29/MLofClassification/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="https://github.com/ShuHanYu">
-<meta property="og:updated_time" content="2018-07-01T08:21:24.223Z">
+<meta property="og:description" content="Classification examples
+Email: spam (Y/N)?
+Online Transcations: fraudulant (Y/N)?
+Tumor: in pathology, is it malignant or benign?">
+<meta property="og:updated_time" content="2018-07-08T06:16:43.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Classification (CS229)">
-<meta name="twitter:description" content="https://github.com/ShuHanYu">
+<meta name="twitter:description" content="Classification examples
+Email: spam (Y/N)?
+Online Transcations: fraudulant (Y/N)?
+Tumor: in pathology, is it malignant or benign?">
 
 
 
@@ -321,7 +330,16 @@
       
 
       
-        
+        <h1 id="Classification-examples"><a href="#Classification-examples" class="headerlink" title="Classification examples"></a>Classification examples</h1><ul>
+<li>Email: spam (Y/N)?</li>
+<li>Online Transcations: fraudulant (Y/N)?</li>
+<li>Tumor: in pathology, is it malignant or benign?<a id="more"></a>
+</li>
+</ul>
+<p>$y\in\{0,1\}$</p>
+<p>$0$ implies abscense / negative class; $1$ implies exist / positive class.</p>
+<p>Linear regression’s output $h_{\theta}(x)$ can be larger than $1$ or smaller than $0$ even if all given data $y$ is in domain $[0,1]$. To get rid of this situation, we use logistic regression to make $0\le h_{\theta}(x)\le1$.</p>
+
       
     </div>
 
@@ -348,7 +366,11 @@
           
             <a href="/tags/CS229/" rel="tag"># CS229</a>
           
+            <a href="/tags/linear-regression/" rel="tag"># linear regression</a>
+          
             <a href="/tags/classification/" rel="tag"># classification</a>
+          
+            <a href="/tags/logistic-regression/" rel="tag"># logistic regression</a>
           
         </div>
       
@@ -420,8 +442,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/smallSHY.jpg"
@@ -436,7 +467,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -447,7 +478,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -472,6 +503,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Classification-examples"><span class="nav-number">1.</span> <span class="nav-text">Classification examples</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

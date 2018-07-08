@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ML,CS229,logistic regression,decision boundary,sigmoid function," />
 
 
 
@@ -87,15 +87,19 @@
 
 
 
-<meta name="description" content="https://github.com/ShuHanYu">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SHY">
-<meta property="og:url" content="http://yoursite.com/tags/singular-matrix/index.html">
+<meta name="description" content="Decision BoundaryAssume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and
+$$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=\begin{Bmatrix}-3 \\1 \\1 \\\end{Bmatri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Logistic Regression With Decision Boundary (CS229)">
+<meta property="og:url" content="http://yoursite.com/2018/07/08/MLofLogisticRegressionWithDecisionBoundary/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="https://github.com/ShuHanYu">
+<meta property="og:description" content="Decision BoundaryAssume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and
+$$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=\begin{Bmatrix}-3 \\1 \\1 \\\end{Bmatri">
+<meta property="og:updated_time" content="2018-07-08T21:36:36.209Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SHY">
-<meta name="twitter:description" content="https://github.com/ShuHanYu">
+<meta name="twitter:title" content="Logistic Regression With Decision Boundary (CS229)">
+<meta name="twitter:description" content="Decision BoundaryAssume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and
+$$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=\begin{Bmatrix}-3 \\1 \\1 \\\end{Bmatri">
 
 
 
@@ -123,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/singular-matrix/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/08/MLofLogisticRegressionWithDecisionBoundary/"/>
 
 
 
 
 
-  <title> 標籤: singular matrix | SHY </title>
+  <title> Logistic Regression With Decision Boundary (CS229) | SHY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -154,7 +158,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -238,46 +242,162 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        singular matrix
-        <small>標籤</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/08/MLofLogisticRegressionWithDecisionBoundary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shuhan Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SHY">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Logistic Regression With Decision Boundary (CS229)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-07-08T00:21:09-07:00">
+                2018-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="Decision-Boundary"><a href="#Decision-Boundary" class="headerlink" title="Decision Boundary"></a>Decision Boundary</h1><p>Assume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and</p>
+<p>$$\mathbf{\theta}=<br>\begin{Bmatrix}<br>\theta_0 \\<br>\theta_1 \\<br>\theta_2 \\<br>\end{Bmatrix}=<br>\begin{Bmatrix}<br>-3 \\<br>1 \\<br>1 \\<br>\end{Bmatrix}$$</p>
+<p>where $g(x)$ is <a href="https://www.shuhanyu.com/2018/07/07/MLofLogisticRegressionWithHypothesisRepresentation/#more" target="_blank" rel="external">sigmoid function</a> we had mentioned before. According to <a href="https://en.wikipedia.org/wiki/Sigmoid_function" target="_blank" rel="external">Wikipedia</a>, the sigmoid function’s domain are all real numbers, with return value monotonically increasing most often from 0 to 1.</p>
+<p>To predict $y=1$ (malignant tumor) ocurrancy, we set $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)\ge0.5$. It means that when the occurancy of malignant tumor is greater or equal to $50\%$, we tell the patients the tumor is predict to be malignant.</p>
+<p>For $h_{\theta}(x)\ge0.5$, we obtain $x\ge0$, in other words,<br>$$\theta_0+\theta_1x_1+\theta_2x_2=-3+1*\theta_1+1*\theta_2\ge0$$<br>Here comes<br>$$\theta_1+\theta_2\ge3\tag{1}$$<br><a id="more"></a></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2018/06/27/MLOfNormalEquationAndNonInvertibility/" itemprop="url">
-              
-                <span itemprop="name">Normal Equation and non-invertibility(CS229)</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-27T00:07:31-07:00"
-              content="2018-06-27" >
-          06-27
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ML/" rel="tag"># ML</a>
+          
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
+          
+            <a href="/tags/logistic-regression/" rel="tag"># logistic regression</a>
+          
+            <a href="/tags/decision-boundary/" rel="tag"># decision boundary</a>
+          
+            <a href="/tags/sigmoid-function/" rel="tag"># sigmoid function</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/07/MLofLogisticRegressionWithHypothesisRepresentation/" rel="next" title="Logistic Regression With Hypothesis Representation (CS229)">
+                <i class="fa fa-chevron-left"></i> Logistic Regression With Hypothesis Representation (CS229)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -285,6 +405,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -304,8 +428,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/smallSHY.jpg"
@@ -356,6 +489,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Decision-Boundary"><span class="nav-number">1.</span> <span class="nav-text">Decision Boundary</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -461,6 +610,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 

@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ML,CS229,logistic regression,decision boundary,sigmoid function," />
+  <meta name="keywords" content="ML,CS229,logistic regression,decision boundary,linear decision boundary,non-linear decision boundary,sigmoid function," />
 
 
 
@@ -87,19 +87,21 @@
 
 
 
-<meta name="description" content="Decision BoundaryAssume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and
-$$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=\begin{Bmatrix}-3 \\1 \\1 \\\end{Bmatri">
+<meta name="description" content="Linear Decision BoundaryAssume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and
+$$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=\begin{Bmatrix}-3 \\1 \\1 \\\end">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logistic Regression With Decision Boundary (CS229)">
 <meta property="og:url" content="http://yoursite.com/2018/07/08/MLofLogisticRegressionWithDecisionBoundary/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="Decision BoundaryAssume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and
-$$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=\begin{Bmatrix}-3 \\1 \\1 \\\end{Bmatri">
-<meta property="og:updated_time" content="2018-07-08T21:36:36.209Z">
+<meta property="og:description" content="Linear Decision BoundaryAssume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and
+$$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=\begin{Bmatrix}-3 \\1 \\1 \\\end">
+<meta property="og:image" content="http://yoursite.com/2018/07/08/MLofLogisticRegressionWithDecisionBoundary/DecisionBoundary.png">
+<meta property="og:updated_time" content="2018-07-09T04:58:05.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression With Decision Boundary (CS229)">
-<meta name="twitter:description" content="Decision BoundaryAssume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and
-$$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=\begin{Bmatrix}-3 \\1 \\1 \\\end{Bmatri">
+<meta name="twitter:description" content="Linear Decision BoundaryAssume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and
+$$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=\begin{Bmatrix}-3 \\1 \\1 \\\end">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/08/MLofLogisticRegressionWithDecisionBoundary/DecisionBoundary.png">
 
 
 
@@ -324,11 +326,18 @@ $$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=
       
 
       
-        <h1 id="Decision-Boundary"><a href="#Decision-Boundary" class="headerlink" title="Decision Boundary"></a>Decision Boundary</h1><p>Assume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and</p>
-<p>$$\mathbf{\theta}=<br>\begin{Bmatrix}<br>\theta_0 \\<br>\theta_1 \\<br>\theta_2 \\<br>\end{Bmatrix}=<br>\begin{Bmatrix}<br>-3 \\<br>1 \\<br>1 \\<br>\end{Bmatrix}$$</p>
-<p>where $g(x)$ is <a href="https://www.shuhanyu.com/2018/07/07/MLofLogisticRegressionWithHypothesisRepresentation/#more" target="_blank" rel="external">sigmoid function</a> we had mentioned before. According to <a href="https://en.wikipedia.org/wiki/Sigmoid_function" target="_blank" rel="external">Wikipedia</a>, the sigmoid function’s domain are all real numbers, with return value monotonically increasing most often from 0 to 1.</p>
+        <h1 id="Linear-Decision-Boundary"><a href="#Linear-Decision-Boundary" class="headerlink" title="Linear Decision Boundary"></a>Linear Decision Boundary</h1><p>Assume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and</p>
+<p>$$\mathbf{\theta}=<br>\begin{Bmatrix}<br>\theta_0 \\<br>\theta_1 \\<br>\theta_2 \\<br>\end{Bmatrix}=<br>\begin{Bmatrix}<br>-3 \\<br>1 \\<br>1 \\<br>\end{Bmatrix}$$<br><a id="more"></a><br>where $g(x)$ is <a href="https://www.shuhanyu.com/2018/07/07/MLofLogisticRegressionWithHypothesisRepresentation/#more" target="_blank" rel="external">sigmoid function</a> we had mentioned before. According to <a href="https://en.wikipedia.org/wiki/Sigmoid_function" target="_blank" rel="external">Wikipedia</a>, the sigmoid function’s domain are all real numbers, with return value monotonically increasing most often from 0 to 1.</p>
 <p>To predict $y=1$ (malignant tumor) ocurrancy, we set $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)\ge0.5$. It means that when the occurancy of malignant tumor is greater or equal to $50\%$, we tell the patients the tumor is predict to be malignant.</p>
-<p>For $h_{\theta}(x)\ge0.5$, we obtain $x\ge0$, in other words,<br>$$\theta_0+\theta_1x_1+\theta_2x_2=-3+1*\theta_1+1*\theta_2\ge0$$<br>Here comes<br>$$\theta_1+\theta_2\ge3\tag{1}$$<br><a id="more"></a></p>
+<p>For $h_{\theta}(x)\ge0.5$, we obtain $x\ge0$, in other words,<br>$$\theta_0+\theta_1x_1+\theta_2x_2=-3+1*\theta_1+1*\theta_2\ge0$$<br>Here comes<br>$$\theta_1+\theta_2\ge3\tag{1}$$</p>
+<p><img src="/2018/07/08/MLofLogisticRegressionWithDecisionBoundary/DecisionBoundary.png" alt=""></p>
+<p>We can classify input data as:</p>
+<p>$$x_1+x_2\lt3\Rightarrow h_{\theta}(x)\lt0.5\Rightarrow\text{benign}$$<br>$$x_1+x_2\ge3\Rightarrow h_{\theta}(x)\ge0.5\Rightarrow\text{malignant}$$</p>
+<h1 id="Non-linear-decision-boundaries"><a href="#Non-linear-decision-boundaries" class="headerlink" title="Non-linear decision boundaries"></a>Non-linear decision boundaries</h1><p>Assume<br>$$h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2+\theta_3x_1^2+\theta_4x_2^2)$$</p>
+<p>if<br>$$\mathbf{\theta}=<br>\begin{Bmatrix}<br>-1 \\<br>0 \\<br>0 \\<br>1 \\<br>1 \\<br>\end{Bmatrix}<br>$$</p>
+<p>we’ll predict $y=1$ if $-1+x_1^2+x_2^2\ge0$, i.e. $x_1^2+x_2^2\ge1$ is a circle decision boundary.</p>
+<p>Decision boundaries is a property of how we choose $\mathbf\theta$(i.e. hypothesis $h_{\theta}(x)$), NOT of the traning data set. The training data set is not what we use to define the decision boundary, they may be used to fit the parameters theta.</p>
+<h2 id="How-about-the-more-complicate-case…"><a href="#How-about-the-more-complicate-case…" class="headerlink" title="How about the more complicate case…"></a>How about the more complicate case…</h2><p>$$h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2+\theta_3x_1^2+\theta_4x_1^2x_2+\theta_5x_1^2x_2^2+\theta_6x_1^3x_2+…)$$</p>
 
       
     </div>
@@ -359,6 +368,10 @@ $$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=
             <a href="/tags/logistic-regression/" rel="tag"># logistic regression</a>
           
             <a href="/tags/decision-boundary/" rel="tag"># decision boundary</a>
+          
+            <a href="/tags/linear-decision-boundary/" rel="tag"># linear decision boundary</a>
+          
+            <a href="/tags/non-linear-decision-boundary/" rel="tag"># non-linear decision boundary</a>
           
             <a href="/tags/sigmoid-function/" rel="tag"># sigmoid function</a>
           
@@ -464,7 +477,7 @@ $$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">71</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -499,7 +512,7 @@ $$\mathbf{\theta}=\begin{Bmatrix}\theta_0 \\\theta_1 \\\theta_2 \\\end{Bmatrix}=
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Decision-Boundary"><span class="nav-number">1.</span> <span class="nav-text">Decision Boundary</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linear-Decision-Boundary"><span class="nav-number">1.</span> <span class="nav-text">Linear Decision Boundary</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Non-linear-decision-boundaries"><span class="nav-number">2.</span> <span class="nav-text">Non-linear decision boundaries</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#How-about-the-more-complicate-case…"><span class="nav-number">2.1.</span> <span class="nav-text">How about the more complicate case…</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -326,11 +326,8 @@
 
       
         
-          <h1 id="Decision-Boundary"><a href="#Decision-Boundary" class="headerlink" title="Decision Boundary"></a>Decision Boundary</h1><p>Assume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and</p>
-<p>$$\mathbf{\theta}=<br>\begin{Bmatrix}<br>\theta_0 \\<br>\theta_1 \\<br>\theta_2 \\<br>\end{Bmatrix}=<br>\begin{Bmatrix}<br>-3 \\<br>1 \\<br>1 \\<br>\end{Bmatrix}$$</p>
-<p>where $g(x)$ is <a href="https://www.shuhanyu.com/2018/07/07/MLofLogisticRegressionWithHypothesisRepresentation/#more">sigmoid function</a> we had mentioned before. According to <a href="https://en.wikipedia.org/wiki/Sigmoid_function">Wikipedia</a>, the sigmoid function’s domain are all real numbers, with return value monotonically increasing most often from 0 to 1.</p>
-<p>To predict $y=1$ (malignant tumor) ocurrancy, we set $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)\ge0.5$. It means that when the occurancy of malignant tumor is greater or equal to $50\%$, we tell the patients the tumor is predict to be malignant.</p>
-<p>For $h_{\theta}(x)\ge0.5$, we obtain $x\ge0$, in other words,<br>$$\theta_0+\theta_1x_1+\theta_2x_2=-3+1*\theta_1+1*\theta_2\ge0$$<br>Here comes<br>$$\theta_1+\theta_2\ge3\tag{1}$$<br></p>
+          <h1 id="Linear-Decision-Boundary"><a href="#Linear-Decision-Boundary" class="headerlink" title="Linear Decision Boundary"></a>Linear Decision Boundary</h1><p>Assume $h_{\theta}(x)=g(\theta_0+\theta_1x_1+\theta_2x_2)$, and</p>
+<p>$$\mathbf{\theta}=<br>\begin{Bmatrix}<br>\theta_0 \\<br>\theta_1 \\<br>\theta_2 \\<br>\end{Bmatrix}=<br>\begin{Bmatrix}<br>-3 \\<br>1 \\<br>1 \\<br>\end{Bmatrix}$$<br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/08/MLofLogisticRegressionWithDecisionBoundary/#more" rel="contents">
@@ -1537,7 +1534,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">69</span>
+                <span class="site-state-item-count">71</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

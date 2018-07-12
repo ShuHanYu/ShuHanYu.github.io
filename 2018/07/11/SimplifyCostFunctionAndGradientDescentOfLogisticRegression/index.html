@@ -1,0 +1,718 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ML,CS229,gradient descent,cost function,logistic regression,maximum likelihood estimation,vectorize implementation," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="RecallRecall from the previous post, we know that 
+$$J(\theta)=\frac{1}{m}\sum_{i=1}^m\frac{1}{2}(h_{\theta}(x^{(i)})-y^{(i)})^2\\=\frac{1}{m}\sum_{i=1}^mCost(h_{\theta}(x^{(i)}),y^{(i)})$$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Simplify Cost Function and Gradient Descent of Logistic Regression (CS229)">
+<meta property="og:url" content="http://yoursite.com/2018/07/11/SimplifyCostFunctionAndGradientDescentOfLogisticRegression/index.html">
+<meta property="og:site_name" content="SHY">
+<meta property="og:description" content="RecallRecall from the previous post, we know that 
+$$J(\theta)=\frac{1}{m}\sum_{i=1}^m\frac{1}{2}(h_{\theta}(x^{(i)})-y^{(i)})^2\\=\frac{1}{m}\sum_{i=1}^mCost(h_{\theta}(x^{(i)}),y^{(i)})$$">
+<meta property="og:updated_time" content="2018-07-12T20:33:41.152Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simplify Cost Function and Gradient Descent of Logistic Regression (CS229)">
+<meta name="twitter:description" content="RecallRecall from the previous post, we know that 
+$$J(\theta)=\frac{1}{m}\sum_{i=1}^m\frac{1}{2}(h_{\theta}(x^{(i)})-y^{(i)})^2\\=\frac{1}{m}\sum_{i=1}^mCost(h_{\theta}(x^{(i)}),y^{(i)})$$">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/11/SimplifyCostFunctionAndGradientDescentOfLogisticRegression/"/>
+
+
+
+
+
+  <title> Simplify Cost Function and Gradient Descent of Logistic Regression (CS229) | SHY </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SHY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Marathon. Food. iOS Programming.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/11/SimplifyCostFunctionAndGradientDescentOfLogisticRegression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shuhan Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SHY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Simplify Cost Function and Gradient Descent of Logistic Regression (CS229)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-07-11T00:11:23-07:00">
+                2018-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Recall"><a href="#Recall" class="headerlink" title="Recall"></a>Recall</h1><p>Recall from the <a href="https://www.shuhanyu.com/2018/07/08/LogisticRegressionOfCostFunction/" target="_blank" rel="external">previous post</a>, we know that </p>
+<p>$$J(\theta)=\frac{1}{m}\sum_{i=1}^m\frac{1}{2}(h_{\theta}(x^{(i)})-y^{(i)})^2\\=\frac{1}{m}\sum_{i=1}^mCost(h_{\theta}(x^{(i)}),y^{(i)})$$<br><a id="more"></a></p>
+<p>Where cost function was define as</p>
+<p>$$<br>Cost(h_{\theta}(x),y)=<br>\begin{cases}<br>-\log(h_{\theta}(x)),\text{if $y=1$} \\<br>-\log(1-h_{\theta}(x)),\text{if $y=0$}<br>\end{cases} \tag{1}<br>$$</p>
+<p>Note that $y$’s value is always be either $0$ or $1$.</p>
+<h1 id="Combine-equations-1"><a href="#Combine-equations-1" class="headerlink" title="Combine equations $(1)$"></a>Combine equations $(1)$</h1><p>We obtain</p>
+<p>$$Cost(h_{\theta}(x),y)=-y\log(h_{\theta}(x))-(1-y)\log(1-h_{\theta}(x))\tag{2}$$</p>
+<p>$(2)$ is an equivalent equation of $(1)$, to verify, we subsititute $y=0$ and $y=1$ two cases into $(2)$:</p>
+<p>If $y=0$,<br>$$Cost(h_{\theta}(x),y)=-0*\log(h_{\theta}(x))-(1-0)\log(1-h_{\theta}(x)) \\<br>= -\log(1-h_{\theta}(x))$$</p>
+<p>If $y=1$,<br>$$Cost(h_{\theta}(x),y)=-1*\log(h_{\theta}(x))-(1-1)\log(1-h_{\theta}(x)) \\<br>= -\log(h_{\theta}(x))$$</p>
+<h1 id="Rewrite-Logistic-Regression-Cost-Function"><a href="#Rewrite-Logistic-Regression-Cost-Function" class="headerlink" title="Rewrite Logistic Regression Cost Function"></a>Rewrite Logistic Regression Cost Function</h1><p>$$J(\theta)=\frac{1}{m}\sum_{i=1}^mCost(h_{\theta}(x^{(i)},y^{(i)})) \\<br>=-\frac{1}{m}[\sum_{i=1}^my^{(i)}\log(h_{\theta}(x^{(i)})+(1-y^{(i)})\log(1-h_{\theta}(x^{(i)})))]\tag{3}$$</p>
+<p>For the reason why we choose this kind of cost function will not be derive in this class, it can be proof by statistics, using the principle of <a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation" target="_blank" rel="external">maximum likelihood estimation</a>. We can proof that the function which we select is efficiency and convex.</p>
+<h2 id="Fitting-parameters-theta-get-theta"><a href="#Fitting-parameters-theta-get-theta" class="headerlink" title="Fitting parameters \theta (get \theta)"></a>Fitting parameters \theta (get \theta)</h2><p>$$\min_{\theta}J(\theta)$$</p>
+<h2 id="Make-a-prediction-given-new-x"><a href="#Make-a-prediction-given-new-x" class="headerlink" title="Make a prediction given new $x$"></a>Make a prediction given new $x$</h2><p>Output<br>$$h_{\theta} = \frac{1}{1+e^{-\mathbf{\theta^\top x}}}$$</p>
+<h1 id="Gradient-descent"><a href="#Gradient-descent" class="headerlink" title="Gradient descent"></a>Gradient descent</h1><p>The way we’re going to minimize cost function is <a href="https://www.shuhanyu.com/2018/06/08/GradientDescent4LinearRegression/" target="_blank" rel="external">gradient descent</a>.</p>
+<p>Repeat to get $\min_{\theta}J(\theta)$:</p>
+<p>$$\theta_j:=\theta_j-\alpha\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})*x_j^{(i)}\tag{4}$$</p>
+<p>The algorithm $(4)$ above is identical to linear regression! There is only one thing different between linear regression and logistic regression is $h_{\theta}(x)$:</p>
+<p>For linear regression,</p>
+<p>$$h_{\theta}(x)=\mathbf{\theta^\top x}$$</p>
+<p>On the other hand, logistic regression</p>
+<p>$$h_{\theta}(x)=\frac{1}{1+e^{\mathbf{\theta^\top x}}}$$</p>
+<p>where</p>
+<p>$$\mathbf{\theta}=<br>\begin{Bmatrix}<br>\theta_0 \\<br>\theta_1 \\<br>\theta_2 \\<br>\vdots \\<br>\theta_n<br>\end{Bmatrix}$$</p>
+<p>Rather than for loop iteration, we prefer to use vectorize implementation.</p>
+<p>Vectorize implementation<br>$$\mathbf{\theta}:=\mathbf{\theta}-\alpha\sum_{i=1}^m[h_{\theta}(x^{(i)})-y^{(i)}*x^{(i)}]$$</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ML/" rel="tag"># ML</a>
+          
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
+          
+            <a href="/tags/gradient-descent/" rel="tag"># gradient descent</a>
+          
+            <a href="/tags/cost-function/" rel="tag"># cost function</a>
+          
+            <a href="/tags/logistic-regression/" rel="tag"># logistic regression</a>
+          
+            <a href="/tags/maximum-likelihood-estimation/" rel="tag"># maximum likelihood estimation</a>
+          
+            <a href="/tags/vectorize-implementation/" rel="tag"># vectorize implementation</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/08/LogisticRegressionOfCostFunction/" rel="next" title="Logistic Regression of Cost Function (CS229)">
+                <i class="fa fa-chevron-left"></i> Logistic Regression of Cost Function (CS229)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/smallSHY.jpg"
+               alt="Shuhan Yu" />
+          <p class="site-author-name" itemprop="name">Shuhan Yu</p>
+           
+              <p class="site-description motion-element" itemprop="description">https://github.com/ShuHanYu</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">75</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Recall"><span class="nav-number">1.</span> <span class="nav-text">Recall</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Combine-equations-1"><span class="nav-number">2.</span> <span class="nav-text">Combine equations $(1)$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Rewrite-Logistic-Regression-Cost-Function"><span class="nav-number">3.</span> <span class="nav-text">Rewrite Logistic Regression Cost Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fitting-parameters-theta-get-theta"><span class="nav-number">3.1.</span> <span class="nav-text">Fitting parameters \theta (get \theta)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Make-a-prediction-given-new-x"><span class="nav-number">3.2.</span> <span class="nav-text">Make a prediction given new $x$</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradient-descent"><span class="nav-number">4.</span> <span class="nav-text">Gradient descent</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shuhan Yu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

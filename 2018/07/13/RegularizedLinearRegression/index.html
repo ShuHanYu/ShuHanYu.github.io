@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="CS229,ML,Octave," />
+  <meta name="keywords" content="CS229,ML,gradient descent,normal equation,non-invertible,regularization,regualrized linear regression," />
 
 
 
@@ -87,25 +87,16 @@
 
 
 
-<meta name="description" content="DocumentationOctave GNU documentation
-File operationload &amp;lt;fileName&amp;gt; will load the data file.
-save &amp;lt;fileName&amp;gt; &amp;lt;variableName&amp;gt; -ASCII will save variable to the file as ASCII format.
-Che">
+<meta name="description" content="RecallFor linear regression, we’ve learned two learning algorithms, one based on gradient descent, and another one based on the normal equation.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Octave commands (CS229)">
-<meta property="og:url" content="http://yoursite.com/2018/07/02/OctaveOperation/index.html">
+<meta property="og:title" content="Regularized Linear Regression (CS229)">
+<meta property="og:url" content="http://yoursite.com/2018/07/13/RegularizedLinearRegression/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:description" content="DocumentationOctave GNU documentation
-File operationload &amp;lt;fileName&amp;gt; will load the data file.
-save &amp;lt;fileName&amp;gt; &amp;lt;variableName&amp;gt; -ASCII will save variable to the file as ASCII format.
-Che">
-<meta property="og:updated_time" content="2018-07-06T23:58:37.730Z">
+<meta property="og:description" content="RecallFor linear regression, we’ve learned two learning algorithms, one based on gradient descent, and another one based on the normal equation.">
+<meta property="og:updated_time" content="2018-07-13T23:25:45.819Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Octave commands (CS229)">
-<meta name="twitter:description" content="DocumentationOctave GNU documentation
-File operationload &amp;lt;fileName&amp;gt; will load the data file.
-save &amp;lt;fileName&amp;gt; &amp;lt;variableName&amp;gt; -ASCII will save variable to the file as ASCII format.
-Che">
+<meta name="twitter:title" content="Regularized Linear Regression (CS229)">
+<meta name="twitter:description" content="RecallFor linear regression, we’ve learned two learning algorithms, one based on gradient descent, and another one based on the normal equation.">
 
 
 
@@ -133,13 +124,13 @@ Che">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/02/OctaveOperation/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/13/RegularizedLinearRegression/"/>
 
 
 
 
 
-  <title> Octave commands (CS229) | SHY </title>
+  <title> Regularized Linear Regression (CS229) | SHY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -258,7 +249,7 @@ Che">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/02/OctaveOperation/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/13/RegularizedLinearRegression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Shuhan Yu">
@@ -279,7 +270,7 @@ Che">
             
             
               
-                Octave commands (CS229)
+                Regularized Linear Regression (CS229)
               
             
           </h1>
@@ -294,8 +285,8 @@ Che">
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-07-02T22:48:13-07:00">
-                2018-07-02
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-07-13T14:32:09-07:00">
+                2018-07-13
               </time>
             
 
@@ -330,43 +321,24 @@ Che">
       
 
       
-        <h1 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h1><p><a href="https://octave.org/doc/v4.2.1/index.html#SEC_Contents" target="_blank" rel="external">Octave GNU documentation</a></p>
-<h1 id="File-operation"><a href="#File-operation" class="headerlink" title="File operation"></a>File operation</h1><p><code>load &lt;fileName&gt;</code> will load the data file.</p>
-<p><code>save &lt;fileName&gt; &lt;variableName&gt; -ASCII</code> will save variable to the file as ASCII format.</p>
-<h1 id="Checking-for-virables"><a href="#Checking-for-virables" class="headerlink" title="Checking for virables"></a>Checking for virables</h1><p><code>who</code> command will list all variable names in the current scope, further more, <code>whos</code> command will list all variable details as a table with attribute name, variable size, bytes and data type.</p>
-<p><code>clear &lt;variableName&gt;</code> will release the attribute.</p>
-<p><code>size(varName)</code> shows the size of variable.<br><a id="more"></a></p>
-<h1 id="Data-type"><a href="#Data-type" class="headerlink" title="Data type"></a>Data type</h1><h2 id="Matrix"><a href="#Matrix" class="headerlink" title="Matrix"></a>Matrix</h2><ul>
-<li>Define<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">A = [1 2; 3 4; 5 6];</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>means<br>$$A=\begin{bmatrix}<br>1 &amp;&amp; 2 \\<br>3 &amp;&amp; 4 \\<br>5 &amp;&amp; 6<br>\end{bmatrix}_{3\times2}$$</p>
-<ul>
-<li>Abstract<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">B = A([1 3],:);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>$$B=\begin{bmatrix}<br>1 &amp;&amp; 2\\<br>5 &amp;&amp; 6<br>\end{bmatrix}$$</p>
-<p>Get the first and the third row for all columns from A matrix as B matrix.</p>
-<ul>
-<li><p>Diagonal matrix<br><code>eye(N)</code> is an $N\times N$ diagonal matrix.</p>
-</li>
-<li><p>Ones and Zeros<br><code>ones(m, n)</code> means a matrix of $m$ rows and $n$ columns with all elements equal to one, similarly, <code>zeros(m, n)</code> stands for a matrix of $m$ rows and $n$ columns with all elements equal to zero.</p>
-</li>
-<li><p>Transpose</p>
-</li>
-</ul>
-<p><code>A&#39;</code> is the transpose matrix of A matrix.</p>
-<h1 id="Draw"><a href="#Draw" class="headerlink" title="Draw"></a>Draw</h1><p><code>hist(var, N)</code> will draw a histagram with variable <code>var</code> an divide into N pieces.</p>
-<p><code>plot(x, y)</code> will draw a figure of (x,y) function.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">plot(x, y1);</div><div class="line">hold on;</div><div class="line">plot(x, y2, &apos;r&apos;);</div><div class="line">xlabel(&apos;x-axis name&apos;)</div><div class="line">ylabel(&apos;y-axis name&apos;)</div><div class="line">legend(&apos;y1&apos;, &apos;y2&apos;)</div><div class="line">title(&apos;figure name&apos;)</div><div class="line">print -dpng &apos;myPlot.png&apos;</div></pre></td></tr></table></figure>
-<p>The code above will draw y1 and y2(in red color) function together corresponding to x.</p>
-<p><code>print</code> will save the figure as a file.</p>
-<p><code>close</code> will close the figure.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">figure(1); plot(x, y1);</div><div class="line">figure(2); plot(x, y2);</div></pre></td></tr></table></figure>
-<p>The code above will plot the figures in two different figure with the given name.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">subplot(1, 2, 1); % Divides plot a 1x2 grid, and access the first element. Will only draw the axises.</div><div class="line">plot(x, y1); % Draw (x, y1) in the empty axises above</div><div class="line">axis([xBeginVal xEndVal yBeginVal yEndVal]); % Reset the axises range of the figure above.</div><div class="line">subplot(1, 2, 2); % Access the second element</div><div class="line">plot(x, y2);</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">D = magic(15);</div><div class="line">imagesc(D);</div><div class="line">imagesc(D), colorbar, colormap gray;</div></pre></td></tr></table></figure>
-<h1 id="Help"><a href="#Help" class="headerlink" title="Help"></a>Help</h1><p><code>help &lt;commandName&gt;</code> can check the command usage.</p>
+        <h1 id="Recall"><a href="#Recall" class="headerlink" title="Recall"></a>Recall</h1><p>For linear regression, we’ve learned two learning algorithms, one based on <a href="https://www.shuhanyu.com/2018/06/08/GradientDescent4LinearRegression/" target="_blank" rel="external">gradient descent</a>, and another one based on the <a href="https://www.shuhanyu.com/2018/06/25/MLOfNormalEquation/" target="_blank" rel="external">normal equation</a>.<br><a id="more"></a></p>
+<p>Now we’ll take those two algorithms and generalized them as a regularized linear regression.</p>
+<p>Refering from the <a href="https://www.shuhanyu.com/2018/07/13/RegularizationOfCostFunction/#more" target="_blank" rel="external">pervious post</a>, we know that</p>
+<p>$$J(\theta)=\frac{1}{2m}\left[\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})^2+\lambda\sum_{i=1}^n\theta_j^2\right]\tag{1}$$</p>
+<p>Our goal is to find $\theta$s which leads $J(\theta)$ reach to a minimum value.</p>
+<h1 id="Rewrite-Gradient-Descent"><a href="#Rewrite-Gradient-Descent" class="headerlink" title="Rewrite Gradient Descent"></a>Rewrite Gradient Descent</h1><h2 id="Original"><a href="#Original" class="headerlink" title="Original"></a>Original</h2><p>$$\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})$$<br>$$\theta_1:=\theta_1-\alpha\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})*x^{(i)}$$</p>
+<h2 id="Modify"><a href="#Modify" class="headerlink" title="Modify"></a>Modify</h2><p>$$\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})x_0^{(i)}\tag{2}$$<br>$$\theta_j:=\theta_j-\alpha\left[\frac{1}{m}\sum_{i=1}^m(h_{\theta}(x^{(i)})-y^{(i)})*x_j^{(i)}+\frac{\lambda}{m}\theta_j\right]\tag{3}$$</p>
+<p>We write the case of updating $\theta_0$ seperately as $(2)$, for we don’t penalize $\theta_0(j=0)$ in <a href="https://www.shuhanyu.com/2018/07/13/RegularizationOfCostFunction/" target="_blank" rel="external">regularized linear regression</a>, but penalized other $\theta_j(j=1,2,3,…,n)$.</p>
+<p>Note that the term in square brackets in $(3)$ is the result of $\frac{\partial}{\partial\theta_j}J(\theta)$, similarly, the corresponding term in $(2)$ is $\frac{\partial}{\partial\theta_0}J(\theta)$.</p>
+<p>Rewrite $(3)$ for $\theta_j$ term<br>$$\theta_j:=\theta_j\left(1-\alpha\frac{\lambda}{m}\right)-\alpha\frac{1}{m}\sum_{i=1}^m\left(h_{\theta}(x^{(i)})-y^{(i)}\right)x_j^{(i)}\tag{4}$$</p>
+<h1 id="Rewrite-Normal-Equation"><a href="#Rewrite-Normal-Equation" class="headerlink" title="Rewrite Normal Equation"></a>Rewrite Normal Equation</h1><p>$$<br>\mathbf{X}=<br>\begin{bmatrix}<br>\mathbf{(x^{(1)})^\top} \\<br>\mathbf{(x^{(2)})^\top} \\<br>\mathbf{(x^{(3)})^\top} \\<br>\vdots \\<br>\mathbf{(x^{(m)})^\top} \\<br>\end{bmatrix}_{m\times(n+1)}<br>$$</p>
+<p>$$\mathbf{y}=<br>\begin{Bmatrix}<br>y^{(1)}\\<br>y^{(2)}\\<br>y^{(3)}\\<br>\vdots \\<br>y^{(m)}\\<br>\end{Bmatrix}_{m\times1}<br>\in\mathbb{R^{m}}$$</p>
+<p>To solve $\mathbf{\theta}$ of the <a href="https://www.shuhanyu.com/2018/06/25/MLOfNormalEquation/" target="_blank" rel="external">normal equation</a>, let<br>$$\frac{\partial}{\partial\theta_j}J(\theta)=0$$</p>
+<p>then we obtain<br>$\mathbf\Theta=(\mathbf{X^\top}\mathbf{X})^{-1}\mathbf{X^\top}\mathbf{y}$</p>
+<p>For solving the regularized normal equation, we get<br>$$\mathbf\Theta=\left(\mathbf{X^\top}\mathbf{X}+\lambda<br>\begin{bmatrix}<br>0 &amp; 0 &amp; \cdots &amp; 0 \\<br>0 &amp; 1 &amp; \cdots &amp; 0 \\<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\<br>0 &amp; 0 &amp; \cdots &amp; 1 \\<br>\end{bmatrix}_{(n+1)\times{(n+1)}}\right)^{-1}\mathbf{X^\top}\mathbf{y}\tag{5}$$</p>
+<h2 id="Non-invertibility-issue"><a href="#Non-invertibility-issue" class="headerlink" title="Non-invertibility issue"></a>Non-invertibility issue</h2><h3 id="Suppose-m-le-n"><a href="#Suppose-m-le-n" class="headerlink" title="Suppose $m\le n$"></a>Suppose $m\le n$</h3><p>For those who’s numbers of examples less than or equal to the numbrs of features,<br>$\mathbf\Theta=(\mathbf{X^\top}\mathbf{X})^{-1}\mathbf{X^\top}\mathbf{y}$</p>
+<p>The $(\mathbf{X^\top}\mathbf{X})^{-1}$ term will be a singular term.</p>
+<p>If $\lambda\gt0$,<br>$$\mathbf\Theta=\left(\mathbf{X^\top}\mathbf{X}+\lambda<br>\begin{bmatrix}<br>0 &amp; 0 &amp; \cdots &amp; 0 \\<br>0 &amp; 1 &amp; \cdots &amp; 0 \\<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\<br>0 &amp; 0 &amp; \cdots &amp; 1 \\<br>\end{bmatrix}_{(n+1)\times{(n+1)}}\right)^{-1}\mathbf{X^\top}\mathbf{y}$$</p>
 
       
     </div>
@@ -394,7 +366,15 @@ Che">
           
             <a href="/tags/ML/" rel="tag"># ML</a>
           
-            <a href="/tags/Octave/" rel="tag"># Octave</a>
+            <a href="/tags/gradient-descent/" rel="tag"># gradient descent</a>
+          
+            <a href="/tags/normal-equation/" rel="tag"># normal equation</a>
+          
+            <a href="/tags/non-invertible/" rel="tag"># non-invertible</a>
+          
+            <a href="/tags/regularization/" rel="tag"># regularization</a>
+          
+            <a href="/tags/regualrized-linear-regression/" rel="tag"># regualrized linear regression</a>
           
         </div>
       
@@ -407,8 +387,8 @@ Che">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/29/MLofClassification/" rel="next" title="Classification (CS229)">
-                <i class="fa fa-chevron-left"></i> Classification (CS229)
+              <a href="/2018/07/13/RegularizationOfCostFunction/" rel="next" title="Regularization of Cost Function (CS229)">
+                <i class="fa fa-chevron-left"></i> Regularization of Cost Function (CS229)
               </a>
             
           </div>
@@ -416,10 +396,6 @@ Che">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/07/MLofLogisticRegressionWithHypothesisRepresentation/" rel="prev" title="Logistic Regression With Hypothesis Representation (CS229)">
-                Logistic Regression With Hypothesis Representation (CS229) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -537,7 +513,7 @@ Che">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Documentation"><span class="nav-number">1.</span> <span class="nav-text">Documentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#File-operation"><span class="nav-number">2.</span> <span class="nav-text">File operation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Checking-for-virables"><span class="nav-number">3.</span> <span class="nav-text">Checking for virables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-type"><span class="nav-number">4.</span> <span class="nav-text">Data type</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Matrix"><span class="nav-number">4.1.</span> <span class="nav-text">Matrix</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Draw"><span class="nav-number">5.</span> <span class="nav-text">Draw</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Help"><span class="nav-number">6.</span> <span class="nav-text">Help</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Recall"><span class="nav-number">1.</span> <span class="nav-text">Recall</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Rewrite-Gradient-Descent"><span class="nav-number">2.</span> <span class="nav-text">Rewrite Gradient Descent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Original"><span class="nav-number">2.1.</span> <span class="nav-text">Original</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Modify"><span class="nav-number">2.2.</span> <span class="nav-text">Modify</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Rewrite-Normal-Equation"><span class="nav-number">3.</span> <span class="nav-text">Rewrite Normal Equation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-invertibility-issue"><span class="nav-number">3.1.</span> <span class="nav-text">Non-invertibility issue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Suppose-m-le-n"><span class="nav-number">3.1.1.</span> <span class="nav-text">Suppose $m\le n$</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

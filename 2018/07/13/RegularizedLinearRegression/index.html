@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/07/13/RegularizedLinearRegression/index.html">
 <meta property="og:site_name" content="SHY">
 <meta property="og:description" content="RecallFor linear regression, we’ve learned two learning algorithms, one based on gradient descent, and another one based on the normal equation.">
-<meta property="og:updated_time" content="2018-07-13T23:25:45.819Z">
+<meta property="og:updated_time" content="2018-07-13T23:30:51.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regularized Linear Regression (CS229)">
 <meta name="twitter:description" content="RecallFor linear regression, we’ve learned two learning algorithms, one based on gradient descent, and another one based on the normal equation.">
@@ -339,6 +339,7 @@
 <h2 id="Non-invertibility-issue"><a href="#Non-invertibility-issue" class="headerlink" title="Non-invertibility issue"></a>Non-invertibility issue</h2><h3 id="Suppose-m-le-n"><a href="#Suppose-m-le-n" class="headerlink" title="Suppose $m\le n$"></a>Suppose $m\le n$</h3><p>For those who’s numbers of examples less than or equal to the numbrs of features,<br>$\mathbf\Theta=(\mathbf{X^\top}\mathbf{X})^{-1}\mathbf{X^\top}\mathbf{y}$</p>
 <p>The $(\mathbf{X^\top}\mathbf{X})^{-1}$ term will be a singular term.</p>
 <p>If $\lambda\gt0$,<br>$$\mathbf\Theta=\left(\mathbf{X^\top}\mathbf{X}+\lambda<br>\begin{bmatrix}<br>0 &amp; 0 &amp; \cdots &amp; 0 \\<br>0 &amp; 1 &amp; \cdots &amp; 0 \\<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\<br>0 &amp; 0 &amp; \cdots &amp; 1 \\<br>\end{bmatrix}_{(n+1)\times{(n+1)}}\right)^{-1}\mathbf{X^\top}\mathbf{y}$$</p>
+<p>The inverse term is invertable now.</p>
 
       
     </div>
@@ -396,6 +397,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/13/RegularizedLogisticRegression/" rel="prev" title="Regularized Logistic Regression (CS229)">
+                Regularized Logistic Regression (CS229) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -467,7 +472,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -478,7 +483,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">89</span>
+                <span class="site-state-item-count">91</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>

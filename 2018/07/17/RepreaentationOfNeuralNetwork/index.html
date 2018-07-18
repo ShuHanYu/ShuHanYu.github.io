@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="CS229,ML,representation,neural network,non-linear hypothesis," />
+  <meta name="keywords" content="CS229,ML,hypothesis equation,sigmoid function,neural network,non-linear hypothesis,model representation,activation function,weight,forward propagation," />
 
 
 
@@ -87,13 +87,18 @@
 
 
 
+<meta name="description" content="OriginsAlgorithms that try to mimic the brain.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RepreaentationOfNeuralNetwork">
+<meta property="og:title" content="Neural Network (CS229)">
 <meta property="og:url" content="http://yoursite.com/2018/07/17/RepreaentationOfNeuralNetwork/index.html">
 <meta property="og:site_name" content="SHY">
-<meta property="og:updated_time" content="2018-07-18T04:25:09.092Z">
+<meta property="og:description" content="OriginsAlgorithms that try to mimic the brain.">
+<meta property="og:image" content="http://yoursite.com/2018/07/17/RepreaentationOfNeuralNetwork/neuralNetworkNotation.png">
+<meta property="og:updated_time" content="2018-07-18T07:24:15.512Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RepreaentationOfNeuralNetwork">
+<meta name="twitter:title" content="Neural Network (CS229)">
+<meta name="twitter:description" content="OriginsAlgorithms that try to mimic the brain.">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/17/RepreaentationOfNeuralNetwork/neuralNetworkNotation.png">
 
 
 
@@ -127,7 +132,7 @@
 
 
 
-  <title> RepreaentationOfNeuralNetwork | SHY </title>
+  <title> Neural Network (CS229) | SHY </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
@@ -267,7 +272,7 @@
             
             
               
-                RepreaentationOfNeuralNetwork
+                Neural Network (CS229)
               
             
           </h1>
@@ -318,7 +323,25 @@
       
 
       
-        <a id="more"></a>
+        <h1 id="Origins"><a href="#Origins" class="headerlink" title="Origins"></a>Origins</h1><p>Algorithms that try to mimic the brain.<br><a id="more"></a></p>
+<p>We usually call <a href="https://www.shuhanyu.com/2018/07/07/MLofLogisticRegressionWithHypothesisRepresentation/" target="_blank" rel="external">sigmoid function</a> as activation function and $\theta$ parameters as weight(s) in neural network algorithm.</p>
+<h1 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h1><p>$a_i^{(j)}$ is the activation of unit $i$ in layer $j$, $\mathbf{\Theta}^{(j)}$ means the matrix of weights controlling function mapping from layer $j$ to layer $j+1$.</p>
+<p><img src="/2018/07/17/RepreaentationOfNeuralNetwork/neuralNetworkNotation.png" alt=""><br>(Slide source: <a href="https://www.coursera.org/learn/machine-learning/" target="_blank" rel="external">https://www.coursera.org/learn/machine-learning/</a>)</p>
+<p>where $g(z)$ is signoid function.</p>
+<p>$x_1,x_1,x_3$ called input layer, $a_1^{(3)}$ called output layer, and the layers between input layer and output layer called hidden layer.</p>
+<h1 id="Vectorized-implementation-of-Forward-propagation"><a href="#Vectorized-implementation-of-Forward-propagation" class="headerlink" title="Vectorized implementation of Forward propagation"></a>Vectorized implementation of Forward propagation</h1><h2 id="Simplify-equation"><a href="#Simplify-equation" class="headerlink" title="Simplify equation"></a>Simplify equation</h2><p>for the equation in the figure above, we let<br>$$\Theta_{10}^{(1)}x_0+\Theta_{11}^{(1)}x_1+\Theta_{12}^{(1)}x_2+\Theta_{13}^{(1)}x_3=z_1^{(2)}$$<br>$$\Theta_{20}^{(1)}x_0+\Theta_{21}^{(1)}x_1+\Theta_{22}^{(1)}x_2+\Theta_{23}^{(1)}x_3=z_2^{(2)}$$<br>$$\Theta_{30}^{(1)}x_0+\Theta_{31}^{(1)}x_1+\Theta_{32}^{(1)}x_2+\Theta_{33}^{(1)}x_3=z_3^{(2)}$$</p>
+<p>So the equation can be simplify to</p>
+<p>$$a_1^{(2)}=g\left(z_1^{(2)}\right)$$<br>$$a_2^{(2)}=g\left(z_2^{(2)}\right)$$<br>$$a_3^{(2)}=g\left(z_3^{(2)}\right)$$</p>
+<p>$$h_{\Theta}(x)=g\left(z_1^{(2)}\right)$$</p>
+<h2 id="Vectorize"><a href="#Vectorize" class="headerlink" title="Vectorize"></a>Vectorize</h2><p>$$\mathbf{x}=<br>\begin{Bmatrix}<br>x_0 \\<br>x_1 \\<br>x_2 \\<br>x_3<br>\end{Bmatrix}$$</p>
+<p>$$\mathbf{z}^{(2)}=<br>\begin{Bmatrix}<br>z_1^{(2)} \\<br>z_2^{(2)} \\<br>z_3^{(2)} \\<br>\end{Bmatrix}<br>$$</p>
+<p>$$\mathbf{z}^{(2)}=\mathbf{\Theta}^{(1)}x\tag{1}$$<br>$$\mathbf{a}^{(2)}=g\left(\mathbf{z}^{(2)}\right)$$</p>
+<p>Note that $\mathbf{a}^{(2)}$ and $\mathbf{z}^{(2)}$ here where both three-dimension matrix.</p>
+<p>If we take<br>$$\mathbf{a}^{(1)}=\mathbf{x}$$</p>
+<p>$(1)$ can rewrite into</p>
+<p>$$\mathbf{z}^{(2)}=\mathbf{\Theta}^{(1)}\mathbf{a}^{(1)}$$</p>
+<p>Finally, by defining $z^{(3)}=\Theta_{10}^{(2)}a_0^{(2)}+\Theta_{11}^{(2)}a_1^{(2)}+\Theta_{12}^{(2)}a_2^{(2)}+\Theta_{13}^{(2)}a_3^{(2)}$ and adding $\mathbf{a_0}^{(2)}=1$ (now $\mathbf{a}^{(2)}$ is a 4-dimension matrix)to $\mathbf{a}$, we obtain<br>$$\mathbf{z}^{(3)}=\mathbf{\Theta}^{(2)}\mathbf{a}^{(2)}$$<br>The hypothesis equation will become<br>$$h_{\Theta}(x)=\mathbf{a}^{(3)}=g\left(\mathbf{z}^{(3)}\right)$$</p>
+<p>Neural network learning its own features!</p>
 
       
     </div>
@@ -346,11 +369,21 @@
           
             <a href="/tags/ML/" rel="tag"># ML</a>
           
-            <a href="/tags/representation/" rel="tag"># representation</a>
+            <a href="/tags/hypothesis-equation/" rel="tag"># hypothesis equation</a>
+          
+            <a href="/tags/sigmoid-function/" rel="tag"># sigmoid function</a>
           
             <a href="/tags/neural-network/" rel="tag"># neural network</a>
           
             <a href="/tags/non-linear-hypothesis/" rel="tag"># non-linear hypothesis</a>
+          
+            <a href="/tags/model-representation/" rel="tag"># model representation</a>
+          
+            <a href="/tags/activation-function/" rel="tag"># activation function</a>
+          
+            <a href="/tags/weight/" rel="tag"># weight</a>
+          
+            <a href="/tags/forward-propagation/" rel="tag"># forward propagation</a>
           
         </div>
       
@@ -418,8 +451,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/smallSHY.jpg"
@@ -445,7 +487,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">94</span>
+                <span class="site-state-item-count">98</span>
                 <span class="site-state-item-name">標籤</span>
               </a>
             </div>
@@ -470,6 +512,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Origins"><span class="nav-number">1.</span> <span class="nav-text">Origins</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notations"><span class="nav-number">2.</span> <span class="nav-text">Notations</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vectorized-implementation-of-Forward-propagation"><span class="nav-number">3.</span> <span class="nav-text">Vectorized implementation of Forward propagation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Simplify-equation"><span class="nav-number">3.1.</span> <span class="nav-text">Simplify equation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vectorize"><span class="nav-number">3.2.</span> <span class="nav-text">Vectorize</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

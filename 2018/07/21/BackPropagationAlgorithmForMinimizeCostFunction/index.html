@@ -1,0 +1,717 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CS229,ML,cost function,backpropagation,foward propagation,neural network," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Recall cost function in neural network$$J(\Theta)=-\frac{1}{m}\left[\sum_{i=1}^m\sum_{k=1}^Ky_k^{(i)}\log\left(h_{\Theta}(x^{(i)})\right)_k+(1-y_k^{(i)})\log\left(1-h_{\theta}(x^{(i)})_k\right)\right]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Backpropagation Algorithm for Minimize Cost Function (CS229)">
+<meta property="og:url" content="http://yoursite.com/2018/07/21/BackPropagationAlgorithmForMinimizeCostFunction/index.html">
+<meta property="og:site_name" content="SHY">
+<meta property="og:description" content="Recall cost function in neural network$$J(\Theta)=-\frac{1}{m}\left[\sum_{i=1}^m\sum_{k=1}^Ky_k^{(i)}\log\left(h_{\Theta}(x^{(i)})\right)_k+(1-y_k^{(i)})\log\left(1-h_{\theta}(x^{(i)})_k\right)\right]">
+<meta property="og:image" content="http://yoursite.com/2018/07/21/BackPropagationAlgorithmForMinimizeCostFunction/forwardPropagation.png">
+<meta property="og:updated_time" content="2018-07-22T05:39:37.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Backpropagation Algorithm for Minimize Cost Function (CS229)">
+<meta name="twitter:description" content="Recall cost function in neural network$$J(\Theta)=-\frac{1}{m}\left[\sum_{i=1}^m\sum_{k=1}^Ky_k^{(i)}\log\left(h_{\Theta}(x^{(i)})\right)_k+(1-y_k^{(i)})\log\left(1-h_{\theta}(x^{(i)})_k\right)\right]">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/21/BackPropagationAlgorithmForMinimizeCostFunction/forwardPropagation.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/21/BackPropagationAlgorithmForMinimizeCostFunction/"/>
+
+
+
+
+
+  <title> Backpropagation Algorithm for Minimize Cost Function (CS229) | SHY </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SHY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Marathon. Food. iOS Programming.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/21/BackPropagationAlgorithmForMinimizeCostFunction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shuhan Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SHY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Backpropagation Algorithm for Minimize Cost Function (CS229)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-07-21T13:17:05-07:00">
+                2018-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Recall-cost-function-in-neural-network"><a href="#Recall-cost-function-in-neural-network" class="headerlink" title="Recall cost function in neural network"></a>Recall <a href="https://www.shuhanyu.com/2018/07/21/CostFunctionInNeuralNetwork/" target="_blank" rel="external">cost function in neural network</a></h1><p>$$J(\Theta)=-\frac{1}{m}\left[\sum_{i=1}^m\sum_{k=1}^Ky_k^{(i)}\log\left(h_{\Theta}(x^{(i)})\right)_k+(1-y_k^{(i)})\log\left(1-h_{\theta}(x^{(i)})_k\right)\right]+\frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{s_l}\sum_{j=1}^{s_l+1}\left(\Theta_{ji}^{(l)}\right)^2$$<br><a id="more"></a></p>
+<h1 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h1><p>Access theta $\min_{\Theta}J(\Theta)$</p>
+<p>To get theta, we need to compute cost function value $J(\Theta)$ and deriviate terms of thetas $\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)$.</p>
+<h1 id="Gradient-computation"><a href="#Gradient-computation" class="headerlink" title="Gradient computation"></a>Gradient computation</h1><h2 id="One-training-set"><a href="#One-training-set" class="headerlink" title="One training set"></a>One training set</h2><p>One training example $(x,y)$</p>
+<h2 id="Recall-for-forward-propagation"><a href="#Recall-for-forward-propagation" class="headerlink" title="Recall for forward propagation"></a>Recall for <a href="https://www.shuhanyu.com/2018/07/17/RepreaentationOfNeuralNetwork/" target="_blank" rel="external">forward propagation</a></h2><p><img src="/2018/07/21/BackPropagationAlgorithmForMinimizeCostFunction/forwardPropagation.png" alt=""><br>(source: <a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">https://www.coursera.org/learn/machine-learning</a>)</p>
+<h2 id="Introduce-backpropagation-algorithm"><a href="#Introduce-backpropagation-algorithm" class="headerlink" title="Introduce backpropagation algorithm"></a>Introduce backpropagation algorithm</h2><h3 id="Notation-delta-j-l"><a href="#Notation-delta-j-l" class="headerlink" title="Notation: $\delta_j^{(l)}$"></a>Notation: $\delta_j^{(l)}$</h3><p>Error of node $j$ in layer $l$.</p>
+<p>Term $g’(z)$ means the deriviate of $g(z)$, it can be proof that $g’(z)=\mathbf{a}.*(\mathbf{1}-\mathbf{a})$.</p>
+<p>There is no $\delta^{(1)}$ term because $x_j=a_j^{(1)}$ are exacte given training data, we do not need to compute the error of them.</p>
+<p>It can also be proof that if ignoring $\lambda$ term (if $\lambda=0$)<br>$$\frac{\partial}{\partial\Theta_{ij}}J(\Theta)=a_j^{(l)}\delta_i^{(l+1)}$$</p>
+<h2 id="Backpropagation-algorithm-for-m-training-set"><a href="#Backpropagation-algorithm-for-m-training-set" class="headerlink" title="Backpropagation algorithm for $m$ training set"></a>Backpropagation algorithm for $m$ training set</h2><p>$m$ training set $(x^{(1)},y^{(1)}),(x^{(2)},y^{(2)}),(x^{(3)},y^{(3)}),…,(x^{(m)},y^{(m)})$</p>
+<p>Set $(\forall{l,i,j})$<br>$$\Delta_{ij}^{(l)}=0\tag{1}$$</p>
+<p>$(1)$ is used to compute $\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)$</p>
+<h3 id="Implementation-steps"><a href="#Implementation-steps" class="headerlink" title="Implementation steps"></a>Implementation steps</h3><ul>
+<li>For i = 1 : m<ul>
+<li>Set $a^{(1)}=x^{(i)}$</li>
+<li>Perform forward propagation to compute $a^{(l)}$ for $l=1,2,3,…,L$</li>
+<li>Using $y^{(i)}$, compute $\delta^{(L)}=a^{(L)}-y^{(i)}$, i.e. the hypothesis output minus the target label</li>
+<li>Compute $\delta^{(L-1)},\delta^{(L-2)},…,\delta^{(2)}$</li>
+<li>$\Delta_{ij}^{(l)}:=\Delta_{ij}^{(l)}+a_j^{(l)}\delta_i^{(l+1)}\tag{2}$</li>
+</ul>
+</li>
+</ul>
+<p>The vectorization of $(2)$ is<br>$$\mathbf{\Delta}^{(l)}:=\mathbf{\Delta}^{(l)}+\mathbf{\delta}^{(l+1)}\left(\mathbf{a}^{(l)}\right)^\top$$</p>
+<ul>
+<li>$D_{ij}^{(l)}:=\frac{1}{m}\Delta_{ij}^{(l)}+\lambda\Theta_{ij}^{(l)},j\neq0$</li>
+<li>$D_{ij}^{(l)}:=\frac{1}{m}\Delta_{ij}^{(l)},j=0$</li>
+</ul>
+<p>Remind that $\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)=D_{ij}^{(l)}$</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CS229/" rel="tag"># CS229</a>
+          
+            <a href="/tags/ML/" rel="tag"># ML</a>
+          
+            <a href="/tags/cost-function/" rel="tag"># cost function</a>
+          
+            <a href="/tags/backpropagation/" rel="tag"># backpropagation</a>
+          
+            <a href="/tags/foward-propagation/" rel="tag"># foward propagation</a>
+          
+            <a href="/tags/neural-network/" rel="tag"># neural network</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/21/CostFunctionInNeuralNetwork/" rel="next" title="Cost Function in Neural Network (CS229)">
+                <i class="fa fa-chevron-left"></i> Cost Function in Neural Network (CS229)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/smallSHY.jpg"
+               alt="Shuhan Yu" />
+          <p class="site-author-name" itemprop="name">Shuhan Yu</p>
+           
+              <p class="site-description motion-element" itemprop="description">https://github.com/ShuHanYu</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">98</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Recall-cost-function-in-neural-network"><span class="nav-number">1.</span> <span class="nav-text">Recall cost function in neural network</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Goal"><span class="nav-number">2.</span> <span class="nav-text">Goal</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradient-computation"><span class="nav-number">3.</span> <span class="nav-text">Gradient computation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#One-training-set"><span class="nav-number">3.1.</span> <span class="nav-text">One training set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recall-for-forward-propagation"><span class="nav-number">3.2.</span> <span class="nav-text">Recall for forward propagation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduce-backpropagation-algorithm"><span class="nav-number">3.3.</span> <span class="nav-text">Introduce backpropagation algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Notation-delta-j-l"><span class="nav-number">3.3.1.</span> <span class="nav-text">Notation: $\delta_j^{(l)}$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagation-algorithm-for-m-training-set"><span class="nav-number">3.4.</span> <span class="nav-text">Backpropagation algorithm for $m$ training set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementation-steps"><span class="nav-number">3.4.1.</span> <span class="nav-text">Implementation steps</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shuhan Yu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

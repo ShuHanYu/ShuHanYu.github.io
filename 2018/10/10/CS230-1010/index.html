@@ -1,0 +1,705 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ML,CS230," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="We use www.menti.com to communicate with teacher
+Steps of ML application1. Select problem2. Get dataHow long do you spend on collecting data?It’s recommend that quickly collect data at the firt time a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS230 Deep Learning">
+<meta property="og:url" content="http://yoursite.com/2018/10/10/CS230-1010/index.html">
+<meta property="og:site_name" content="SHY">
+<meta property="og:description" content="We use www.menti.com to communicate with teacher
+Steps of ML application1. Select problem2. Get dataHow long do you spend on collecting data?It’s recommend that quickly collect data at the firt time a">
+<meta property="og:image" content="http://yoursite.com/2018/10/10/CS230-1010/VAD.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/10/CS230-1010/VAD2.png">
+<meta property="og:updated_time" content="2018-10-19T08:29:10.076Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CS230 Deep Learning">
+<meta name="twitter:description" content="We use www.menti.com to communicate with teacher
+Steps of ML application1. Select problem2. Get dataHow long do you spend on collecting data?It’s recommend that quickly collect data at the firt time a">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/10/CS230-1010/VAD.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/10/CS230-1010/"/>
+
+
+
+
+
+  <title> CS230 Deep Learning | SHY </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SHY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Marathon. Food. Programming.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/CS230-1010/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Shuhan Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/smallSHY.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SHY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CS230 Deep Learning
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-10-10T11:47:14-07:00">
+                2018-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>We use www.menti.com to communicate with teacher</p>
+<h1 id="Steps-of-ML-application"><a href="#Steps-of-ML-application" class="headerlink" title="Steps of ML application"></a>Steps of ML application</h1><h2 id="1-Select-problem"><a href="#1-Select-problem" class="headerlink" title="1. Select problem"></a>1. Select problem</h2><h2 id="2-Get-data"><a href="#2-Get-data" class="headerlink" title="2. Get data"></a>2. Get data</h2><h3 id="How-long-do-you-spend-on-collecting-data"><a href="#How-long-do-you-spend-on-collecting-data" class="headerlink" title="How long do you spend on collecting data?"></a>How long do you spend on collecting data?</h3><p>It’s recommend that quickly collect data at the firt time as we start the project, so we can modify the design of the model or collect more data by training the model.</p>
+<p>Keep clear notes on reperlment line(?).</p>
+<h3 id="How-would-you-collecting-data"><a href="#How-would-you-collecting-data" class="headerlink" title="How would you collecting data?"></a>How would you collecting data?</h3><h2 id="3-Design-model"><a href="#3-Design-model" class="headerlink" title="3. Design model"></a>3. Design model</h2><h2 id="4-Train-model"><a href="#4-Train-model" class="headerlink" title="4. Train model"></a>4. Train model</h2><h2 id="5-Test-model"><a href="#5-Test-model" class="headerlink" title="5. Test model"></a>5. Test model</h2><h2 id="6-Deploy"><a href="#6-Deploy" class="headerlink" title="6. Deploy"></a>6. Deploy</h2><p>Edge devices<br>audio —&gt; NN —-&gt; 0/1<br>but their might be large NN, it waste times.</p>
+<p>audio —&gt; VAD —&gt; NN —&gt; 0/1<br>VAD is checking if the voice actually detective.<br><img src="/2018/10/10/CS230-1010/VAD.png" alt=""></p>
+<p>option 1 will be more simpler and faster to option 2. It maybe have many errors or noises in the result of option 1, but the following large NN will take care of it, we don’t have to worry about it.</p>
+<p><img src="/2018/10/10/CS230-1010/VAD2.png" alt=""><br>In this case, option 2 will be a proper choice for Non-ML just detect for loud or seilence, it can not distinguish the anscent.</p>
+<h2 id="7-Maintain"><a href="#7-Maintain" class="headerlink" title="7. Maintain"></a>7. Maintain</h2><a id="more"></a>
+<p>Note that the steps might go backward or step into cycling when the step are not satisfied.</p>
+<p>2018/10/17</p>
+<h1 id="Attacking-a-network-with-adversarial-examples"><a href="#Attacking-a-network-with-adversarial-examples" class="headerlink" title="Attacking a network with adversarial examples"></a>Attacking a network with adversarial examples</h1><p>GOAL: Given a network pretained on ImageNet, find an input image that is a cat but will be classify as an iguana.</p>
+<h2 id="1-Rephrasing-what-we-want"><a href="#1-Rephrasing-what-we-want" class="headerlink" title="1. Rephrasing what we want"></a>1. Rephrasing what we want</h2><h2 id="2-Defining-the-loss-function"><a href="#2-Defining-the-loss-function" class="headerlink" title="2. Defining the loss function"></a>2. Defining the loss function</h2><h2 id="3-Optimize-the-imagine"><a href="#3-Optimize-the-imagine" class="headerlink" title="3. Optimize the imagine"></a>3. Optimize the imagine</h2><p>The pic looks ‘real’ to human might be fake of the ML result, the result mechine classified into iguana might looks like a cat to human, we have to avoid it.</p>
+<p>Sol.</p>
+<h2 id="Create-a-SafetyNet-classify-all-images-at-the-first-time-as-‘T’-or-‘F’"><a href="#Create-a-SafetyNet-classify-all-images-at-the-first-time-as-‘T’-or-‘F’" class="headerlink" title="Create a SafetyNet, classify all images at the first time as ‘T’ or ‘F’."></a>Create a SafetyNet, classify all images at the first time as ‘T’ or ‘F’.</h2><h2 id="Train-on-correctly-labelled-adversarial-examples"><a href="#Train-on-correctly-labelled-adversarial-examples" class="headerlink" title="Train on correctly labelled adversarial examples."></a>Train on correctly labelled adversarial examples.</h2><h2 id="Adversarial-training"><a href="#Adversarial-training" class="headerlink" title="Adversarial training"></a>Adversarial training</h2><h1 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h1><p>g = Wx + b</p>
+<p>X = [x1; x2; x3; x4; x5; x6]<br>number of hidden layer = 1<br>w = [1, 3, -1, 2, 2, 3]<br>b = 0<br>Given X = [1; -1; 2; 0; 3; -2]<br>yhat = 1 - 3 - 2 + 0 + 6 - 6 = -4<br>xStar = x + epsilon <em> wT<br>yStar = w </em> xStar = wx + epsilon <em> w </em> wT<br>where w * wT = ||w||^2</p>
+<p>let epsilon = 0.2,<br>xStar = x + epsilon <em> wT<br>      = [1 + 0.2; -1 + 0.6; 2 - 0.2; 0 + 0.6; 3 + 2.6; -2 + 0.9]<br>      = [1.2; -0.4; 1.5; 0.6; 5.6; -1.1]<br>yStar = w </em> xStar = …<br>epsilon is not growing with y dimension, but it impacts the complexity of yStar calculating.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ML/" rel="tag"># ML</a>
+          
+            <a href="/tags/CS230/" rel="tag"># CS230</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/27/BiologyOfTOEFL/" rel="next" title="TOEFL in Biology">
+                <i class="fa fa-chevron-left"></i> TOEFL in Biology
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/08/RunLessRunFaster/" rel="prev" title="Run Less Run Faster">
+                Run Less Run Faster <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/smallSHY.jpg"
+               alt="Shuhan Yu" />
+          <p class="site-author-name" itemprop="name">Shuhan Yu</p>
+           
+              <p class="site-description motion-element" itemprop="description">https://github.com/ShuHanYu</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">109</span>
+                <span class="site-state-item-name">標籤</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Steps-of-ML-application"><span class="nav-number">1.</span> <span class="nav-text">Steps of ML application</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Select-problem"><span class="nav-number">1.1.</span> <span class="nav-text">1. Select problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Get-data"><span class="nav-number">1.2.</span> <span class="nav-text">2. Get data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-long-do-you-spend-on-collecting-data"><span class="nav-number">1.2.1.</span> <span class="nav-text">How long do you spend on collecting data?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-would-you-collecting-data"><span class="nav-number">1.2.2.</span> <span class="nav-text">How would you collecting data?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Design-model"><span class="nav-number">1.3.</span> <span class="nav-text">3. Design model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Train-model"><span class="nav-number">1.4.</span> <span class="nav-text">4. Train model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Test-model"><span class="nav-number">1.5.</span> <span class="nav-text">5. Test model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Deploy"><span class="nav-number">1.6.</span> <span class="nav-text">6. Deploy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Maintain"><span class="nav-number">1.7.</span> <span class="nav-text">7. Maintain</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Attacking-a-network-with-adversarial-examples"><span class="nav-number">2.</span> <span class="nav-text">Attacking a network with adversarial examples</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Rephrasing-what-we-want"><span class="nav-number">2.1.</span> <span class="nav-text">1. Rephrasing what we want</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Defining-the-loss-function"><span class="nav-number">2.2.</span> <span class="nav-text">2. Defining the loss function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Optimize-the-imagine"><span class="nav-number">2.3.</span> <span class="nav-text">3. Optimize the imagine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-a-SafetyNet-classify-all-images-at-the-first-time-as-‘T’-or-‘F’"><span class="nav-number">2.4.</span> <span class="nav-text">Create a SafetyNet, classify all images at the first time as ‘T’ or ‘F’.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Train-on-correctly-labelled-adversarial-examples"><span class="nav-number">2.5.</span> <span class="nav-text">Train on correctly labelled adversarial examples.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adversarial-training"><span class="nav-number">2.6.</span> <span class="nav-text">Adversarial training</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linear-Regression"><span class="nav-number">3.</span> <span class="nav-text">Linear Regression</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shuhan Yu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
